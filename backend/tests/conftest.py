@@ -1,3 +1,4 @@
+import inspect
 import os
 import pytest
 
@@ -7,15 +8,26 @@ def django_db_setup(request):
     """
     When CI runs against a pre-created, pre-migrated, role-hardened PostgreSQL 16 test database
     as restricted role `adprms_app` (NOCREATEDB, NOBYPASSRLS), skip CREATE DATABASE and reuse the
-    configured DATABASE_URL directly.
+    configured DATABASE_URL directly. Otherwise delegate to pytest-django's built-in fixture
+    with its full dynamically resolved fixture signature.
     """
     if os.environ.get('DJANGO_USE_PREMIGRATED_TEST_DB', '').lower() == 'true':
+        request.getfixturevalue('django_test_environment')
         yield
         return
 
     from pytest_django.fixtures import django_db_setup as default_django_db_setup
 
-    yield from default_django_db_setup.__wrapped__(request)
+    default_fn = getattr(default_django_db_setup, '__wrapped__', default_django_db_setup)
+    kwargs = {
+        name: (request if name == 'request' else request.getfixturevalue(name))
+        for name in inspect.signature(default_fn).parameters
+    }
+    if inspect.isgeneratorfunction(default_fn):
+        yield from default_fn(**kwargs)
+    else:
+        default_fn(**kwargs)
+        yield
 
 
 @pytest.fixture

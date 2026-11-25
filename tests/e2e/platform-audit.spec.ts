@@ -5,9 +5,34 @@ async function signInAs(page: import('@playwright/test').Page, username: string)
   await expect(page.getByText('TRAINING MODE — SYNTHETIC DATA — NOT PRODUCTION')).toBeVisible();
   const row = page.locator('tr', { hasText: username });
   await row.getByRole('button', { name: /Use Credentials/i }).click();
+  const loginResPromise = page.waitForResponse(
+    (res) => res.url().includes('/api/office/auth/login') && res.request().method() === 'POST'
+  );
   await page.getByRole('button', { name: /Sign In to Training Session/i }).click();
+  const loginRes = await loginResPromise;
+  expect(loginRes.ok()).toBe(true);
   await expect(page.getByRole('banner')).toBeVisible();
   await expect(page.getByText(/Loading workspace module/i)).toBeHidden();
+}
+
+async function getVisibleSidebar(page: import('@playwright/test').Page) {
+  const visibleAside = page.locator('aside:visible');
+  if ((await visibleAside.count()) === 0) {
+    await page.getByRole('button', { name: 'Open navigation' }).click();
+  }
+  const aside = page.locator('aside:visible').first();
+  await expect(aside).toBeVisible();
+  return aside;
+}
+
+async function ensureNavGroupExpanded(
+  sidebar: import('@playwright/test').Locator,
+  groupName: string
+) {
+  const groupBtn = sidebar.getByRole('button', { name: groupName, exact: true });
+  if ((await groupBtn.count()) > 0 && (await groupBtn.getAttribute('aria-expanded')) === 'false') {
+    await groupBtn.click();
+  }
 }
 
 const ALL_22_NAV_LABELS: { group: string; label: string }[] = [
@@ -50,14 +75,13 @@ test.describe('Full Platform Runtime & Governance Audit (All 22 Modules & Roles)
 
     await signInAs(page, 'gm.demo');
 
-    // Expand Training & Reference group (collapsed by default for GM)
-    await page.getByRole('button', { name: /Training & Reference/i }).click();
-
     for (const item of ALL_22_NAV_LABELS) {
+      const aside = await getVisibleSidebar(page);
+      await ensureNavGroupExpanded(aside, item.group);
       const navButton =
         item.label === 'Approvals Centre' || item.label === 'Training Exercises'
-          ? page.locator('aside').getByRole('button', { name: new RegExp(`^${item.label}`, 'i') })
-          : page.locator('aside').getByRole('button', { name: item.label, exact: true });
+          ? aside.getByRole('button', { name: new RegExp(`^${item.label}`, 'i') })
+          : aside.getByRole('button', { name: item.label, exact: true });
       await expect(navButton).toBeEnabled();
       await navButton.click();
 
@@ -111,10 +135,11 @@ test.describe('Full Platform Runtime & Governance Audit (All 22 Modules & Roles)
     // Visit key modules in Amharic
     const amharicModules = ['ኪራይና አሰባሰብ', 'የማጽደቂያ ማዕከል', 'የተገዢነት ዝግጁነት'];
     for (const label of amharicModules) {
+      const aside = await getVisibleSidebar(page);
       const btn =
         label === 'የማጽደቂያ ማዕከል'
-          ? page.locator('aside').getByRole('button', { name: /^የማጽደቂያ ማዕከል/ })
-          : page.locator('aside').getByRole('button', { name: label, exact: true });
+          ? aside.getByRole('button', { name: /^የማጽደቂያ ማዕከል/ })
+          : aside.getByRole('button', { name: label, exact: true });
       await btn.click();
       const metrics = await page.evaluate(() => ({
         scrollWidth: document.documentElement.scrollWidth,
@@ -133,7 +158,8 @@ test.describe('Full Platform Runtime & Governance Audit (All 22 Modules & Roles)
   }) => {
     // 1. Auditor / Read-only reviewer cannot trigger operational mutations
     await signInAs(page, 'auditor.demo');
-    await page.locator('aside').getByRole('button', { name: 'Rent & Collections', exact: true }).click();
+    const aside = await getVisibleSidebar(page);
+    await aside.getByRole('button', { name: 'Rent & Collections', exact: true }).click();
     const recordPayBtn = page.getByRole('button', { name: /Record.*Payment/i });
     if ((await recordPayBtn.count()) > 0) {
       await expect(recordPayBtn.first()).toBeDisabled();

@@ -6,8 +6,45 @@ async function signInAs(page: import('@playwright/test').Page, username: string)
 
   const row = page.locator('tr', { hasText: username });
   await row.getByRole('button', { name: /Use Credentials/i }).click();
+  const loginResPromise = page.waitForResponse(
+    (res) => res.url().includes('/api/office/auth/login') && res.request().method() === 'POST'
+  );
   await page.getByRole('button', { name: /Sign In to Training Session/i }).click();
+  const loginRes = await loginResPromise;
+  expect(loginRes.ok()).toBe(true);
   await expect(page.getByRole('banner')).toBeVisible();
+}
+
+async function getVisibleSidebar(page: import('@playwright/test').Page) {
+  const visibleAside = page.locator('aside:visible');
+  if ((await visibleAside.count()) === 0) {
+    await page.getByRole('button', { name: 'Open navigation' }).click();
+  }
+  const aside = page.locator('aside:visible').first();
+  await expect(aside).toBeVisible();
+  return aside;
+}
+
+async function ensureNavGroupExpanded(
+  sidebar: import('@playwright/test').Locator,
+  groupMatcher: RegExp
+) {
+  const groupBtn = sidebar.getByRole('button', { name: groupMatcher });
+  if ((await groupBtn.getAttribute('aria-expanded')) === 'false') {
+    await groupBtn.click();
+  }
+}
+
+async function clickNavModule(
+  page: import('@playwright/test').Page,
+  name: string | RegExp,
+  options: { exact?: boolean; groupMatcher?: RegExp } = {}
+) {
+  const sidebar = await getVisibleSidebar(page);
+  if (options.groupMatcher) {
+    await ensureNavGroupExpanded(sidebar, options.groupMatcher);
+  }
+  await sidebar.getByRole('button', { name, exact: options.exact }).click();
 }
 
 test.describe('AD-PRMS End-to-End Governance, Isolation & UI Flows', () => {
@@ -56,7 +93,10 @@ test.describe('AD-PRMS End-to-End Governance, Isolation & UI Flows', () => {
     await signInAs(page, 'gm.demo');
 
     // Open Compliance Readiness
-    await page.getByRole('button', { name: 'Compliance Readiness', exact: true }).click();
+    await clickNavModule(page, 'Compliance Readiness', {
+      exact: true,
+      groupMatcher: /Governance & Controls/i,
+    });
     await expect(page.getByRole('heading', { name: /Compliance Readiness/i })).toBeVisible();
 
     // Switch to Source & Evidence tab
@@ -77,8 +117,9 @@ test.describe('AD-PRMS End-to-End Governance, Isolation & UI Flows', () => {
   }) => {
     // 1. Finance Officer cannot self-approve own draft (REQ-SYNTH-2026-002 submitted by USR-SYNTH-03)
     await signInAs(page, 'finance.demo');
-    await page.getByRole('button', { name: /Governance & Controls/i }).click();
-    await page.getByRole('button', { name: /Approvals Centre/i }).click();
+    await clickNavModule(page, /Approvals Centre/i, {
+      groupMatcher: /Governance & Controls/i,
+    });
     await page.getByRole('button', { name: /Submitted by Me \(Self-Approval Blocked\)/i }).click();
 
     const aprRow = page.locator('tr', { hasText: 'REQ-SYNTH-2026-002' });
@@ -96,8 +137,9 @@ test.describe('AD-PRMS End-to-End Governance, Isolation & UI Flows', () => {
 
     // 2. System Administrator cannot access Finance & Tax / Collections modules
     await signInAs(page, 'sysadmin.demo');
-    await page.getByRole('button', { name: /Finance & Tax/i }).click();
-    const collectionsNav = page.getByRole('button', { name: /Rent & Collections/i });
+    const sidebar = await getVisibleSidebar(page);
+    await ensureNavGroupExpanded(sidebar, /Finance & Tax/i);
+    const collectionsNav = sidebar.getByRole('button', { name: /Rent & Collections/i });
     await expect(collectionsNav).toBeDisabled();
   });
 
@@ -106,12 +148,16 @@ test.describe('AD-PRMS End-to-End Governance, Isolation & UI Flows', () => {
   }) => {
     await signInAs(page, 'finance.demo');
 
-    await page.getByRole('button', { name: 'Tax Configuration', exact: true }).click();
+    await clickNavModule(page, 'Tax Configuration', {
+      exact: true,
+      groupMatcher: /Finance & Tax/i,
+    });
     await expect(page.getByText(/Active.*Disabled/i).first()).toBeVisible();
 
     // Open Visual QA and run automated DOM Overflow Check in English
-    await page.getByRole('button', { name: /Training & Reference/i }).click();
-    await page.getByRole('button', { name: /Amharic & Date Visual QA/i }).click();
+    await clickNavModule(page, /Amharic & Date Visual QA/i, {
+      groupMatcher: /Training & Reference/i,
+    });
     await page.getByRole('button', { name: /Run DOM Overflow Check/i }).click();
     await expect(
       page.getByText(/Zero button or badge horizontal clipping detected/i)
@@ -174,7 +220,10 @@ test.describe('AD-PRMS End-to-End Governance, Isolation & UI Flows', () => {
 
     // 1. Sign in as Finance Officer and open Finance -> Journals & Rules -> Manual Journal (5xxx)
     await signInAs(page, 'finance.demo');
-    await page.getByRole('button', { name: 'Finance', exact: true }).click();
+    await clickNavModule(page, 'Finance', {
+      exact: true,
+      groupMatcher: /Finance & Tax/i,
+    });
     await page.getByRole('button', { name: /Journals & Rules/i }).click();
 
     await page.getByRole('button', { name: /Manual Journal \(5xxx\)/i }).click();
@@ -199,7 +248,9 @@ test.describe('AD-PRMS End-to-End Governance, Isolation & UI Flows', () => {
     await page.getByRole('button', { name: /Sign Out to Training Login/i }).click();
     await signInAs(page, 'gm.demo');
 
-    await page.getByRole('button', { name: /Approvals Centre/i }).click();
+    await clickNavModule(page, /Approvals Centre/i, {
+      groupMatcher: /Governance & Controls/i,
+    });
     await page
       .getByPlaceholder(/Search request #, category, maker role, or title/i)
       .fill('Monthly straight-line depreciation');
@@ -213,7 +264,10 @@ test.describe('AD-PRMS End-to-End Governance, Isolation & UI Flows', () => {
     await saveAfterApprove;
 
     // 3. Verify journal renders in Finance -> Journals & Rules under 5900 filter
-    await page.getByRole('button', { name: 'Finance', exact: true }).click();
+    await clickNavModule(page, 'Finance', {
+      exact: true,
+      groupMatcher: /Finance & Tax/i,
+    });
     await page.getByRole('button', { name: /Journals & Rules/i }).click();
     await page.getByRole('button', { name: /5900 · Depreciation/i }).click();
     await expect(
@@ -297,7 +351,10 @@ test.describe('AD-PRMS End-to-End Governance, Isolation & UI Flows', () => {
     expect(localSessionRes.ok()).toBe(true);
     expect((await localSessionRes.json()).authenticated).toBe(true);
 
-    await page.getByRole('button', { name: 'Finance', exact: true }).click();
+    await clickNavModule(page, 'Finance', {
+      exact: true,
+      groupMatcher: /Finance & Tax/i,
+    });
     await page.getByRole('button', { name: /Journals & Rules/i }).click();
     await expect(page.getByRole('heading', { name: /Append-Only Double-Entry Ledger/i })).toBeVisible();
 
@@ -306,8 +363,10 @@ test.describe('AD-PRMS End-to-End Governance, Isolation & UI Flows', () => {
     await page.evaluate(() => window.dispatchEvent(new Event('offline')));
 
     await expect(page.getByText(/Offline — showing cached data/i)).toBeVisible();
-    await page.getByRole('button', { name: /Governance & Controls/i }).click();
-    await page.getByRole('button', { name: 'Compliance Readiness', exact: true }).click();
+    await clickNavModule(page, 'Compliance Readiness', {
+      exact: true,
+      groupMatcher: /Governance & Controls/i,
+    });
     await expect(page.getByRole('heading', { name: /Compliance Readiness/i })).toBeVisible();
 
     await page.unroute('**/api/office/state**');

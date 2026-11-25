@@ -710,7 +710,9 @@ export const AppShell: React.FC<{
         {/* Mobile Drawer Sidebar */}
         {mobileNavOpen && (
           <div className="fixed inset-0 z-50 flex lg:hidden">
-            <div className="w-64 h-full">{renderSidebar(false)}</div>
+            <aside aria-label="Mobile Navigation" className="w-64 h-full">
+              {renderSidebar(false)}
+            </aside>
             <div className="flex-1 bg-slate-950/60" onClick={() => setMobileNavOpen(false)} />
           </div>
         )}
@@ -864,6 +866,7 @@ export const AppShell: React.FC<{
               <div className="relative">
                 <button
                   type="button"
+                  aria-label={currentPersona.role}
                   onClick={() => {
                     setUserMenuOpen((v) => !v);
                     setNotifOpen(false);
