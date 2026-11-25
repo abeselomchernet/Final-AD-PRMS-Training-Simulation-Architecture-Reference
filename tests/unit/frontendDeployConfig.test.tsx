@@ -19,15 +19,52 @@ describe('Cloudflare Pages Frontend-Only Deployment Preparation', () => {
     window.history.replaceState({}, '', originalPath);
   });
 
-  it('defines build:frontend -> dist/client/ in package.json while preserving backend/MCP builds', () => {
+  it('defines build:frontend -> dist/client/ in package.json while preserving backend/MCP builds and synchronized lockfile', () => {
     const pkg = JSON.parse(fs.readFileSync(path.join(ROOT_DIR, 'package.json'), 'utf8')) as {
       scripts: Record<string, string>;
+      dependencies: Record<string, string>;
+      devDependencies: Record<string, string>;
     };
 
     expect(pkg.scripts['build:frontend']).toBe('vite build --outDir dist/client --emptyOutDir');
     expect(pkg.scripts.build).toBe('vite build && npm run build:server && npm run build:mcp');
     expect(pkg.scripts['build:server']).toContain('dist/server.js');
     expect(pkg.scripts['build:mcp']).toContain('dist/mcp-server.js');
+
+    const lock = JSON.parse(fs.readFileSync(path.join(ROOT_DIR, 'package-lock.json'), 'utf8')) as {
+      lockfileVersion: number;
+      packages: Record<
+        string,
+        {
+          dependencies?: Record<string, string>;
+          devDependencies?: Record<string, string>;
+        }
+      >;
+    };
+    expect(lock.lockfileVersion).toBe(3);
+    expect(lock.packages['']?.dependencies).toEqual(pkg.dependencies);
+    expect(lock.packages['']?.devDependencies).toEqual(pkg.devDependencies);
+    expect(fs.existsSync(path.join(ROOT_DIR, 'bun.lock'))).toBe(false);
+
+    const vercelCfg = JSON.parse(fs.readFileSync(path.join(ROOT_DIR, 'vercel.json'), 'utf8')) as {
+      installCommand: string;
+      buildCommand: string;
+      outputDirectory: string;
+    };
+    expect(vercelCfg.installCommand).toBe('npm ci');
+    expect(vercelCfg.buildCommand).toBe('npm run build:frontend');
+    expect(vercelCfg.outputDirectory).toBe('dist/client');
+
+    const mig0004 = fs.readFileSync(
+      path.join(
+        ROOT_DIR,
+        'backend/apps/ledger/migrations/0004_leaseaccountingschedule_ledger_sched_own_lse_per_idx.py'
+      ),
+      'utf8'
+    );
+    expect(mig0004).toContain("('ledger', '0003_deposit_subledger_and_tax_packs')");
+    expect(mig0004).toContain("model_name='leaseaccountingschedule'");
+    expect(mig0004).toContain("name='ledger_sched_own_lse_per_idx'");
   });
 
   it('configures Cloudflare Pages _redirects SPA fallback and _headers security policy', () => {

@@ -41,8 +41,8 @@ jobs:
           mkdir -p ci-reports
           npx vitest run --reporter=default --reporter=junit --outputFile=ci-reports/vitest-junit.xml
 
-      - name: Build production bundle
-        run: npm run build
+      - name: Verify frontend-only build & full production bundle
+        run: npm run build:frontend && npm run build
 
       - name: Upload dist build & Vitest report artifacts
         if: always()

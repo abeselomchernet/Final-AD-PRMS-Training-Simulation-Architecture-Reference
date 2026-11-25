@@ -55,29 +55,21 @@ DATABASE_URL="$ADMIN_DATABASE_URL" BACKUP_ENCRYPTION_PASSPHRASE="..." VERIFY_RES
 ## CI/CD Workflows (GitHub Actions)
 
 - `.github/workflows/ci.yml`: Runs on every push (`main`, `master`, `develop`) and pull request:
-  1. `quality-and-unit`: `npm ci` → `npm run lint` → `python3 -m compileall -q backend` → `npm test` → `npm run build`
+  1. `quality-and-unit`: `npm ci` → `npm run lint` → `python3 -m compileall -q backend` → `npm test` → `npm run build:frontend && npm run build`
   2. `backend-postgres-wp2`: Spins up **PostgreSQL 16**, initializes `adprms_app`, validates Django `check` + `makemigrations --check` + `migrate` + rollback check + `verify_wp2_postgres.py` + `pytest`, and publishes durable DB/pytest artifacts
   3. `e2e-playwright`: Runs Playwright Chromium E2E tests against the full-stack Office server (`server.ts`) serving `dist/` with isolated SQLite state and LAN/offline separation checks
-- `.github/workflows/deploy-vercel.yml`: Builds and deploys Pull Request previews and `main` production releases to Vercel when GitHub repository secrets are configured.
+- `.github/workflows/deploy-vercel.yml`: Validates `npm run build:frontend` (`dist/client`) and optionally deploys to Vercel only when Vercel repository secrets are configured.
 
-## Pushing to GitHub
+## Deploying Frontend to Cloudflare Pages (Stage 1 Target)
 
-```bash
-git add .
-git commit -m "feat: complete AD-PRMS redesign, test suites, CI/CD, and Vercel config"
-git remote add origin https://github.com/<your-org>/<your-repo>.git
-git push -u origin main
-```
+1. In **Cloudflare Dashboard → Workers & Pages → Create → Pages → Connect to Git**, select `Final-AD-PRMS-Training-Simulation-Architecture-Reference` (do **not** create a Cloudflare Worker or run `npx wrangler deploy`).
+2. Configure:
+   - **Production branch**: `main`
+   - **Framework preset**: `Vite`
+   - **Build command**: `npm run build:frontend`
+   - **Build output directory**: `dist/client`
+3. Add **only** public frontend variables (`VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY` as `sb_publishable_...`, and `VITE_APP_MODE=training`). Express (`dist/server.js`), SQLite, and MCP (`dist/mcp-server.js`) must never be deployed to Cloudflare Pages.
 
-## Deploying to Vercel
+## Deploying to Vercel (Optional Legacy Parity)
 
-### Option A — Direct Vercel Git Integration (Recommended)
-1. Import your GitHub repository in the Vercel Dashboard.
-2. Vercel auto-detects `vercel.json` (`vite` framework, `npm run build`, output directory `dist`, SPA rewrites, and security headers).
-3. Click **Deploy**.
-
-### Option B — Automated GitHub Actions CD (`deploy-vercel.yml`)
-Add the following **Repository Secrets** in GitHub (`Settings → Secrets and variables → Actions`):
-- `VERCEL_TOKEN`
-- `VERCEL_ORG_ID`
-- `VERCEL_PROJECT_ID`
+Vercel auto-detects `vercel.json` (`vite` framework, `npm ci`, `npm run build:frontend`, output directory `dist/client`, SPA rewrites, and security headers). Automated GitHub Actions deployment in `deploy-vercel.yml` activates only if `VERCEL_TOKEN`, `VERCEL_ORG_ID`, and `VERCEL_PROJECT_ID` repository secrets are added.
