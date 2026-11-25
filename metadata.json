@@ -1,0 +1,10 @@
+{
+  "name": "Remix Remix Remix AD-PRMS Prototype",
+  "description": "Abdulwehab Dekebo Property \u0026 Rental Management System — Interactive UI/UX prototype with synthetic Ethiopian property data, strict owner isolation, maker-checker approvals, and immutable audit logging.",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

@@ -1,0 +1,55 @@
+<div>
+  <h2 style="margin-top: 0;">Authoritative Title-Holder &amp; Building Register ({{ owner_code }})</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Party Code</th>
+        <th>Legal Name</th>
+        <th>Kind</th>
+        <th>Status</th>
+        <th>Inter-Entity Posting</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for p in parties %}
+      <tr>
+        <td><code>{{ p.code }}</code></td>
+        <td>{{ p.legal_name }}</td>
+        <td>{{ p.party_kind }}</td>
+        <td>{{ p.confirmation_status }}</td>
+        <td>{{ p.inter_entity_posting_enabled|yesno:"Enabled,Disabled (Locked)" }}</td>
+      </tr>
+      {% empty %}
+      <tr><td colspan="5">No party identities registered for {{ owner_code }}.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h3 style="margin-top: 18px;">Buildings</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Code</th>
+        <th>Name</th>
+        <th>Floors</th>
+        <th>Expected Units</th>
+        <th>Count Status</th>
+        <th>Deed Ref</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for b in buildings %}
+      <tr>
+        <td><code>{{ b.code }}</code></td>
+        <td>{{ b.name }}</td>
+        <td>{{ b.floors }}</td>
+        <td>{{ b.total_units_expected }}</td>
+        <td>{{ b.unit_count_status }}</td>
+        <td>{{ b.deed_reference|default:"Pending Deed Verification" }}</td>
+      </tr>
+      {% empty %}
+      <tr><td colspan="6">No buildings seeded yet for {{ owner_code }}.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>

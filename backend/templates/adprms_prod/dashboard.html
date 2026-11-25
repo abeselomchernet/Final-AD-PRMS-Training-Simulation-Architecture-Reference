@@ -1,0 +1,46 @@
+{% extends "adprms_prod/base.html" %}
+{% block content %}
+<div x-data="{ tab: 'portfolio' }" class="card">
+  <div style="display: flex; gap: 8px; margin-bottom: 14px;">
+    <button
+      type="button"
+      class="btn"
+      :class="{ 'btn-active': tab === 'portfolio' }"
+      @click="tab = 'portfolio'"
+      hx-get="{% url 'prod-portfolio-partial' %}"
+      hx-target="#prod-panel"
+      hx-swap="innerHTML"
+    >
+      Portfolio &amp; Party Identity (5 Buildings)
+    </button>
+    <button
+      type="button"
+      class="btn"
+      :class="{ 'btn-active': tab === 'ledger' }"
+      @click="tab = 'ledger'"
+      hx-get="{% url 'prod-ledger-partial' %}"
+      hx-target="#prod-panel"
+      hx-swap="innerHTML"
+    >
+      Ledger, Periods &amp; 3-Way Deposit Check
+    </button>
+  </div>
+
+  <div id="prod-panel">
+    {% include "adprms_prod/portfolio_partial.html" %}
+  </div>
+</div>
+
+<div class="card">
+  <h3 style="margin-top: 0;">Active Tax Rule Pack Summary</h3>
+  {% if tax_pack %}
+    <p style="font-size: 13px;">
+      Pack: <code>{{ tax_pack.pack_id }}</code> (v{{ tax_pack.version }}) ·
+      Stage: <strong>{{ tax_pack.lifecycle_stage }}</strong> ·
+      Proclamation: {{ tax_pack.proclamation_ref }}
+    </p>
+  {% else %}
+    <p style="font-size: 13px;">No active or draft TaxRulePack configured yet.</p>
+  {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,43 @@
+<div>
+  <h2 style="margin-top: 0;">Ledger &amp; Independent 3-Way Deposit Check ({{ owner_code }})</h2>
+  {% if ledger %}
+    <p style="font-size: 13px;">
+      Ledger: <code>{{ ledger.ledger_code }}</code> ·
+      Entity Legal Form: <strong>{{ ledger.entity_type }}</strong> ·
+      Live Tax Invoicing: <strong>{{ ledger.enable_live_tax_invoicing|yesno:"Enabled,Locked (Non-Fiscal Draft)" }}</strong>
+    </p>
+  {% endif %}
+  <p style="font-size: 13px;">
+    3-Way Deposit Tie-Out:
+    <strong>{{ three_way.passed|yesno:"PASSED,VARIANCE DETECTED" }}</strong>
+    (Lease: ETB {{ three_way.lease_register_etb|default:"0.00" }} |
+     DepositMovement Subledger: ETB {{ three_way.subledger_etb|default:"0.00" }} |
+     GL 2120: ETB {{ three_way.gl_2120_etb|default:"0.00" }})
+  </p>
+
+  <h3>Recent Journal Entries</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Journal #</th>
+        <th>Period</th>
+        <th>Rule</th>
+        <th>Status</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for j in recent_journals %}
+      <tr>
+        <td><code>{{ j.journal_number }}</code></td>
+        <td>{{ j.period.period_code }}</td>
+        <td>{{ j.rule_id }}</td>
+        <td>{{ j.status }}</td>
+        <td>{{ j.description }}</td>
+      </tr>
+      {% empty %}
+      <tr><td colspan="5">No journal entries posted for {{ owner_code }}.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>

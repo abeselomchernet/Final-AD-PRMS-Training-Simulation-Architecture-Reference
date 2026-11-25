@@ -1,0 +1,759 @@
+CI — Lint, Unit, Build & E2E
+chore: add CI/CD pipelines and documentation #1
+All jobs
+Run details
+Annotations
+1 error, 1 warning, and 1 notice
+TypeCheck, Vitest & Vite Build
+failed yesterday in 29s
+Search logs
+2s
+5s
+6s
+13s
+Run npm ci
+npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: '@firebase/ai@3.1.0',
+npm warn EBADENGINE   required: { node: '>=24.12.0' },
+npm warn EBADENGINE   current: { node: 'v22.23.4', npm: '10.9.9' }
+npm warn EBADENGINE }
+npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: '@firebase/app@0.16.6',
+npm warn EBADENGINE   required: { node: '>=24.12.0' },
+npm warn EBADENGINE   current: { node: 'v22.23.4', npm: '10.9.9' }
+npm warn EBADENGINE }
+npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: '@firebase/app-compat@0.5.22',
+npm warn EBADENGINE   required: { node: '>=24.12.0' },
+npm warn EBADENGINE   current: { node: 'v22.23.4', npm: '10.9.9' }
+npm warn EBADENGINE }
+npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: '@firebase/auth@1.13.10',
+npm warn EBADENGINE   required: { node: '>=24.12.0' },
+npm warn EBADENGINE   current: { node: 'v22.23.4', npm: '10.9.9' }
+npm warn EBADENGINE }
+npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: '@firebase/auth-compat@0.6.15',
+npm warn EBADENGINE   required: { node: '>=24.12.0' },
+npm warn EBADENGINE   current: { node: 'v22.23.4', npm: '10.9.9' }
+npm warn EBADENGINE }
+npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: '@firebase/database@1.1.6',
+npm warn EBADENGINE   required: { node: '>=24.12.0' },
+npm warn EBADENGINE   current: { node: 'v22.23.4', npm: '10.9.9' }
+npm warn EBADENGINE }
+npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: '@firebase/database-compat@2.1.8',
+npm warn EBADENGINE   required: { node: '>=24.12.0' },
+npm warn EBADENGINE   current: { node: 'v22.23.4', npm: '10.9.9' }
+npm warn EBADENGINE }
+npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: '@firebase/firestore@4.20.0',
+npm warn EBADENGINE   required: { node: '>=24.12.0' },
+npm warn EBADENGINE   current: { node: 'v22.23.4', npm: '10.9.9' }
+npm warn EBADENGINE }
+npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: '@firebase/firestore-compat@0.4.18',
+npm warn EBADENGINE   required: { node: '>=24.12.0' },
+npm warn EBADENGINE   current: { node: 'v22.23.4', npm: '10.9.9' }
+npm warn EBADENGINE }
+npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: '@firebase/storage@0.14.6',
+npm warn EBADENGINE   required: { node: '>=24.12.0' },
+npm warn EBADENGINE   current: { node: 'v22.23.4', npm: '10.9.9' }
+npm warn EBADENGINE }
+npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: '@firebase/storage-compat@0.4.6',
+npm warn EBADENGINE   required: { node: '>=24.12.0' },
+npm warn EBADENGINE   current: { node: 'v22.23.4', npm: '10.9.9' }
+npm warn EBADENGINE }
+npm error code EUSAGE
+npm error
+npm error `npm ci` can only install packages when your package.json and package-lock.json or npm-shrinkwrap.json are in sync. Please update your lock file with `npm install` before continuing.
+npm error
+npm error Missing: @firebase/eslint-plugin-security-rules@0.0.2 from lock file
+npm error Missing: @testing-library/dom@10.4.2 from lock file
+npm error Missing: @types/d3@7.4.3 from lock file
+npm error Missing: @types/qrcode@1.5.6 from lock file
+npm error Missing: @types/web-push@3.6.4 from lock file
+npm error Missing: @types/ws@8.18.2 from lock file
+npm error Missing: d3@7.9.2 from lock file
+npm error Missing: eslint@10.15.0 from lock file
+npm error Missing: firebase@13.3.0 from lock file
+npm error Missing: jsqr@1.4.0 from lock file
+npm error Missing: qrcode@1.5.4 from lock file
+npm error Missing: recharts@3.10.1 from lock file
+npm error Missing: vite-plugin-pwa@2.0.0 from lock file
+npm error Missing: web-push@4.0.0 from lock file
+npm error Missing: @typescript-eslint/rule-tester@8.72.2 from lock file
+npm error Missing: antlr4@4.13.2 from lock file
+npm error Missing: @babel/code-frame@7.29.7 from lock file
+npm error Missing: @types/aria-query@5.0.4 from lock file
+npm error Missing: dom-accessibility-api@0.5.16 from lock file
+npm error Missing: lz-string@1.5.0 from lock file
+npm error Missing: pretty-format@27.5.1 from lock file
+npm error Missing: @babel/helper-validator-identifier@7.29.7 from lock file
+npm error Missing: js-tokens@4.0.0 from lock file
+npm error Missing: @types/d3-array@3.2.2 from lock file
+npm error Missing: @types/d3-axis@3.0.6 from lock file
+npm error Missing: @types/d3-brush@3.0.6 from lock file
+npm error Missing: @types/d3-chord@3.0.6 from lock file
+npm error Missing: @types/d3-color@3.1.3 from lock file
+npm error Missing: @types/d3-contour@3.0.6 from lock file
+npm error Missing: @types/d3-delaunay@6.0.4 from lock file
+npm error Missing: @types/d3-dispatch@3.0.7 from lock file
+npm error Missing: @types/d3-drag@3.0.7 from lock file
+npm error Missing: @types/d3-dsv@3.0.7 from lock file
+npm error Missing: @types/d3-ease@3.0.2 from lock file
+npm error Missing: @types/d3-fetch@3.0.7 from lock file
+npm error Missing: @types/d3-force@3.0.10 from lock file
+npm error Missing: @types/d3-format@3.0.4 from lock file
+npm error Missing: @types/d3-geo@3.1.1 from lock file
+npm error Missing: @types/d3-hierarchy@3.1.7 from lock file
+npm error Missing: @types/d3-interpolate@3.0.4 from lock file
+npm error Missing: @types/d3-path@3.1.1 from lock file
+npm error Missing: @types/d3-polygon@3.0.2 from lock file
+npm error Missing: @types/d3-quadtree@3.0.6 from lock file
+npm error Missing: @types/d3-random@3.0.4 from lock file
+npm error Missing: @types/d3-scale@4.0.9 from lock file
+npm error Missing: @types/d3-scale-chromatic@3.1.0 from lock file
+npm error Missing: @types/d3-selection@3.0.12 from lock file
+npm error Missing: @types/d3-shape@3.2.0 from lock file
+npm error Missing: @types/d3-time@3.0.4 from lock file
+npm error Missing: @types/d3-time-format@4.0.3 from lock file
+npm error Missing: @types/d3-timer@3.0.2 from lock file
+npm error Missing: @types/d3-transition@3.0.9 from lock file
+npm error Missing: @types/d3-zoom@3.0.9 from lock file
+npm error Missing: @types/geojson@7946.0.16 from lock file
+npm error Missing: @typescript-eslint/parser@8.72.2 from lock file
+npm error Missing: @typescript-eslint/typescript-estree@8.72.2 from lock file
+npm error Missing: @typescript-eslint/utils@8.72.2 from lock file
+npm error Missing: ajv@6.15.0 from lock file
+npm error Missing: json-stable-stringify-without-jsonify@1.0.1 from lock file
+npm error Missing: lodash.merge@4.6.2 from lock file
+npm error Missing: semver@7.8.6 from lock file
+npm error Missing: @typescript-eslint/scope-manager@8.72.2 from lock file
+npm error Missing: @typescript-eslint/types@8.72.2 from lock file
+npm error Missing: @typescript-eslint/visitor-keys@8.72.2 from lock file
+npm error Missing: debug@4.4.3 from lock file
+npm error Missing: @typescript-eslint/project-service@8.72.2 from lock file
+npm error Missing: @typescript-eslint/tsconfig-utils@8.72.2 from lock file
+npm error Missing: debug@4.4.3 from lock file
+npm error Missing: minimatch@10.2.6 from lock file
+npm error Missing: ts-api-utils@2.5.0 from lock file
+npm error Missing: debug@4.4.3 from lock file
+npm error Missing: @eslint-community/eslint-utils@4.10.1 from lock file
+npm error Missing: eslint-visitor-keys@3.4.3 from lock file
+npm error Missing: eslint-visitor-keys@5.0.1 from lock file
+npm error Missing: fast-deep-equal@3.1.3 from lock file
+npm error Missing: fast-json-stable-stringify@2.1.0 from lock file
+npm error Missing: json-schema-traverse@0.4.1 from lock file
+npm error Missing: uri-js@4.4.1 from lock file
+npm error Missing: d3-array@3.2.5 from lock file
+npm error Missing: d3-axis@3.0.1 from lock file
+npm error Missing: d3-brush@3.0.1 from lock file
+npm error Missing: d3-chord@3.0.2 from lock file
+npm error Missing: d3-color@3.1.1 from lock file
+npm error Missing: d3-contour@4.0.3 from lock file
+npm error Missing: d3-delaunay@6.0.6 from lock file
+npm error Missing: d3-dispatch@3.0.2 from lock file
+npm error Missing: d3-drag@3.0.1 from lock file
+npm error Missing: d3-dsv@3.0.2 from lock file
+npm error Missing: d3-ease@3.0.2 from lock file
+npm error Missing: d3-fetch@3.0.2 from lock file
+npm error Missing: d3-force@3.0.1 from lock file
+npm error Missing: d3-format@3.1.3 from lock file
+npm error Missing: d3-geo@3.1.2 from lock file
+npm error Missing: d3-hierarchy@3.1.3 from lock file
+npm error Missing: d3-interpolate@3.0.2 from lock file
+npm error Missing: d3-path@3.1.1 from lock file
+npm error Missing: d3-polygon@3.0.2 from lock file
+npm error Missing: d3-quadtree@3.0.2 from lock file
+npm error Missing: d3-random@3.0.2 from lock file
+npm error Missing: d3-scale@4.0.3 from lock file
+npm error Missing: d3-scale-chromatic@3.1.1 from lock file
+npm error Missing: d3-selection@3.0.1 from lock file
+npm error Missing: d3-shape@3.2.1 from lock file
+npm error Missing: d3-time@3.1.1 from lock file
+npm error Missing: d3-time-format@4.1.1 from lock file
+npm error Missing: d3-timer@3.0.2 from lock file
+npm error Missing: d3-transition@3.0.2 from lock file
+npm error Missing: d3-zoom@3.0.1 from lock file
+npm error Missing: internmap@2.0.3 from lock file
+npm error Missing: delaunator@5.1.0 from lock file
+npm error Missing: commander@7.2.0 from lock file
+npm error Missing: iconv-lite@0.6.3 from lock file
+npm error Missing: rw@1.3.3 from lock file
+npm error Missing: robust-predicates@3.0.3 from lock file
+npm error Missing: @eslint-community/regexpp@4.12.3 from lock file
+npm error Missing: @eslint/config-array@0.23.6 from lock file
+npm error Missing: @eslint/config-helpers@0.7.0 from lock file
+npm error Missing: @eslint/core@1.2.1 from lock file
+npm error Missing: @eslint/plugin-kit@0.7.3 from lock file
+npm error Missing: @humanfs/node@0.16.8 from lock file
+npm error Missing: @humanwhocodes/module-importer@1.0.1 from lock file
+npm error Missing: @humanwhocodes/retry@0.4.3 from lock file
+npm error Missing: cross-spawn@7.0.6 from lock file
+npm error Missing: debug@4.4.3 from lock file
+npm error Missing: escape-string-regexp@4.0.0 from lock file
+npm error Missing: eslint-scope@9.1.2 from lock file
+npm error Missing: eslint-visitor-keys@5.0.1 from lock file
+npm error Missing: espree@11.2.0 from lock file
+npm error Missing: esquery@1.7.0 from lock file
+npm error Missing: esutils@2.0.3 from lock file
+npm error Missing: file-entry-cache@11.1.5 from lock file
+npm error Missing: find-up@5.0.0 from lock file
+npm error Missing: glob-parent@6.0.2 from lock file
+npm error Missing: ignore@5.3.2 from lock file
+npm error Missing: imurmurhash@0.1.4 from lock file
+npm error Missing: is-glob@4.0.3 from lock file
+npm error Missing: minimatch@11.0.8 from lock file
+npm error Missing: natural-compare@1.4.0 from lock file
+npm error Missing: optionator@0.9.4 from lock file
+npm error Missing: @eslint/object-schema@3.0.5 from lock file
+npm error Missing: debug@4.4.3 from lock file
+npm error Missing: minimatch@11.0.8 from lock file
+npm error Missing: @types/json-schema@7.0.15 from lock file
+npm error Missing: levn@0.4.1 from lock file
+npm error Missing: @humanfs/core@0.19.2 from lock file
+npm error Missing: @humanfs/types@0.15.0 from lock file
+npm error Missing: path-key@3.1.1 from lock file
+npm error Missing: shebang-command@2.0.0 from lock file
+npm error Missing: which@2.0.2 from lock file
+npm error Missing: @types/esrecurse@4.3.1 from lock file
+npm error Missing: esrecurse@4.3.0 from lock file
+npm error Missing: estraverse@5.3.0 from lock file
+npm error Missing: acorn@8.19.0 from lock file
+npm error Missing: acorn-jsx@5.3.2 from lock file
+npm error Missing: eslint-visitor-keys@5.0.1 from lock file
+npm error Missing: flat-cache@6.1.23 from lock file
+npm error Missing: locate-path@6.0.0 from lock file
+npm error Missing: path-exists@4.0.0 from lock file
+npm error Missing: @firebase/ai@3.1.0 from lock file
+npm error Missing: @firebase/analytics@0.10.25 from lock file
+npm error Missing: @firebase/analytics-compat@0.2.31 from lock file
+npm error Missing: @firebase/app@0.16.6 from lock file
+npm error Missing: @firebase/app-check@0.13.1 from lock file
+npm error Missing: @firebase/app-check-compat@0.4.7 from lock file
+npm error Missing: @firebase/app-compat@0.5.22 from lock file
+npm error Missing: @firebase/app-types@0.9.6 from lock file
+npm error Missing: @firebase/auth@1.13.10 from lock file
+npm error Missing: @firebase/auth-compat@0.6.15 from lock file
+npm error Missing: @firebase/crashlytics@0.1.1 from lock file
+npm error Missing: @firebase/data-connect@0.7.4 from lock file
+npm error Missing: @firebase/database@1.1.6 from lock file
+npm error Missing: @firebase/database-compat@2.1.8 from lock file
+npm error Missing: @firebase/firestore@4.20.0 from lock file
+npm error Missing: @firebase/firestore-compat@0.4.18 from lock file
+npm error Missing: @firebase/functions@0.14.0 from lock file
+npm error Missing: @firebase/functions-compat@0.5.0 from lock file
+npm error Missing: @firebase/installations@0.6.24 from lock file
+npm error Missing: @firebase/installations-compat@0.2.24 from lock file
+npm error Missing: @firebase/messaging@0.13.3 from lock file
+npm error Missing: @firebase/messaging-compat@0.2.30 from lock file
+npm error Missing: @firebase/performance@0.7.14 from lock file
+npm error Missing: @firebase/performance-compat@0.2.27 from lock file
+npm error Missing: @firebase/remote-config@0.10.0 from lock file
+npm error Missing: @firebase/remote-config-compat@0.2.31 from lock file
+npm error Missing: @firebase/storage@0.14.6 from lock file
+npm error Missing: @firebase/storage-compat@0.4.6 from lock file
+npm error Missing: @firebase/util@1.15.3 from lock file
+npm error Missing: @firebase/app-check-interop-types@0.3.5 from lock file
+npm error Missing: @firebase/component@0.7.5 from lock file
+npm error Missing: @firebase/logger@0.5.2 from lock file
+npm error Missing: @firebase/analytics-types@0.8.5 from lock file
+npm error Missing: idb@7.1.1 from lock file
+npm error Missing: @firebase/app-check-types@0.5.5 from lock file
+npm error Missing: @firebase/auth-types@0.13.2 from lock file
+npm error Missing: @opentelemetry/api@1.9.1 from lock file
+npm error Missing: @opentelemetry/api-logs@0.220.0 from lock file
+npm error Missing: @opentelemetry/browser-instrumentation@0.6.0 from lock file
+npm error Missing: @opentelemetry/core@2.10.0 from lock file
+npm error Missing: @opentelemetry/exporter-logs-otlp-http@0.220.0 from lock file
+npm error Missing: @opentelemetry/exporter-trace-otlp-proto@0.220.0 from lock file
+npm error Missing: @opentelemetry/instrumentation@0.220.0 from lock file
+npm error Missing: @opentelemetry/instrumentation-document-load@0.65.0 from lock file
+npm error Missing: @opentelemetry/instrumentation-fetch@0.220.0 from lock file
+npm error Missing: @opentelemetry/instrumentation-xml-http-request@0.220.0 from lock file
+npm error Missing: @opentelemetry/otlp-exporter-base@0.220.0 from lock file
+npm error Missing: @opentelemetry/otlp-transformer@0.220.0 from lock file
+npm error Missing: @opentelemetry/resources@2.10.0 from lock file
+npm error Missing: @opentelemetry/sdk-logs@0.220.0 from lock file
+npm error Missing: @opentelemetry/sdk-trace-base@2.10.0 from lock file
+npm error Missing: @opentelemetry/sdk-trace-web@2.10.0 from lock file
+npm error Missing: @opentelemetry/semantic-conventions@1.43.0 from lock file
+npm error Missing: @firebase/auth-interop-types@0.2.6 from lock file
+npm error Missing: faye-websocket@0.11.4 from lock file
+npm error Missing: @firebase/database-types@1.0.22 from lock file
+npm error Missing: @firebase/webchannel-wrapper@1.0.7 from lock file
+npm error Missing: @grpc/grpc-js@1.9.16 from lock file
+npm error Missing: @grpc/proto-loader@0.7.15 from lock file
+npm error Missing: re2js@2.10.0 from lock file
+npm error Missing: @firebase/firestore-types@3.0.5 from lock file
+npm error Missing: @firebase/messaging-interop-types@0.2.6 from lock file
+npm error Missing: @firebase/functions-types@0.6.5 from lock file
+npm error Missing: @firebase/installations-types@0.5.5 from lock file
+npm error Missing: web-vitals@4.2.4 from lock file
+npm error Missing: @firebase/performance-types@0.2.5 from lock file
+npm error Missing: @firebase/remote-config-types@0.5.2 from lock file
+npm error Missing: @firebase/storage-types@0.8.5 from lock file
+npm error Missing: lodash.camelcase@4.3.0 from lock file
+npm error Missing: yargs@17.7.3 from lock file
+npm error Missing: web-vitals@5.3.0 from lock file
+npm error Missing: @opentelemetry/core@2.9.0 from lock file
+npm error Missing: @opentelemetry/core@2.9.0 from lock file
+npm error Missing: @opentelemetry/resources@2.9.0 from lock file
+npm error Missing: @opentelemetry/sdk-trace@2.9.0 from lock file
+npm error Missing: import-in-the-middle@3.6.0 from lock file
+npm error Missing: require-in-the-middle@8.0.1 from lock file
+npm error Missing: @opentelemetry/core@2.9.0 from lock file
+npm error Missing: @opentelemetry/sdk-trace-web@2.9.0 from lock file
+npm error Missing: @opentelemetry/core@2.9.0 from lock file
+npm error Missing: @opentelemetry/sdk-trace-web@2.9.0 from lock file
+npm error Missing: @opentelemetry/core@2.9.0 from lock file
+npm error Missing: @opentelemetry/core@2.9.0 from lock file
+npm error Missing: @opentelemetry/resources@2.9.0 from lock file
+npm error Missing: @opentelemetry/sdk-metrics@2.9.0 from lock file
+npm error Missing: @opentelemetry/core@2.9.0 from lock file
+npm error Missing: @opentelemetry/resources@2.9.0 from lock file
+npm error Missing: @opentelemetry/core@2.9.0 from lock file
+npm error Missing: @opentelemetry/resources@2.9.0 from lock file
+npm error Missing: @opentelemetry/core@2.9.0 from lock file
+npm error Missing: @opentelemetry/resources@2.9.0 from lock file
+npm error Missing: @opentelemetry/sdk-trace@2.10.0 from lock file
+npm error Missing: websocket-driver@0.7.5 from lock file
+npm error Missing: cacheable@2.5.0 from lock file
+npm error Missing: flatted@3.4.4 from lock file
+npm error Missing: hookified@1.15.1 from lock file
+npm error Missing: @cacheable/memory@2.2.0 from lock file
+npm error Missing: @cacheable/utils@2.5.0 from lock file
+npm error Missing: keyv@5.6.0 from lock file
+npm error Missing: qified@0.10.1 from lock file
+npm error Missing: @keyv/bigmap@1.3.1 from lock file
+npm error Missing: hashery@1.5.1 from lock file
+npm error Missing: cjs-module-lexer@2.3.0 from lock file
+npm error Missing: es-module-lexer@3.0.5 from lock file
+npm error Missing: module-details-from-path@1.0.4 from lock file
+npm error Missing: is-extglob@2.1.1 from lock file
+npm error Missing: @keyv/serialize@1.1.1 from lock file
+npm error Missing: prelude-ls@1.2.1 from lock file
+npm error Missing: type-check@0.4.0 from lock file
+npm error Missing: p-locate@5.0.0 from lock file
+npm error Missing: brace-expansion@5.0.13 from lock file
+npm error Missing: balanced-match@4.0.4 from lock file
+npm error Missing: deep-is@0.1.4 from lock file
+npm error Missing: fast-levenshtein@2.0.6 from lock file
+npm error Missing: word-wrap@1.2.5 from lock file
+npm error Missing: p-limit@3.1.0 from lock file
+npm error Missing: yocto-queue@0.1.0 from lock file
+npm error Missing: ansi-regex@5.0.1 from lock file
+npm error Missing: ansi-styles@5.2.0 from lock file
+npm error Missing: react-is@17.0.2 from lock file
+npm error Missing: hookified@2.2.0 from lock file
+npm error Missing: dijkstrajs@1.0.3 from lock file
+npm error Missing: pngjs@5.0.0 from lock file
+npm error Missing: yargs@15.4.1 from lock file
+npm error Missing: @reduxjs/toolkit@2.14.0 from lock file
+npm error Missing: clsx@2.1.1 from lock file
+npm error Missing: decimal.js-light@2.5.1 from lock file
+npm error Missing: es-toolkit@1.53.2 from lock file
+npm error Missing: eventemitter3@5.0.4 from lock file
+npm error Missing: immer@11.2.10 from lock file
+npm error Missing: react-redux@9.3.1 from lock file
+npm error Missing: reselect@5.2.0 from lock file
+npm error Missing: tiny-invariant@1.3.3 from lock file
+npm error Missing: use-sync-external-store@1.7.0 from lock file
+npm error Missing: victory-vendor@37.4.1 from lock file
+npm error Missing: @standard-schema/spec@1.1.0 from lock file
+npm error Missing: @standard-schema/utils@0.3.0 from lock file
+npm error Missing: redux@5.0.1 from lock file
+npm error Missing: redux-thunk@3.1.0 from lock file
+npm error Missing: @types/use-sync-external-store@0.0.6 from lock file
+npm error Missing: debug@4.4.3 from lock file
+npm error Missing: shebang-regex@3.0.0 from lock file
+npm error Missing: debug@4.4.3 from lock file
+npm error Missing: pretty-bytes@6.1.1 from lock file
+npm error Missing: workbox-build@7.4.1 from lock file
+npm error Missing: workbox-window@7.4.1 from lock file
+npm error Missing: asn1.js@5.4.1 from lock file
+npm error Missing: http_ece@1.2.1 from lock file
+npm error Missing: https-proxy-agent@9.1.0 from lock file
+npm error Missing: bn.js@4.12.5 from lock file
+npm error Missing: minimalistic-assert@1.0.1 from lock file
+npm error Missing: http-parser-js@0.5.10 from lock file
+npm error Missing: websocket-extensions@0.1.4 from lock file
+npm error Missing: isexe@2.0.0 from lock file
+npm error Missing: @apideck/better-ajv-errors@0.3.7 from lock file
+npm error Missing: @babel/core@7.29.13 from lock file
+npm error Missing: @babel/preset-env@7.29.14 from lock file
+npm error Missing: @rollup/plugin-babel@6.1.0 from lock file
+npm error Missing: @rollup/plugin-node-resolve@16.0.3 from lock file
+npm error Missing: @rollup/plugin-replace@6.0.3 from lock file
+npm error Missing: @rollup/plugin-terser@1.0.2 from lock file
+npm error Missing: @trickfilm400/rollup-plugin-off-main-thread@3.0.0-pre1 from lock file
+npm error Missing: ajv@8.20.0 from lock file
+npm error Missing: common-tags@1.8.2 from lock file
+npm error Missing: eta@4.6.0 from lock file
+npm error Missing: fs-extra@9.1.0 from lock file
+npm error Missing: glob@11.1.0 from lock file
+npm error Missing: pretty-bytes@5.6.0 from lock file
+npm error Missing: rollup@4.68.4 from lock file
+npm error Missing: source-map@0.8.0 from lock file
+npm error Missing: stringify-object@3.3.0 from lock file
+npm error Missing: strip-comments@2.0.1 from lock file
+npm error Missing: tempy@0.6.0 from lock file
+npm error Missing: upath@1.2.0 from lock file
+npm error Missing: workbox-background-sync@7.4.1 from lock file
+npm error Missing: workbox-broadcast-update@7.4.1 from lock file
+npm error Missing: workbox-cacheable-response@7.4.1 from lock file
+npm error Missing: workbox-core@7.4.1 from lock file
+npm error Missing: workbox-expiration@7.4.1 from lock file
+npm error Missing: workbox-google-analytics@7.4.1 from lock file
+npm error Missing: workbox-navigation-preload@7.4.1 from lock file
+npm error Missing: workbox-precaching@7.4.1 from lock file
+npm error Missing: workbox-range-requests@7.4.1 from lock file
+npm error Missing: workbox-recipes@7.4.1 from lock file
+npm error Missing: workbox-routing@7.4.1 from lock file
+npm error Missing: workbox-strategies@7.4.1 from lock file
+npm error Missing: workbox-streams@7.4.1 from lock file
+npm error Missing: workbox-sw@7.4.1 from lock file
+npm error Missing: jsonpointer@5.0.1 from lock file
+npm error Missing: leven@3.1.0 from lock file
+npm error Missing: @babel/generator@7.29.14 from lock file
+npm error Missing: @babel/helper-compilation-targets@7.29.13 from lock file
+npm error Missing: @babel/helper-module-transforms@7.29.14 from lock file
+npm error Missing: @babel/helpers@7.29.14 from lock file
+npm error Missing: @babel/parser@7.29.14 from lock file
+npm error Missing: @babel/template@7.29.7 from lock file
+npm error Missing: @babel/traverse@7.29.14 from lock file
+npm error Missing: @babel/types@7.29.14 from lock file
+npm error Missing: convert-source-map@2.0.0 from lock file
+npm error Missing: debug@4.4.3 from lock file
+npm error Missing: gensync@1.0.0-beta.2 from lock file
+npm error Missing: json5@2.2.3 from lock file
+npm error Missing: semver@6.3.2 from lock file
+npm error Missing: jsesc@3.1.0 from lock file
+npm error Missing: @babel/compat-data@7.29.7 from lock file
+npm error Missing: @babel/helper-validator-option@7.29.7 from lock file
+npm error Missing: lru-cache@5.1.1 from lock file
+npm error Missing: semver@6.3.2 from lock file
+npm error Missing: @babel/helper-module-imports@7.29.7 from lock file
+npm error Missing: @babel/helper-plugin-utils@7.29.7 from lock file
+npm error Missing: @babel/plugin-bugfix-firefox-class-in-computed-class-key@7.29.7 from lock file
+npm error Missing: @babel/plugin-bugfix-safari-class-field-initializer-scope@7.29.7 from lock file
+npm error Missing: @babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression@7.29.7 from lock file
+npm error Missing: @babel/plugin-bugfix-safari-rest-destructuring-rhs-array@7.29.13 from lock file
+npm error Missing: @babel/plugin-bugfix-v8-spread-parameters-in-optional-chaining@7.29.7 from lock file
+npm error Missing: @babel/plugin-bugfix-v8-static-class-fields-redefine-readonly@7.29.7 from lock file
+npm error Missing: @babel/plugin-proposal-private-property-in-object@7.21.0-placeholder-for-preset-env.2 from lock file
+npm error Missing: @babel/plugin-syntax-import-assertions@7.29.7 from lock file
+npm error Missing: @babel/plugin-syntax-import-attributes@7.29.7 from lock file
+npm error Missing: @babel/plugin-syntax-unicode-sets-regex@7.18.6 from lock file
+npm error Missing: @babel/plugin-transform-arrow-functions@7.29.7 from lock file
+npm error Missing: @babel/plugin-transform-async-generator-functions@7.29.7 from lock file
+npm error Missing: @babel/plugin-transform-async-to-generator@7.29.7 from lock file
+npm error Missing: @babel/plugin-transform-block-scoped-functions@7.29.7 from lock file
+npm error Missing: @babel/plugin-transform-block-scoping@7.29.13 from lock file
+npm error Missing: @babel/plugin-transform-class-properties@7.29.7 from lock file
+npm error Missing: @babel/plugin-transform-class-static-block@7.29.14 from lock file
+npm error Missing: @babel/plugin-transform-classes@7.29.11 from lock file
+npm error Missing: @babel/plugin-transform-computed-properties@7.29.7 from lock file
+npm error Missing: @babel/plugin-transform-destructuring@7.29.13 from lock file
+npm error Missing: @babel/plugin-transform-dotall-regex@7.29.7 from lock file
+npm error Missing: @babel/plugin-transform-duplicate-keys@7.29.7 from lock file
+npm error Missing: @babel/plugin-transform-duplicate-named-capturing-groups-regex@7.29.7 from lock file
+npm error Missing: @babel/plugin-transform-dynamic-import@7.29.7 from lock file
+npm error Missing: @babel/plugin-transform-explicit-resource-management@7.29.7 from lock file
+npm error Missing: @babel/plugin-transform-exponentiation-operator@7.29.7 from lock file
+npm error Missing: @babel/plugin-transform-export-namespace-from@7.29.7 from lock file
+npm error Missing: @babel/plugin-transform-for-of@7.29.13 from lock file
+npm error Missing: @babel/plugin-transform-function-name@7.29.7 from lock file
+npm error Missing: @babel/plugin-transform-json-strings@7.29.7 from lock file
+npm error Missing: @babel/plugin-transform-literals@7.29.7 from lock file
+npm error Missing: @babel/plugin-transform-logical-assignment-operators@7.29.7 from lock file
+npm error Missing: @babel/plugin-transform-member-expression-literals@7.29.7 from lock file
+npm error Missing: @babel/plugin-transform-modules-amd@7.29.14 from lock file
+npm error Missing: @babel/plugin-transform-modules-commonjs@7.29.14 from lock file
+npm error Missing: @babel/plugin-transform-modules-systemjs@7.29.8 from lock file
+npm error Missing: @babel/plugin-transform-modules-umd@7.29.14 from lock file
+npm error Missing: @babel/plugin-transform-named-capturing-groups-regex@7.29.7 from lock file
+npm error Missing: @babel/plugin-transform-new-target@7.29.7 from lock file
+npm error Missing: @babel/plugin-transform-nullish-coalescing-operator@7.29.7 from lock file
+npm error Missing: @babel/plugin-transform-numeric-separator@7.29.7 from lock file
+npm error Missing: @babel/plugin-transform-object-rest-spread@7.29.7 from lock file
+npm error Missing: @babel/plugin-transform-object-super@7.29.7 from lock file
+npm error Missing: @babel/plugin-transform-optional-catch-binding@7.29.7 from lock file
+npm error Missing: @babel/plugin-transform-optional-chaining@7.29.7 from lock file
+npm error Missing: @babel/plugin-transform-parameters@7.29.7 from lock file
+npm error Missing: @babel/plugin-transform-private-methods@7.29.7 from lock file
+npm error Missing: @babel/plugin-transform-private-property-in-object@7.29.7 from lock file
+npm error Missing: @babel/plugin-transform-property-literals@7.29.7 from lock file
+npm error Missing: @babel/plugin-transform-regenerator@7.29.8 from lock file
+npm error Missing: @babel/plugin-transform-regexp-modifiers@7.29.7 from lock file
+npm error Missing: @babel/plugin-transform-reserved-words@7.29.7 from lock file
+npm error Missing: @babel/plugin-transform-shorthand-properties@7.29.7 from lock file
+npm error Missing: @babel/plugin-transform-spread@7.29.11 from lock file
+npm error Missing: @babel/plugin-transform-sticky-regex@7.29.7 from lock file
+npm error Missing: @babel/plugin-transform-template-literals@7.29.7 from lock file
+npm error Missing: @babel/plugin-transform-typeof-symbol@7.29.7 from lock file
+npm error Missing: @babel/plugin-transform-unicode-escapes@7.29.7 from lock file
+npm error Missing: @babel/plugin-transform-unicode-property-regex@7.29.7 from lock file
+npm error Missing: @babel/plugin-transform-unicode-regex@7.29.7 from lock file
+npm error Missing: @babel/plugin-transform-unicode-sets-regex@7.29.7 from lock file
+npm error Missing: @babel/preset-modules@0.1.6-no-external-plugins from lock file
+npm error Missing: babel-plugin-polyfill-corejs2@0.4.17 from lock file
+npm error Missing: babel-plugin-polyfill-corejs3@0.14.2 from lock file
+npm error Missing: babel-plugin-polyfill-regenerator@0.6.8 from lock file
+npm error Missing: core-js-compat@3.51.0 from lock file
+npm error Missing: semver@6.3.2 from lock file
+npm error Missing: @babel/helper-skip-transparent-expression-wrappers@7.29.13 from lock file
+npm error Missing: @babel/helper-create-regexp-features-plugin@7.29.14 from lock file
+npm error Missing: @babel/helper-annotate-as-pure@7.29.7 from lock file
+npm error Missing: regexpu-core@6.5.4 from lock file
+npm error Missing: semver@6.3.2 from lock file
+npm error Missing: @babel/helper-remap-async-to-generator@7.29.7 from lock file
+npm error Missing: @babel/helper-wrap-function@7.29.14 from lock file
+npm error Missing: @babel/helper-create-class-features-plugin@7.29.13 from lock file
+npm error Missing: @babel/helper-member-expression-to-functions@7.29.14 from lock file
+npm error Missing: @babel/helper-optimise-call-expression@7.29.7 from lock file
+npm error Missing: @babel/helper-replace-supers@7.29.7 from lock file
+npm error Missing: semver@6.3.2 from lock file
+npm error Missing: @babel/helper-globals@7.29.7 from lock file
+npm error Missing: debug@4.4.3 from lock file
+npm error Missing: @babel/helper-string-parser@7.29.14 from lock file
+npm error Missing: @rollup/pluginutils@5.5.1 from lock file
+npm error Missing: @types/resolve@1.20.2 from lock file
+npm error Missing: deepmerge@4.3.1 from lock file
+npm error Missing: is-module@1.0.0 from lock file
+npm error Missing: resolve@1.22.14 from lock file
+npm error Missing: magic-string@0.30.21 from lock file
+npm error Missing: serialize-javascript@7.1.4 from lock file
+npm error Missing: smob@1.6.2 from lock file
+npm error Missing: terser@5.51.2 from lock file
+npm error Missing: estree-walker@2.0.2 from lock file
+npm error Missing: ejs@3.1.10 from lock file
+npm error Missing: magic-string@0.30.21 from lock file
+npm error Missing: string.prototype.matchall@4.1.0 from lock file
+npm error Missing: @babel/helper-define-polyfill-provider@0.6.8 from lock file
+npm error Missing: semver@6.3.2 from lock file
+npm error Missing: debug@4.4.3 from lock file
+npm error Missing: lodash.debounce@4.0.8 from lock file
+npm error Missing: jake@10.9.4 from lock file
+npm error Missing: at-least-node@1.0.0 from lock file
+npm error Missing: jsonfile@6.2.1 from lock file
+npm error Missing: universalify@2.0.1 from lock file
+npm error Missing: foreground-child@3.3.1 from lock file
+npm error Missing: jackspeak@4.2.3 from lock file
+npm error Missing: minipass@7.1.3 from lock file
+npm error Missing: package-json-from-dist@1.0.1 from lock file
+npm error Missing: path-scurry@2.0.2 from lock file
+npm error Missing: signal-exit@4.1.0 from lock file
+npm error Missing: @isaacs/cliui@9.0.0 from lock file
+npm error Missing: async@3.2.6 from lock file
+npm error Missing: filelist@1.0.6 from lock file
+npm error Missing: minimatch@5.1.9 from lock file
+npm error Missing: regenerate@1.5.0 from lock file
+npm error Missing: regenerate-unicode-properties@10.3.0 from lock file
+npm error Missing: regjsgen@0.8.0 from lock file
+npm error Missing: regjsparser@0.14.1 from lock file
+npm error Missing: unicode-match-property-ecmascript@2.0.0 from lock file
+npm error Missing: unicode-match-property-value-ecmascript@2.2.1 from lock file
+npm error Missing: is-core-module@2.18.0 from lock file
+npm error Missing: path-parse@1.0.7 from lock file
+npm error Missing: supports-preserve-symlinks-flag@1.0.0 from lock file
+npm error Missing: @rollup/rollup-android-arm-eabi@4.68.4 from lock file
+npm error Missing: @rollup/rollup-android-arm64@4.68.4 from lock file
+npm error Missing: @rollup/rollup-android-x64@4.68.4 from lock file
+npm error Missing: @rollup/rollup-darwin-arm64@4.68.4 from lock file
+npm error Missing: @rollup/rollup-darwin-x64@4.68.4 from lock file
+npm error Missing: @rollup/rollup-freebsd-arm64@4.68.4 from lock file
+npm error Missing: @rollup/rollup-freebsd-x64@4.68.4 from lock file
+npm error Missing: @rollup/rollup-linux-arm-gnueabihf@4.68.4 from lock file
+npm error Missing: @rollup/rollup-linux-arm-musleabihf@4.68.4 from lock file
+npm error Missing: @rollup/rollup-linux-arm64-gnu@4.68.4 from lock file
+npm error Missing: @rollup/rollup-linux-arm64-musl@4.68.4 from lock file
+npm error Missing: @rollup/rollup-linux-loong64-gnu@4.68.4 from lock file
+npm error Missing: @rollup/rollup-linux-loong64-musl@4.68.4 from lock file
+npm error Missing: @rollup/rollup-linux-ppc64-gnu@4.68.4 from lock file
+npm error Missing: @rollup/rollup-linux-ppc64-musl@4.68.4 from lock file
+npm error Missing: @rollup/rollup-linux-riscv64-gnu@4.68.4 from lock file
+npm error Missing: @rollup/rollup-linux-riscv64-musl@4.68.4 from lock file
+npm error Missing: @rollup/rollup-linux-s390x-gnu@4.68.4 from lock file
+npm error Missing: @rollup/rollup-linux-x64-gnu@4.68.4 from lock file
+npm error Missing: @rollup/rollup-linux-x64-musl@4.68.4 from lock file
+npm error Missing: @rollup/rollup-openbsd-x64@4.68.4 from lock file
+npm error Missing: @rollup/rollup-openharmony-arm64@4.68.4 from lock file
+npm error Missing: @rollup/rollup-win32-arm64-msvc@4.68.4 from lock file
+npm error Missing: @rollup/rollup-win32-ia32-msvc@4.68.4 from lock file
+npm error Missing: @rollup/rollup-win32-x64-gnu@4.68.4 from lock file
+npm error Missing: @rollup/rollup-win32-x64-msvc@4.68.4 from lock file
+npm error Missing: fsevents@2.3.3 from lock file
+npm error Missing: call-bind@1.0.9 from lock file
+npm error Missing: define-properties@1.2.1 from lock file
+npm error Missing: es-abstract@1.24.2 from lock file
+npm error Missing: internal-slot@1.1.0 from lock file
+npm error Missing: regexp.prototype.flags@1.5.4 from lock file
+npm error Missing: set-function-name@2.0.2 from lock file
+npm error Missing: set-function-length@1.2.2 from lock file
+npm error Missing: define-data-property@1.1.4 from lock file
+npm error Missing: has-property-descriptors@1.0.2 from lock file
+npm error Missing: object-keys@1.1.1 from lock file
+npm error Missing: array-buffer-byte-length@1.0.2 from lock file
+npm error Missing: arraybuffer.prototype.slice@1.0.4 from lock file
+npm error Missing: available-typed-arrays@1.0.7 from lock file
+npm error Missing: data-view-buffer@1.0.2 from lock file
+npm error Missing: data-view-byte-length@1.0.2 from lock file
+npm error Missing: data-view-byte-offset@1.0.1 from lock file
+npm error Missing: es-set-tostringtag@2.1.0 from lock file
+npm error Missing: es-to-primitive@1.3.4 from lock file
+npm error Missing: function.prototype.name@1.2.0 from lock file
+npm error Missing: get-symbol-description@1.1.0 from lock file
+npm error Missing: globalthis@1.0.4 from lock file
+npm error Missing: has-proto@1.2.0 from lock file
+npm error Missing: is-array-buffer@3.0.5 from lock file
+npm error Missing: is-callable@1.2.7 from lock file
+npm error Missing: is-data-view@1.0.2 from lock file
+npm error Missing: is-negative-zero@2.0.3 from lock file
+npm error Missing: is-regex@1.2.1 from lock file
+npm error Missing: is-set@2.0.3 from lock file
+npm error Missing: is-shared-array-buffer@1.0.4 from lock file
+npm error Missing: is-string@1.1.1 from lock file
+npm error Missing: is-typed-array@1.1.15 from lock file
+npm error Missing: is-weakref@1.1.1 from lock file
+npm error Missing: object.assign@4.1.7 from lock file
+npm error Missing: own-keys@1.0.2 from lock file
+npm error Missing: safe-array-concat@1.1.4 from lock file
+npm error Missing: safe-push-apply@1.0.0 from lock file
+npm error Missing: safe-regex-test@1.1.0 from lock file
+npm error Missing: set-proto@1.0.0 from lock file
+npm error Missing: stop-iteration-iterator@1.1.0 from lock file
+npm error Missing: string.prototype.trim@1.2.11 from lock file
+npm error Missing: string.prototype.trimend@1.0.10 from lock file
+npm error Missing: string.prototype.trimstart@1.0.8 from lock file
+npm error Missing: typed-array-buffer@1.0.3 from lock file
+npm error Missing: typed-array-byte-length@1.0.3 from lock file
+npm error Missing: typed-array-byte-offset@1.0.5 from lock file
+npm error Missing: typed-array-length@1.0.8 from lock file
+npm error Missing: unbox-primitive@1.1.0 from lock file
+npm error Missing: which-typed-array@1.1.24 from lock file
+npm error Missing: possible-typed-array-names@1.1.0 from lock file
+npm error Missing: has-tostringtag@1.0.2 from lock file
+npm error Missing: es-abstract-get@1.0.0 from lock file
+npm error Missing: is-date-object@1.1.0 from lock file
+npm error Missing: is-symbol@1.1.1 from lock file
+npm error Missing: functions-have-names@1.2.3 from lock file
+npm error Missing: is-document.all@1.0.0 from lock file
+npm error Missing: isarray@2.0.5 from lock file
+npm error Missing: get-own-enumerable-property-symbols@3.0.2 from lock file
+npm error Missing: is-obj@1.0.1 from lock file
+npm error Missing: is-regexp@1.0.0 from lock file
+npm error Missing: is-stream@2.0.1 from lock file
+npm error Missing: temp-dir@2.0.0 from lock file
+npm error Missing: type-fest@0.16.0 from lock file
+npm error Missing: unique-string@2.0.0 from lock file
+npm error Missing: @jridgewell/source-map@0.3.11 from lock file
+npm error Missing: commander@2.20.3 from lock file
+npm error Missing: source-map-support@0.5.21 from lock file
+npm error Missing: buffer-from@1.1.2 from lock file
+npm error Missing: source-map@0.6.1 from lock file
+npm error Missing: for-each@0.3.5 from lock file
+npm error Missing: reflect.getprototypeof@1.0.10 from lock file
+npm error Missing: which-builtin-type@1.2.1 from lock file
+npm error Missing: has-bigints@1.1.0 from lock file
+npm error Missing: which-boxed-primitive@1.1.1 from lock file
+npm error Missing: unicode-canonical-property-names-ecmascript@2.0.1 from lock file
+npm error Missing: unicode-property-aliases-ecmascript@2.2.0 from lock file
+npm error Missing: crypto-random-string@2.0.0 from lock file
+npm error Missing: is-bigint@1.1.0 from lock file
+npm error Missing: is-boolean-object@1.2.2 from lock file
+npm error Missing: is-number-object@1.1.1 from lock file
+npm error Missing: is-async-function@2.1.1 from lock file
+npm error Missing: is-finalizationregistry@1.1.1 from lock file
+npm error Missing: is-generator-function@1.1.2 from lock file
+npm error Missing: which-collection@1.0.2 from lock file
+npm error Missing: async-function@1.0.0 from lock file
+npm error Missing: generator-function@2.0.1 from lock file
+npm error Missing: is-map@2.0.3 from lock file
+npm error Missing: is-weakmap@2.0.2 from lock file
+npm error Missing: is-weakset@2.0.4 from lock file
+npm error Missing: @types/trusted-types@2.0.7 from lock file
+npm error Missing: cliui@8.0.1 from lock file
+npm error Missing: get-caller-file@2.0.5 from lock file
+npm error Missing: require-directory@2.1.1 from lock file
+npm error Missing: string-width@4.2.3 from lock file
+npm error Missing: y18n@5.0.8 from lock file
+npm error Missing: yargs-parser@21.1.1 from lock file
+npm error Missing: strip-ansi@6.0.1 from lock file
+npm error Missing: wrap-ansi@7.0.0 from lock file
+npm error Missing: emoji-regex@8.0.0 from lock file
+npm error Missing: is-fullwidth-code-point@3.0.0 from lock file
+npm error Missing: ansi-styles@4.3.0 from lock file
+npm error Missing: ms@2.1.3 from lock file
+npm error Missing: yallist@3.1.1 from lock file
+npm error Missing: ms@2.1.3 from lock file
+npm error Missing: ms@2.1.3 from lock file
+npm error Missing: ms@2.1.3 from lock file
+npm error Missing: @isaacs/nonrecursive-glob-match@1.1.0 from lock file
+npm error Missing: @opentelemetry/sdk-trace-base@2.9.0 from lock file
+npm error Missing: @opentelemetry/resources@2.9.0 from lock file
+npm error Missing: @opentelemetry/sdk-trace-base@2.9.0 from lock file
+npm error Missing: @opentelemetry/resources@2.9.0 from lock file
+npm error Missing: ms@2.1.3 from lock file
+npm error Missing: ms@2.1.3 from lock file
+npm error Missing: ms@2.1.3 from lock file
+npm error Missing: ms@2.1.3 from lock file
+npm error Missing: brace-expansion@2.1.8 from lock file
+npm error Missing: balanced-match@1.0.2 from lock file
+npm error Missing: cliui@6.0.0 from lock file
+npm error Missing: decamelize@1.2.0 from lock file
+npm error Missing: find-up@4.1.0 from lock file
+npm error Missing: require-main-filename@2.0.0 from lock file
+npm error Missing: set-blocking@2.0.0 from lock file
+npm error Missing: which-module@2.0.1 from lock file
+npm error Missing: y18n@4.0.3 from lock file
+npm error Missing: yargs-parser@18.1.3 from lock file
+npm error Missing: wrap-ansi@6.2.0 from lock file
+npm error Missing: locate-path@5.0.0 from lock file
+npm error Missing: p-locate@4.1.0 from lock file
+npm error Missing: p-limit@2.3.0 from lock file
+npm error Missing: p-try@2.2.0 from lock file
+npm error Missing: ansi-styles@4.3.0 from lock file
+npm error Missing: color-convert@2.0.1 from lock file
+npm error Missing: color-name@1.1.4 from lock file
+npm error Missing: camelcase@5.3.1 from lock file
+npm error Missing: ms@2.1.3 from lock file
+npm error Missing: ms@2.1.3 from lock file
+npm error Missing: agent-base@9.0.0 from lock file
+npm error Missing: debug@4.4.3 from lock file
+npm error Missing: proxy-agent-negotiate@1.1.0 from lock file
+npm error Missing: ms@2.1.3 from lock file
+npm error Missing: fast-uri@3.1.9 from lock file
+npm error Missing: json-schema-traverse@1.0.0 from lock file
+npm error Missing: require-from-string@2.0.2 from lock file
+npm error
+npm error Clean install a project
+npm error
+npm error Usage:
+npm error npm ci
+npm error
+npm error Options:
+npm error [--install-strategy <hoisted|nested|shallow|linked>] [--legacy-bundling]
+npm error [--global-style] [--omit <dev|optional|peer> [--omit <dev|optional|peer> ...]]
+npm error [--include <prod|dev|optional|peer> [--include <prod|dev|optional|peer> ...]]
+npm error [--strict-peer-deps] [--foreground-scripts] [--ignore-scripts] [--no-audit]
+npm error [--no-bin-links] [--no-fund] [--dry-run]
+npm error [-w|--workspace <workspace-name> [-w|--workspace <workspace-name> ...]]
+npm error [-ws|--workspaces] [--include-workspace-root] [--install-links]
+npm error
+npm error aliases: clean-install, ic, install-clean, isntall-clean
+npm error
+npm error Run "npm help ci" for more info
+npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-16T14_15_00_255Z-debug-0.log
+Error: Process completed with exit code 1.
+0s
+0s
+0s
+0s
+0s
+0s
+1s

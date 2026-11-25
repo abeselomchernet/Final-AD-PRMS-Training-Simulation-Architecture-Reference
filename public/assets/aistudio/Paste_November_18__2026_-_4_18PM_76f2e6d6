@@ -1,0 +1,2184 @@
+CI — Lint, Unit, Build, PostgreSQL 16 WP-2 & E2E
+ci: expand CI pipeline and harden RLS logic #4
+All jobs
+Run details
+Annotations
+1 error, 1 warning, and 1 notice
+Django Checks, PG 16 Migrations, WP-2 RLS & Pytest
+failed 3 minutes ago in 2m 20s
+Search logs
+3s
+15s
+7s
+6s
+1m 28s
+1s
+8s
+1s
+0s
+5s
+Run psql -h 127.0.0.1 -U adprms_admin -d adprms -v ON_ERROR_STOP=1 -c "DROP DATABASE IF EXISTS test_adprms;"
+NOTICE:  database "test_adprms" does not exist, skipping
+DROP DATABASE
+CREATE DATABASE
+DO
+GRANT
+GRANT
+DO
+GRANT
+ALTER DEFAULT PRIVILEGES
+ALTER DEFAULT PRIVILEGES
+Operations to perform:
+  Apply all migrations: accounts, admin, auth, billing, contenttypes, django_celery_beat, documents, gateways, governance, ledger, maintenance, notifications, portfolio, sessions, token_blacklist
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0001_initial... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying auth.0009_alter_user_last_name_max_length... OK
+  Applying auth.0010_alter_group_name_max_length... OK
+  Applying auth.0011_update_proxy_permissions... OK
+  Applying auth.0012_alter_user_first_name_max_length... OK
+  Applying accounts.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying admin.0003_logentry_add_action_flag_choices... OK
+  Applying portfolio.0001_initial... OK
+  Applying billing.0001_initial... OK
+  Applying django_celery_beat.0001_initial... OK
+  Applying django_celery_beat.0002_auto_20161118_0346... OK
+  Applying django_celery_beat.0003_auto_20161209_0049... OK
+  Applying django_celery_beat.0004_auto_20170221_0000... OK
+  Applying django_celery_beat.0005_add_solarschedule_events_choices... OK
+  Applying django_celery_beat.0006_auto_20180322_0932... OK
+  Applying django_celery_beat.0007_auto_20180521_0826... OK
+  Applying django_celery_beat.0008_auto_20180914_1922... OK
+  Applying django_celery_beat.0006_auto_20180210_1226... OK
+  Applying django_celery_beat.0006_periodictask_priority... OK
+  Applying django_celery_beat.0009_periodictask_headers... OK
+  Applying django_celery_beat.0010_auto_20190429_0326... OK
+  Applying django_celery_beat.0011_auto_20190508_0153... OK
+  Applying django_celery_beat.0012_periodictask_expire_seconds... OK
+  Applying django_celery_beat.0013_auto_20200609_0727... OK
+  Applying django_celery_beat.0014_remove_clockedschedule_enabled... OK
+  Applying django_celery_beat.0015_edit_solarschedule_events_choices... OK
+  Applying django_celery_beat.0016_alter_crontabschedule_timezone... OK
+  Applying django_celery_beat.0017_alter_crontabschedule_month_of_year... OK
+  Applying django_celery_beat.0018_improve_crontab_helptext... OK
+  Applying django_celery_beat.0019_alter_periodictasks_options... OK
+  Applying documents.0001_initial... OK
+  Applying gateways.0001_initial... OK
+  Applying portfolio.0002_cross_owner_triggers... OK
+  Applying maintenance.0001_initial... OK
+  Applying governance.0001_initial... OK
+  Applying governance.0002_audit_immutability... OK
+  Applying governance.0003_wp2_rls_and_triggers... OK
+  Applying ledger.0001_initial... OK
+  Applying ledger.0002_pg_ledger_triggers_and_rls... OK
+  Applying ledger.0003_deposit_subledger_and_tax_packs... OK
+  Applying notifications.0001_initial... OK
+  Applying sessions.0001_initial... OK
+  Applying token_blacklist.0001_initial... OK
+  Applying token_blacklist.0002_outstandingtoken_jti_hex... OK
+  Applying token_blacklist.0003_auto_20171017_2007... OK
+  Applying token_blacklist.0004_auto_20171017_2013... OK
+  Applying token_blacklist.0005_remove_outstandingtoken_jti... OK
+  Applying token_blacklist.0006_auto_20171017_2113... OK
+  Applying token_blacklist.0007_auto_20171017_2214... OK
+  Applying token_blacklist.0008_migrate_to_bigautofield... OK
+  Applying token_blacklist.0010_fix_migrate_to_bigautofield... OK
+  Applying token_blacklist.0011_linearizes_history... OK
+  Applying token_blacklist.0012_alter_outstandingtoken_user... OK
+DO
+GRANT
+GRANT
+DO
+GRANT
+ALTER DEFAULT PRIVILEGES
+ALTER DEFAULT PRIVILEGES
+============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /opt/hostedtoolcache/Python/3.11.18/x64/bin/python
+cachedir: .pytest_cache
+django: version: 5.1.15, settings: config.settings.base (from ini)
+rootdir: /home/runner/work/AD-PRMS-Training-Simulation-Architecture-Reference/AD-PRMS-Training-Simulation-Architecture-Reference/backend
+configfile: pytest.ini
+testpaths: tests
+plugins: django-4.14.0, anyio-4.16.0
+collecting ... collected 15 items
+
+tests/test_ledger_and_tax.py::test_historical_tax_rule_pack_effective_dates_and_reproducibility PASSED [  6%]
+tests/test_api_security_and_backup.py::test_api_rbac_approval_forgery_protection_and_prod_ui FAILED [ 13%]
+tests/test_api_security_and_backup.py::test_api_rbac_approval_forgery_protection_and_prod_ui ERROR [ 13%]
+tests/test_governance_invariants.py::test_single_title_holder_five_buildings_and_inter_entity_block FAILED [ 20%]
+tests/test_governance_invariants.py::test_single_title_holder_five_buildings_and_inter_entity_block ERROR [ 20%]
+tests/test_governance_invariants.py::test_audit_event_hash_chain_and_rls_context_isolation PASSED [ 26%]
+tests/test_governance_invariants.py::test_audit_event_hash_chain_and_rls_context_isolation ERROR [ 26%]
+tests/test_ledger_and_tax.py::test_ledger_posting_idempotency_period_lock_cash_cap_and_independent_3way_deposit PASSED [ 33%]
+tests/test_ledger_and_tax.py::test_ledger_posting_idempotency_period_lock_cash_cap_and_independent_3way_deposit ERROR [ 33%]
+tests/test_governance_invariants.py::test_msisdn_normalization PASSED    [ 40%]
+tests/test_governance_invariants.py::test_arifpay_hmac_vector PASSED     [ 46%]
+tests/test_governance_invariants.py::test_pii_masking_filter_redacts_msisdn_bearer_and_otp PASSED [ 53%]
+tests/test_governance_invariants.py::test_maker_checker_model_blocks_self_approval PASSED [ 60%]
+tests/test_governance_invariants.py::test_approval_payload_hash_integrity_and_execution_verification PASSED [ 66%]
+tests/test_governance_invariants.py::test_erca_gate_blocks_active_tax_rule_without_four_signoffs PASSED [ 73%]
+tests/test_ledger_and_tax.py::test_configured_marginal_bands_calculation PASSED [ 80%]
+tests/test_ledger_and_tax.py::test_workpaper_defaults_to_undetermined_and_non_fiscal_draft PASSED [ 86%]
+tests/test_ledger_and_tax.py::test_workpaper_confirmed_plc_and_requires_four_signoffs PASSED [ 93%]
+tests/test_ledger_and_tax.py::test_pr08_failed_gateway_and_sod_reversal_guards FAILED [100%]
+
+==================================== ERRORS ====================================
+__ ERROR at teardown of test_api_rbac_approval_forgery_protection_and_prod_ui __
+
+self = <django.db.backends.utils.CursorWrapper object at 0x7fbb1e26b890>
+sql = 'TRUNCATE "portfolio_partyidentity", "auth_group", "documents_documentasset", "ledger_depositmovement", "ledger_closec...h", "django_content_type", "token_blacklist_blacklistedtoken", "portfolio_ownerentity", "gateways_gatewaytransaction";'
+params = None
+ignored_wrapper_args = (False, {'connection': <DatabaseWrapper vendor='postgresql' alias='default'>, 'cursor': <django.db.backends.utils.CursorWrapper object at 0x7fbb1e26b890>})
+
+    def _execute(self, sql, params, *ignored_wrapper_args):
+        # Raise a warning during app initialization (stored_app_configs is only
+        # ever set during testing).
+        if not apps.ready and not apps.stored_app_configs:
+            warnings.warn(self.APPS_NOT_READY_WARNING_MSG, category=RuntimeWarning)
+        self.db.validate_no_broken_transaction()
+        with self.db.wrap_database_errors:
+            if params is None:
+                # params default might be backend specific.
+>               return self.cursor.execute(sql)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^
+
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/db/backends/utils.py:103: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <django.db.backends.postgresql.base.Cursor [closed] [IDLE] (host=127.0.0.1 user=adprms_app database=test_adprms) at 0x7fbb20e7a4e0>
+query = 'TRUNCATE "portfolio_partyidentity", "auth_group", "documents_documentasset", "ledger_depositmovement", "ledger_closec...h", "django_content_type", "token_blacklist_blacklistedtoken", "portfolio_ownerentity", "gateways_gatewaytransaction";'
+params = None, prepare = None, binary = None
+
+    def execute(
+        self,
+        query: Query,
+        params: Params | None = None,
+        *,
+        prepare: bool | None = None,
+        binary: bool | None = None,
+    ) -> Self:
+        """
+        Execute a query or command to the database.
+        """
+        try:
+            with self._conn.lock:
+                self._conn.wait(
+                    self._execute_gen(query, params, prepare=prepare, binary=binary)
+                )
+        except e._NO_TRACEBACK as ex:
+>           raise ex.with_traceback(None)
+E           psycopg.errors.InsufficientPrivilege: permission denied for table portfolio_partyidentity
+
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/psycopg/cursor.py:117: InsufficientPrivilege
+
+The above exception was the direct cause of the following exception:
+
+self = <django.core.management.commands.flush.Command object at 0x7fbb1e269dd0>
+options = {'verbosity': 0, 'settings': None, 'pythonpath': None, 'traceback': False, ...}
+
+        def handle(self, **options):
+            database = options["database"]
+            connection = connections[database]
+            verbosity = options["verbosity"]
+            interactive = options["interactive"]
+            # The following are stealth options used by Django's internals.
+            reset_sequences = options.get("reset_sequences", True)
+            allow_cascade = options.get("allow_cascade", False)
+            inhibit_post_migrate = options.get("inhibit_post_migrate", False)
+    
+            self.style = no_style()
+    
+            # Import the 'management' module within each installed app, to register
+            # dispatcher events.
+            for app_config in apps.get_app_configs():
+                try:
+                    import_module(".management", app_config.name)
+                except ImportError:
+                    pass
+    
+            sql_list = sql_flush(
+                self.style,
+                connection,
+                reset_sequences=reset_sequences,
+                allow_cascade=allow_cascade,
+            )
+    
+            if interactive:
+                confirm = input(
+                    """You have requested a flush of the database.
+    This will IRREVERSIBLY DESTROY all data currently in the "%s" database,
+    and return each table to an empty state.
+    Are you sure you want to do this?
+    
+        Type 'yes' to continue, or 'no' to cancel: """
+                    % connection.settings_dict["NAME"]
+                )
+            else:
+                confirm = "yes"
+    
+            if confirm == "yes":
+                try:
+>                   connection.ops.execute_sql_flush(sql_list)
+
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/core/management/commands/flush.py:74: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/db/backends/base/operations.py:473: in execute_sql_flush
+    cursor.execute(sql)
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/db/backends/utils.py:79: in execute
+    return self._execute_with_wrappers(
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/db/backends/utils.py:92: in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/db/backends/utils.py:100: in _execute
+    with self.db.wrap_database_errors:
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/db/utils.py:91: in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/db/backends/utils.py:103: in _execute
+    return self.cursor.execute(sql)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <django.db.backends.postgresql.base.Cursor [closed] [IDLE] (host=127.0.0.1 user=adprms_app database=test_adprms) at 0x7fbb20e7a4e0>
+query = 'TRUNCATE "portfolio_partyidentity", "auth_group", "documents_documentasset", "ledger_depositmovement", "ledger_closec...h", "django_content_type", "token_blacklist_blacklistedtoken", "portfolio_ownerentity", "gateways_gatewaytransaction";'
+params = None, prepare = None, binary = None
+
+    def execute(
+        self,
+        query: Query,
+        params: Params | None = None,
+        *,
+        prepare: bool | None = None,
+        binary: bool | None = None,
+    ) -> Self:
+        """
+        Execute a query or command to the database.
+        """
+        try:
+            with self._conn.lock:
+                self._conn.wait(
+                    self._execute_gen(query, params, prepare=prepare, binary=binary)
+                )
+        except e._NO_TRACEBACK as ex:
+>           raise ex.with_traceback(None)
+E           django.db.utils.ProgrammingError: permission denied for table portfolio_partyidentity
+
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/psycopg/cursor.py:117: ProgrammingError
+
+The above exception was the direct cause of the following exception:
+
+request = <SubRequest '_django_db_helper' for <Function test_api_rbac_approval_forgery_protection_and_prod_ui>>
+django_db_setup = None
+django_db_blocker = <pytest_django.plugin.DjangoDbBlocker object at 0x7fbb26090550>
+
+    @pytest.fixture
+    def _django_db_helper(
+        request: pytest.FixtureRequest,
+        django_db_setup: None,  # noqa: ARG001
+        django_db_blocker: DjangoDbBlocker,
+    ) -> Generator[None]:
+        if is_django_unittest(request):
+            yield
+            return
+    
+        from django import VERSION
+    
+        marker = request.node.get_closest_marker("django_db")
+        if marker:
+            (
+                transactional,
+                reset_sequences,
+                databases,
+                serialized_rollback,
+                available_apps,
+            ) = validate_django_db(marker)
+        else:
+            (
+                transactional,
+                reset_sequences,
+                databases,
+                serialized_rollback,
+                available_apps,
+            ) = False, False, None, False, None
+    
+        transactional = (
+            transactional
+            or reset_sequences
+            or ("transactional_db" in request.fixturenames or "live_server" in request.fixturenames)
+        )
+        reset_sequences = reset_sequences or ("django_db_reset_sequences" in request.fixturenames)
+        serialized_rollback = serialized_rollback or (
+            "django_db_serialized_rollback" in request.fixturenames
+        )
+    
+        with django_db_blocker.unblock():
+            import django.db
+            import django.test
+    
+            if transactional:
+                test_case_class = django.test.TransactionTestCase
+            else:
+                test_case_class = django.test.TestCase
+    
+            _reset_sequences = reset_sequences
+            _serialized_rollback = serialized_rollback
+            _databases = databases
+            _available_apps = available_apps
+    
+            class PytestDjangoTestCase(test_case_class):  # type: ignore[misc,valid-type]
+                reset_sequences = _reset_sequences
+                serialized_rollback = _serialized_rollback
+                if _databases is not None:
+                    databases = _databases
+                if _available_apps is not None:
+                    available_apps = _available_apps
+    
+                # For non-transactional tests, skip executing `django.test.TestCase`'s
+                # `setUpClass`/`tearDownClass`, only execute the super class ones.
+                #
+                # `TestCase`'s class setup manages the `setUpTestData`/class-level
+                # transaction functionality. We don't use it; instead we (will) offer
+                # our own alternatives. So it only adds overhead, and does some things
+                # which conflict with our (planned) functionality, particularly, it
+                # closes all database connections in `tearDownClass` which inhibits
+                # wrapping tests in higher-scoped transactions.
+                #
+                # It's possible a new version of Django will add some unrelated
+                # functionality to these methods, in which case skipping them completely
+                # would not be desirable. Let's cross that bridge when we get there...
+                if not transactional:
+    
+                    @classmethod
+                    def setUpClass(cls) -> None:
+                        super(django.test.TestCase, cls).setUpClass()
+    
+                    @classmethod
+                    def tearDownClass(cls) -> None:
+                        super(django.test.TestCase, cls).tearDownClass()
+    
+            PytestDjangoTestCase.setUpClass()
+    
+            test_case = PytestDjangoTestCase(methodName="__init__")
+            if VERSION >= (6, 0):
+                pre_setup_ran_eagerly = PytestDjangoTestCase._pre_setup_ran_eagerly
+            else:
+                pre_setup_ran_eagerly = getattr(PytestDjangoTestCase, "_pre_setup_ran_eagerly", False)
+            if not pre_setup_ran_eagerly:
+                # For a TransactionTestCase, setUpClass() has already run _pre_setup() and set
+                # this flag to say so.
+                test_case._pre_setup()
+    
+            yield
+    
+>           test_case._post_teardown()
+
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/pytest_django/fixtures.py:305: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/test/testcases.py:1202: in _post_teardown
+    self._fixture_teardown()
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/test/testcases.py:1236: in _fixture_teardown
+    call_command(
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/core/management/__init__.py:194: in call_command
+    return command.execute(*args, **defaults)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/core/management/base.py:459: in execute
+    output = self.handle(*args, **options)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <django.core.management.commands.flush.Command object at 0x7fbb1e269dd0>
+options = {'verbosity': 0, 'settings': None, 'pythonpath': None, 'traceback': False, ...}
+
+        def handle(self, **options):
+            database = options["database"]
+            connection = connections[database]
+            verbosity = options["verbosity"]
+            interactive = options["interactive"]
+            # The following are stealth options used by Django's internals.
+            reset_sequences = options.get("reset_sequences", True)
+            allow_cascade = options.get("allow_cascade", False)
+            inhibit_post_migrate = options.get("inhibit_post_migrate", False)
+    
+            self.style = no_style()
+    
+            # Import the 'management' module within each installed app, to register
+            # dispatcher events.
+            for app_config in apps.get_app_configs():
+                try:
+                    import_module(".management", app_config.name)
+                except ImportError:
+                    pass
+    
+            sql_list = sql_flush(
+                self.style,
+                connection,
+                reset_sequences=reset_sequences,
+                allow_cascade=allow_cascade,
+            )
+    
+            if interactive:
+                confirm = input(
+                    """You have requested a flush of the database.
+    This will IRREVERSIBLY DESTROY all data currently in the "%s" database,
+    and return each table to an empty state.
+    Are you sure you want to do this?
+    
+        Type 'yes' to continue, or 'no' to cancel: """
+                    % connection.settings_dict["NAME"]
+                )
+            else:
+                confirm = "yes"
+    
+            if confirm == "yes":
+                try:
+                    connection.ops.execute_sql_flush(sql_list)
+                except Exception as exc:
+>                   raise CommandError(
+                        "Database %s couldn't be flushed. Possible reasons:\n"
+                        "  * The database isn't running or isn't configured correctly.\n"
+                        "  * At least one of the expected database tables doesn't exist.\n"
+                        "  * The SQL was invalid.\n"
+                        "Hint: Look at the output of 'django-admin sqlflush'. "
+                        "That's the SQL this command wasn't able to run."
+                        % (connection.settings_dict["NAME"],)
+                    ) from exc
+E                   django.core.management.base.CommandError: Database test_adprms couldn't be flushed. Possible reasons:
+E                     * The database isn't running or isn't configured correctly.
+E                     * At least one of the expected database tables doesn't exist.
+E                     * The SQL was invalid.
+E                   Hint: Look at the output of 'django-admin sqlflush'. That's the SQL this command wasn't able to run.
+
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/core/management/commands/flush.py:76: CommandError
+----------------------------- Captured stderr call -----------------------------
+2026-11-18 16:14:59,231 WARNING django.request Unauthorized: /api/v1/ledger/accounts/
+2026-11-18 16:14:59,247 WARNING django.request Forbidden: /api/v1/ledger/post/
+2026-11-18 16:14:59,248 WARNING django.request Forbidden: /api/v1/ledger/accounts/
+2026-11-18 16:14:59,257 WARNING django.request Forbidden: /prod/
+2026-11-18 16:14:59,319 ERROR django.request Internal Server Error: /api/v1/ledger/post/
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/connection.py", line 1055, in connect_check_health
+    sock = self._connect()
+           ^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/connection.py", line 1617, in _connect
+    raise err
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/connection.py", line 1601, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/views/generic/base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/AD-PRMS-Training-Simulation-Architecture-Reference/AD-PRMS-Training-Simulation-Architecture-Reference/backend/apps/common/permissions.py", line 71, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/rest_framework/views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/rest_framework/views.py", line 416, in initial
+    self.check_throttles(request)
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/rest_framework/views.py", line 359, in check_throttles
+    if not throttle.allow_request(request, self):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/rest_framework/throttling.py", line 123, in allow_request
+    self.history = self.cache.get(self.key, [])
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/core/cache/backends/redis.py", line 187, in get
+    return self._cache.get(key, default)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/core/cache/backends/redis.py", line 99, in get
+    value = client.get(key)
+            ^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/commands/core.py", line 3200, in get
+    return self.execute_command("GET", name, keys=[name])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/client.py", line 867, in execute_command
+    return self._execute_command(*args, **options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/client.py", line 873, in _execute_command
+    conn = self.connection or pool.get_connection()
+                              ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/utils.py", line 258, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/connection.py", line 3273, in get_connection
+    connection.connect()
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/connection.py", line 1028, in connect
+    self.retry.call_with_retry(
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/retry.py", line 132, in call_with_retry
+    raise error
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/retry.py", line 120, in call_with_retry
+    return do()
+           ^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/connection.py", line 1029, in <lambda>
+    lambda: self.connect_check_health(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/connection.py", line 1077, in connect_check_health
+    raise e
+redis.exceptions.ConnectionError: Error 111 connecting to localhost:6379. Connection refused.
+------------------------------ Captured log call -------------------------------
+WARNING  django.request:log.py:253 Unauthorized: /api/v1/ledger/accounts/
+WARNING  django.request:log.py:253 Forbidden: /api/v1/ledger/post/
+WARNING  django.request:log.py:253 Forbidden: /api/v1/ledger/accounts/
+WARNING  django.request:log.py:253 Forbidden: /prod/
+ERROR    django.request:log.py:253 Internal Server Error: /api/v1/ledger/post/
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/connection.py", line 1055, in connect_check_health
+    sock = self._connect()
+           ^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/connection.py", line 1617, in _connect
+    raise err
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/connection.py", line 1601, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/views/generic/base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/AD-PRMS-Training-Simulation-Architecture-Reference/AD-PRMS-Training-Simulation-Architecture-Reference/backend/apps/common/permissions.py", line 71, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/rest_framework/views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/rest_framework/views.py", line 416, in initial
+    self.check_throttles(request)
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/rest_framework/views.py", line 359, in check_throttles
+    if not throttle.allow_request(request, self):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/rest_framework/throttling.py", line 123, in allow_request
+    self.history = self.cache.get(self.key, [])
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/core/cache/backends/redis.py", line 187, in get
+    return self._cache.get(key, default)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/core/cache/backends/redis.py", line 99, in get
+    value = client.get(key)
+            ^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/commands/core.py", line 3200, in get
+    return self.execute_command("GET", name, keys=[name])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/client.py", line 867, in execute_command
+    return self._execute_command(*args, **options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/client.py", line 873, in _execute_command
+    conn = self.connection or pool.get_connection()
+                              ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/utils.py", line 258, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/connection.py", line 3273, in get_connection
+    connection.connect()
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/connection.py", line 1028, in connect
+    self.retry.call_with_retry(
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/retry.py", line 132, in call_with_retry
+    raise error
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/retry.py", line 120, in call_with_retry
+    return do()
+           ^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/connection.py", line 1029, in <lambda>
+    lambda: self.connect_check_health(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/connection.py", line 1077, in connect_check_health
+    raise e
+redis.exceptions.ConnectionError: Error 111 connecting to localhost:6379. Connection refused.
+_ ERROR at teardown of test_single_title_holder_five_buildings_and_inter_entity_block _
+
+self = <django.db.backends.utils.CursorWrapper object at 0x7fbb2101d2d0>
+sql = 'TRUNCATE "portfolio_partyidentity", "auth_group", "documents_documentasset", "ledger_depositmovement", "ledger_closec...h", "django_content_type", "token_blacklist_blacklistedtoken", "portfolio_ownerentity", "gateways_gatewaytransaction";'
+params = None
+ignored_wrapper_args = (False, {'connection': <DatabaseWrapper vendor='postgresql' alias='default'>, 'cursor': <django.db.backends.utils.CursorWrapper object at 0x7fbb2101d2d0>})
+
+    def _execute(self, sql, params, *ignored_wrapper_args):
+        # Raise a warning during app initialization (stored_app_configs is only
+        # ever set during testing).
+        if not apps.ready and not apps.stored_app_configs:
+            warnings.warn(self.APPS_NOT_READY_WARNING_MSG, category=RuntimeWarning)
+        self.db.validate_no_broken_transaction()
+        with self.db.wrap_database_errors:
+            if params is None:
+                # params default might be backend specific.
+>               return self.cursor.execute(sql)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^
+
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/db/backends/utils.py:103: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <django.db.backends.postgresql.base.Cursor [closed] [IDLE] (host=127.0.0.1 user=adprms_app database=test_adprms) at 0x7fbb20de7ee0>
+query = 'TRUNCATE "portfolio_partyidentity", "auth_group", "documents_documentasset", "ledger_depositmovement", "ledger_closec...h", "django_content_type", "token_blacklist_blacklistedtoken", "portfolio_ownerentity", "gateways_gatewaytransaction";'
+params = None, prepare = None, binary = None
+
+    def execute(
+        self,
+        query: Query,
+        params: Params | None = None,
+        *,
+        prepare: bool | None = None,
+        binary: bool | None = None,
+    ) -> Self:
+        """
+        Execute a query or command to the database.
+        """
+        try:
+            with self._conn.lock:
+                self._conn.wait(
+                    self._execute_gen(query, params, prepare=prepare, binary=binary)
+                )
+        except e._NO_TRACEBACK as ex:
+>           raise ex.with_traceback(None)
+E           psycopg.errors.InsufficientPrivilege: permission denied for table portfolio_partyidentity
+
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/psycopg/cursor.py:117: InsufficientPrivilege
+
+The above exception was the direct cause of the following exception:
+
+self = <django.core.management.commands.flush.Command object at 0x7fbb211de9d0>
+options = {'verbosity': 0, 'settings': None, 'pythonpath': None, 'traceback': False, ...}
+
+        def handle(self, **options):
+            database = options["database"]
+            connection = connections[database]
+            verbosity = options["verbosity"]
+            interactive = options["interactive"]
+            # The following are stealth options used by Django's internals.
+            reset_sequences = options.get("reset_sequences", True)
+            allow_cascade = options.get("allow_cascade", False)
+            inhibit_post_migrate = options.get("inhibit_post_migrate", False)
+    
+            self.style = no_style()
+    
+            # Import the 'management' module within each installed app, to register
+            # dispatcher events.
+            for app_config in apps.get_app_configs():
+                try:
+                    import_module(".management", app_config.name)
+                except ImportError:
+                    pass
+    
+            sql_list = sql_flush(
+                self.style,
+                connection,
+                reset_sequences=reset_sequences,
+                allow_cascade=allow_cascade,
+            )
+    
+            if interactive:
+                confirm = input(
+                    """You have requested a flush of the database.
+    This will IRREVERSIBLY DESTROY all data currently in the "%s" database,
+    and return each table to an empty state.
+    Are you sure you want to do this?
+    
+        Type 'yes' to continue, or 'no' to cancel: """
+                    % connection.settings_dict["NAME"]
+                )
+            else:
+                confirm = "yes"
+    
+            if confirm == "yes":
+                try:
+>                   connection.ops.execute_sql_flush(sql_list)
+
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/core/management/commands/flush.py:74: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/db/backends/base/operations.py:473: in execute_sql_flush
+    cursor.execute(sql)
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/db/backends/utils.py:79: in execute
+    return self._execute_with_wrappers(
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/db/backends/utils.py:92: in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/db/backends/utils.py:100: in _execute
+    with self.db.wrap_database_errors:
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/db/utils.py:91: in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/db/backends/utils.py:103: in _execute
+    return self.cursor.execute(sql)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <django.db.backends.postgresql.base.Cursor [closed] [IDLE] (host=127.0.0.1 user=adprms_app database=test_adprms) at 0x7fbb20de7ee0>
+query = 'TRUNCATE "portfolio_partyidentity", "auth_group", "documents_documentasset", "ledger_depositmovement", "ledger_closec...h", "django_content_type", "token_blacklist_blacklistedtoken", "portfolio_ownerentity", "gateways_gatewaytransaction";'
+params = None, prepare = None, binary = None
+
+    def execute(
+        self,
+        query: Query,
+        params: Params | None = None,
+        *,
+        prepare: bool | None = None,
+        binary: bool | None = None,
+    ) -> Self:
+        """
+        Execute a query or command to the database.
+        """
+        try:
+            with self._conn.lock:
+                self._conn.wait(
+                    self._execute_gen(query, params, prepare=prepare, binary=binary)
+                )
+        except e._NO_TRACEBACK as ex:
+>           raise ex.with_traceback(None)
+E           django.db.utils.ProgrammingError: permission denied for table portfolio_partyidentity
+
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/psycopg/cursor.py:117: ProgrammingError
+
+The above exception was the direct cause of the following exception:
+
+request = <SubRequest '_django_db_helper' for <Function test_single_title_holder_five_buildings_and_inter_entity_block>>
+django_db_setup = None
+django_db_blocker = <pytest_django.plugin.DjangoDbBlocker object at 0x7fbb26090550>
+
+    @pytest.fixture
+    def _django_db_helper(
+        request: pytest.FixtureRequest,
+        django_db_setup: None,  # noqa: ARG001
+        django_db_blocker: DjangoDbBlocker,
+    ) -> Generator[None]:
+        if is_django_unittest(request):
+            yield
+            return
+    
+        from django import VERSION
+    
+        marker = request.node.get_closest_marker("django_db")
+        if marker:
+            (
+                transactional,
+                reset_sequences,
+                databases,
+                serialized_rollback,
+                available_apps,
+            ) = validate_django_db(marker)
+        else:
+            (
+                transactional,
+                reset_sequences,
+                databases,
+                serialized_rollback,
+                available_apps,
+            ) = False, False, None, False, None
+    
+        transactional = (
+            transactional
+            or reset_sequences
+            or ("transactional_db" in request.fixturenames or "live_server" in request.fixturenames)
+        )
+        reset_sequences = reset_sequences or ("django_db_reset_sequences" in request.fixturenames)
+        serialized_rollback = serialized_rollback or (
+            "django_db_serialized_rollback" in request.fixturenames
+        )
+    
+        with django_db_blocker.unblock():
+            import django.db
+            import django.test
+    
+            if transactional:
+                test_case_class = django.test.TransactionTestCase
+            else:
+                test_case_class = django.test.TestCase
+    
+            _reset_sequences = reset_sequences
+            _serialized_rollback = serialized_rollback
+            _databases = databases
+            _available_apps = available_apps
+    
+            class PytestDjangoTestCase(test_case_class):  # type: ignore[misc,valid-type]
+                reset_sequences = _reset_sequences
+                serialized_rollback = _serialized_rollback
+                if _databases is not None:
+                    databases = _databases
+                if _available_apps is not None:
+                    available_apps = _available_apps
+    
+                # For non-transactional tests, skip executing `django.test.TestCase`'s
+                # `setUpClass`/`tearDownClass`, only execute the super class ones.
+                #
+                # `TestCase`'s class setup manages the `setUpTestData`/class-level
+                # transaction functionality. We don't use it; instead we (will) offer
+                # our own alternatives. So it only adds overhead, and does some things
+                # which conflict with our (planned) functionality, particularly, it
+                # closes all database connections in `tearDownClass` which inhibits
+                # wrapping tests in higher-scoped transactions.
+                #
+                # It's possible a new version of Django will add some unrelated
+                # functionality to these methods, in which case skipping them completely
+                # would not be desirable. Let's cross that bridge when we get there...
+                if not transactional:
+    
+                    @classmethod
+                    def setUpClass(cls) -> None:
+                        super(django.test.TestCase, cls).setUpClass()
+    
+                    @classmethod
+                    def tearDownClass(cls) -> None:
+                        super(django.test.TestCase, cls).tearDownClass()
+    
+            PytestDjangoTestCase.setUpClass()
+    
+            test_case = PytestDjangoTestCase(methodName="__init__")
+            if VERSION >= (6, 0):
+                pre_setup_ran_eagerly = PytestDjangoTestCase._pre_setup_ran_eagerly
+            else:
+                pre_setup_ran_eagerly = getattr(PytestDjangoTestCase, "_pre_setup_ran_eagerly", False)
+            if not pre_setup_ran_eagerly:
+                # For a TransactionTestCase, setUpClass() has already run _pre_setup() and set
+                # this flag to say so.
+                test_case._pre_setup()
+    
+            yield
+    
+>           test_case._post_teardown()
+
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/pytest_django/fixtures.py:305: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/test/testcases.py:1202: in _post_teardown
+    self._fixture_teardown()
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/test/testcases.py:1236: in _fixture_teardown
+    call_command(
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/core/management/__init__.py:194: in call_command
+    return command.execute(*args, **defaults)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/core/management/base.py:459: in execute
+    output = self.handle(*args, **options)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <django.core.management.commands.flush.Command object at 0x7fbb211de9d0>
+options = {'verbosity': 0, 'settings': None, 'pythonpath': None, 'traceback': False, ...}
+
+        def handle(self, **options):
+            database = options["database"]
+            connection = connections[database]
+            verbosity = options["verbosity"]
+            interactive = options["interactive"]
+            # The following are stealth options used by Django's internals.
+            reset_sequences = options.get("reset_sequences", True)
+            allow_cascade = options.get("allow_cascade", False)
+            inhibit_post_migrate = options.get("inhibit_post_migrate", False)
+    
+            self.style = no_style()
+    
+            # Import the 'management' module within each installed app, to register
+            # dispatcher events.
+            for app_config in apps.get_app_configs():
+                try:
+                    import_module(".management", app_config.name)
+                except ImportError:
+                    pass
+    
+            sql_list = sql_flush(
+                self.style,
+                connection,
+                reset_sequences=reset_sequences,
+                allow_cascade=allow_cascade,
+            )
+    
+            if interactive:
+                confirm = input(
+                    """You have requested a flush of the database.
+    This will IRREVERSIBLY DESTROY all data currently in the "%s" database,
+    and return each table to an empty state.
+    Are you sure you want to do this?
+    
+        Type 'yes' to continue, or 'no' to cancel: """
+                    % connection.settings_dict["NAME"]
+                )
+            else:
+                confirm = "yes"
+    
+            if confirm == "yes":
+                try:
+                    connection.ops.execute_sql_flush(sql_list)
+                except Exception as exc:
+>                   raise CommandError(
+                        "Database %s couldn't be flushed. Possible reasons:\n"
+                        "  * The database isn't running or isn't configured correctly.\n"
+                        "  * At least one of the expected database tables doesn't exist.\n"
+                        "  * The SQL was invalid.\n"
+                        "Hint: Look at the output of 'django-admin sqlflush'. "
+                        "That's the SQL this command wasn't able to run."
+                        % (connection.settings_dict["NAME"],)
+                    ) from exc
+E                   django.core.management.base.CommandError: Database test_adprms couldn't be flushed. Possible reasons:
+E                     * The database isn't running or isn't configured correctly.
+E                     * At least one of the expected database tables doesn't exist.
+E                     * The SQL was invalid.
+E                   Hint: Look at the output of 'django-admin sqlflush'. That's the SQL this command wasn't able to run.
+
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/core/management/commands/flush.py:76: CommandError
+__ ERROR at teardown of test_audit_event_hash_chain_and_rls_context_isolation __
+
+self = <django.db.backends.utils.CursorWrapper object at 0x7fbb1f24a150>
+sql = 'TRUNCATE "portfolio_partyidentity", "auth_group", "documents_documentasset", "ledger_depositmovement", "ledger_closec...h", "django_content_type", "token_blacklist_blacklistedtoken", "portfolio_ownerentity", "gateways_gatewaytransaction";'
+params = None
+ignored_wrapper_args = (False, {'connection': <DatabaseWrapper vendor='postgresql' alias='default'>, 'cursor': <django.db.backends.utils.CursorWrapper object at 0x7fbb1f24a150>})
+
+    def _execute(self, sql, params, *ignored_wrapper_args):
+        # Raise a warning during app initialization (stored_app_configs is only
+        # ever set during testing).
+        if not apps.ready and not apps.stored_app_configs:
+            warnings.warn(self.APPS_NOT_READY_WARNING_MSG, category=RuntimeWarning)
+        self.db.validate_no_broken_transaction()
+        with self.db.wrap_database_errors:
+            if params is None:
+                # params default might be backend specific.
+>               return self.cursor.execute(sql)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^
+
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/db/backends/utils.py:103: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <django.db.backends.postgresql.base.Cursor [closed] [IDLE] (host=127.0.0.1 user=adprms_app database=test_adprms) at 0x7fbb20769710>
+query = 'TRUNCATE "portfolio_partyidentity", "auth_group", "documents_documentasset", "ledger_depositmovement", "ledger_closec...h", "django_content_type", "token_blacklist_blacklistedtoken", "portfolio_ownerentity", "gateways_gatewaytransaction";'
+params = None, prepare = None, binary = None
+
+    def execute(
+        self,
+        query: Query,
+        params: Params | None = None,
+        *,
+        prepare: bool | None = None,
+        binary: bool | None = None,
+    ) -> Self:
+        """
+        Execute a query or command to the database.
+        """
+        try:
+            with self._conn.lock:
+                self._conn.wait(
+                    self._execute_gen(query, params, prepare=prepare, binary=binary)
+                )
+        except e._NO_TRACEBACK as ex:
+>           raise ex.with_traceback(None)
+E           psycopg.errors.InsufficientPrivilege: permission denied for table portfolio_partyidentity
+
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/psycopg/cursor.py:117: InsufficientPrivilege
+
+The above exception was the direct cause of the following exception:
+
+self = <django.core.management.commands.flush.Command object at 0x7fbb1f2e5e90>
+options = {'verbosity': 0, 'settings': None, 'pythonpath': None, 'traceback': False, ...}
+
+        def handle(self, **options):
+            database = options["database"]
+            connection = connections[database]
+            verbosity = options["verbosity"]
+            interactive = options["interactive"]
+            # The following are stealth options used by Django's internals.
+            reset_sequences = options.get("reset_sequences", True)
+            allow_cascade = options.get("allow_cascade", False)
+            inhibit_post_migrate = options.get("inhibit_post_migrate", False)
+    
+            self.style = no_style()
+    
+            # Import the 'management' module within each installed app, to register
+            # dispatcher events.
+            for app_config in apps.get_app_configs():
+                try:
+                    import_module(".management", app_config.name)
+                except ImportError:
+                    pass
+    
+            sql_list = sql_flush(
+                self.style,
+                connection,
+                reset_sequences=reset_sequences,
+                allow_cascade=allow_cascade,
+            )
+    
+            if interactive:
+                confirm = input(
+                    """You have requested a flush of the database.
+    This will IRREVERSIBLY DESTROY all data currently in the "%s" database,
+    and return each table to an empty state.
+    Are you sure you want to do this?
+    
+        Type 'yes' to continue, or 'no' to cancel: """
+                    % connection.settings_dict["NAME"]
+                )
+            else:
+                confirm = "yes"
+    
+            if confirm == "yes":
+                try:
+>                   connection.ops.execute_sql_flush(sql_list)
+
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/core/management/commands/flush.py:74: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/db/backends/base/operations.py:473: in execute_sql_flush
+    cursor.execute(sql)
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/db/backends/utils.py:79: in execute
+    return self._execute_with_wrappers(
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/db/backends/utils.py:92: in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/db/backends/utils.py:100: in _execute
+    with self.db.wrap_database_errors:
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/db/utils.py:91: in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/db/backends/utils.py:103: in _execute
+    return self.cursor.execute(sql)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <django.db.backends.postgresql.base.Cursor [closed] [IDLE] (host=127.0.0.1 user=adprms_app database=test_adprms) at 0x7fbb20769710>
+query = 'TRUNCATE "portfolio_partyidentity", "auth_group", "documents_documentasset", "ledger_depositmovement", "ledger_closec...h", "django_content_type", "token_blacklist_blacklistedtoken", "portfolio_ownerentity", "gateways_gatewaytransaction";'
+params = None, prepare = None, binary = None
+
+    def execute(
+        self,
+        query: Query,
+        params: Params | None = None,
+        *,
+        prepare: bool | None = None,
+        binary: bool | None = None,
+    ) -> Self:
+        """
+        Execute a query or command to the database.
+        """
+        try:
+            with self._conn.lock:
+                self._conn.wait(
+                    self._execute_gen(query, params, prepare=prepare, binary=binary)
+                )
+        except e._NO_TRACEBACK as ex:
+>           raise ex.with_traceback(None)
+E           django.db.utils.ProgrammingError: permission denied for table portfolio_partyidentity
+
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/psycopg/cursor.py:117: ProgrammingError
+
+The above exception was the direct cause of the following exception:
+
+request = <SubRequest '_django_db_helper' for <Function test_audit_event_hash_chain_and_rls_context_isolation>>
+django_db_setup = None
+django_db_blocker = <pytest_django.plugin.DjangoDbBlocker object at 0x7fbb26090550>
+
+    @pytest.fixture
+    def _django_db_helper(
+        request: pytest.FixtureRequest,
+        django_db_setup: None,  # noqa: ARG001
+        django_db_blocker: DjangoDbBlocker,
+    ) -> Generator[None]:
+        if is_django_unittest(request):
+            yield
+            return
+    
+        from django import VERSION
+    
+        marker = request.node.get_closest_marker("django_db")
+        if marker:
+            (
+                transactional,
+                reset_sequences,
+                databases,
+                serialized_rollback,
+                available_apps,
+            ) = validate_django_db(marker)
+        else:
+            (
+                transactional,
+                reset_sequences,
+                databases,
+                serialized_rollback,
+                available_apps,
+            ) = False, False, None, False, None
+    
+        transactional = (
+            transactional
+            or reset_sequences
+            or ("transactional_db" in request.fixturenames or "live_server" in request.fixturenames)
+        )
+        reset_sequences = reset_sequences or ("django_db_reset_sequences" in request.fixturenames)
+        serialized_rollback = serialized_rollback or (
+            "django_db_serialized_rollback" in request.fixturenames
+        )
+    
+        with django_db_blocker.unblock():
+            import django.db
+            import django.test
+    
+            if transactional:
+                test_case_class = django.test.TransactionTestCase
+            else:
+                test_case_class = django.test.TestCase
+    
+            _reset_sequences = reset_sequences
+            _serialized_rollback = serialized_rollback
+            _databases = databases
+            _available_apps = available_apps
+    
+            class PytestDjangoTestCase(test_case_class):  # type: ignore[misc,valid-type]
+                reset_sequences = _reset_sequences
+                serialized_rollback = _serialized_rollback
+                if _databases is not None:
+                    databases = _databases
+                if _available_apps is not None:
+                    available_apps = _available_apps
+    
+                # For non-transactional tests, skip executing `django.test.TestCase`'s
+                # `setUpClass`/`tearDownClass`, only execute the super class ones.
+                #
+                # `TestCase`'s class setup manages the `setUpTestData`/class-level
+                # transaction functionality. We don't use it; instead we (will) offer
+                # our own alternatives. So it only adds overhead, and does some things
+                # which conflict with our (planned) functionality, particularly, it
+                # closes all database connections in `tearDownClass` which inhibits
+                # wrapping tests in higher-scoped transactions.
+                #
+                # It's possible a new version of Django will add some unrelated
+                # functionality to these methods, in which case skipping them completely
+                # would not be desirable. Let's cross that bridge when we get there...
+                if not transactional:
+    
+                    @classmethod
+                    def setUpClass(cls) -> None:
+                        super(django.test.TestCase, cls).setUpClass()
+    
+                    @classmethod
+                    def tearDownClass(cls) -> None:
+                        super(django.test.TestCase, cls).tearDownClass()
+    
+            PytestDjangoTestCase.setUpClass()
+    
+            test_case = PytestDjangoTestCase(methodName="__init__")
+            if VERSION >= (6, 0):
+                pre_setup_ran_eagerly = PytestDjangoTestCase._pre_setup_ran_eagerly
+            else:
+                pre_setup_ran_eagerly = getattr(PytestDjangoTestCase, "_pre_setup_ran_eagerly", False)
+            if not pre_setup_ran_eagerly:
+                # For a TransactionTestCase, setUpClass() has already run _pre_setup() and set
+                # this flag to say so.
+                test_case._pre_setup()
+    
+            yield
+    
+>           test_case._post_teardown()
+
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/pytest_django/fixtures.py:305: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/test/testcases.py:1202: in _post_teardown
+    self._fixture_teardown()
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/test/testcases.py:1236: in _fixture_teardown
+    call_command(
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/core/management/__init__.py:194: in call_command
+    return command.execute(*args, **defaults)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/core/management/base.py:459: in execute
+    output = self.handle(*args, **options)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <django.core.management.commands.flush.Command object at 0x7fbb1f2e5e90>
+options = {'verbosity': 0, 'settings': None, 'pythonpath': None, 'traceback': False, ...}
+
+        def handle(self, **options):
+            database = options["database"]
+            connection = connections[database]
+            verbosity = options["verbosity"]
+            interactive = options["interactive"]
+            # The following are stealth options used by Django's internals.
+            reset_sequences = options.get("reset_sequences", True)
+            allow_cascade = options.get("allow_cascade", False)
+            inhibit_post_migrate = options.get("inhibit_post_migrate", False)
+    
+            self.style = no_style()
+    
+            # Import the 'management' module within each installed app, to register
+            # dispatcher events.
+            for app_config in apps.get_app_configs():
+                try:
+                    import_module(".management", app_config.name)
+                except ImportError:
+                    pass
+    
+            sql_list = sql_flush(
+                self.style,
+                connection,
+                reset_sequences=reset_sequences,
+                allow_cascade=allow_cascade,
+            )
+    
+            if interactive:
+                confirm = input(
+                    """You have requested a flush of the database.
+    This will IRREVERSIBLY DESTROY all data currently in the "%s" database,
+    and return each table to an empty state.
+    Are you sure you want to do this?
+    
+        Type 'yes' to continue, or 'no' to cancel: """
+                    % connection.settings_dict["NAME"]
+                )
+            else:
+                confirm = "yes"
+    
+            if confirm == "yes":
+                try:
+                    connection.ops.execute_sql_flush(sql_list)
+                except Exception as exc:
+>                   raise CommandError(
+                        "Database %s couldn't be flushed. Possible reasons:\n"
+                        "  * The database isn't running or isn't configured correctly.\n"
+                        "  * At least one of the expected database tables doesn't exist.\n"
+                        "  * The SQL was invalid.\n"
+                        "Hint: Look at the output of 'django-admin sqlflush'. "
+                        "That's the SQL this command wasn't able to run."
+                        % (connection.settings_dict["NAME"],)
+                    ) from exc
+E                   django.core.management.base.CommandError: Database test_adprms couldn't be flushed. Possible reasons:
+E                     * The database isn't running or isn't configured correctly.
+E                     * At least one of the expected database tables doesn't exist.
+E                     * The SQL was invalid.
+E                   Hint: Look at the output of 'django-admin sqlflush'. That's the SQL this command wasn't able to run.
+
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/core/management/commands/flush.py:76: CommandError
+_ ERROR at teardown of test_ledger_posting_idempotency_period_lock_cash_cap_and_independent_3way_deposit _
+
+self = <django.db.backends.utils.CursorWrapper object at 0x7fbb1e2e6b90>
+sql = 'TRUNCATE "portfolio_partyidentity", "auth_group", "documents_documentasset", "ledger_depositmovement", "ledger_closec...h", "django_content_type", "token_blacklist_blacklistedtoken", "portfolio_ownerentity", "gateways_gatewaytransaction";'
+params = None
+ignored_wrapper_args = (False, {'connection': <DatabaseWrapper vendor='postgresql' alias='default'>, 'cursor': <django.db.backends.utils.CursorWrapper object at 0x7fbb1e2e6b90>})
+
+    def _execute(self, sql, params, *ignored_wrapper_args):
+        # Raise a warning during app initialization (stored_app_configs is only
+        # ever set during testing).
+        if not apps.ready and not apps.stored_app_configs:
+            warnings.warn(self.APPS_NOT_READY_WARNING_MSG, category=RuntimeWarning)
+        self.db.validate_no_broken_transaction()
+        with self.db.wrap_database_errors:
+            if params is None:
+                # params default might be backend specific.
+>               return self.cursor.execute(sql)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^
+
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/db/backends/utils.py:103: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <django.db.backends.postgresql.base.Cursor [closed] [IDLE] (host=127.0.0.1 user=adprms_app database=test_adprms) at 0x7fbb1f5693d0>
+query = 'TRUNCATE "portfolio_partyidentity", "auth_group", "documents_documentasset", "ledger_depositmovement", "ledger_closec...h", "django_content_type", "token_blacklist_blacklistedtoken", "portfolio_ownerentity", "gateways_gatewaytransaction";'
+params = None, prepare = None, binary = None
+
+    def execute(
+        self,
+        query: Query,
+        params: Params | None = None,
+        *,
+        prepare: bool | None = None,
+        binary: bool | None = None,
+    ) -> Self:
+        """
+        Execute a query or command to the database.
+        """
+        try:
+            with self._conn.lock:
+                self._conn.wait(
+                    self._execute_gen(query, params, prepare=prepare, binary=binary)
+                )
+        except e._NO_TRACEBACK as ex:
+>           raise ex.with_traceback(None)
+E           psycopg.errors.InsufficientPrivilege: permission denied for table portfolio_partyidentity
+
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/psycopg/cursor.py:117: InsufficientPrivilege
+
+The above exception was the direct cause of the following exception:
+
+self = <django.core.management.commands.flush.Command object at 0x7fbb1e2e59d0>
+options = {'verbosity': 0, 'settings': None, 'pythonpath': None, 'traceback': False, ...}
+
+        def handle(self, **options):
+            database = options["database"]
+            connection = connections[database]
+            verbosity = options["verbosity"]
+            interactive = options["interactive"]
+            # The following are stealth options used by Django's internals.
+            reset_sequences = options.get("reset_sequences", True)
+            allow_cascade = options.get("allow_cascade", False)
+            inhibit_post_migrate = options.get("inhibit_post_migrate", False)
+    
+            self.style = no_style()
+    
+            # Import the 'management' module within each installed app, to register
+            # dispatcher events.
+            for app_config in apps.get_app_configs():
+                try:
+                    import_module(".management", app_config.name)
+                except ImportError:
+                    pass
+    
+            sql_list = sql_flush(
+                self.style,
+                connection,
+                reset_sequences=reset_sequences,
+                allow_cascade=allow_cascade,
+            )
+    
+            if interactive:
+                confirm = input(
+                    """You have requested a flush of the database.
+    This will IRREVERSIBLY DESTROY all data currently in the "%s" database,
+    and return each table to an empty state.
+    Are you sure you want to do this?
+    
+        Type 'yes' to continue, or 'no' to cancel: """
+                    % connection.settings_dict["NAME"]
+                )
+            else:
+                confirm = "yes"
+    
+            if confirm == "yes":
+                try:
+>                   connection.ops.execute_sql_flush(sql_list)
+
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/core/management/commands/flush.py:74: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/db/backends/base/operations.py:473: in execute_sql_flush
+    cursor.execute(sql)
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/db/backends/utils.py:79: in execute
+    return self._execute_with_wrappers(
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/db/backends/utils.py:92: in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/db/backends/utils.py:100: in _execute
+    with self.db.wrap_database_errors:
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/db/utils.py:91: in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/db/backends/utils.py:103: in _execute
+    return self.cursor.execute(sql)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <django.db.backends.postgresql.base.Cursor [closed] [IDLE] (host=127.0.0.1 user=adprms_app database=test_adprms) at 0x7fbb1f5693d0>
+query = 'TRUNCATE "portfolio_partyidentity", "auth_group", "documents_documentasset", "ledger_depositmovement", "ledger_closec...h", "django_content_type", "token_blacklist_blacklistedtoken", "portfolio_ownerentity", "gateways_gatewaytransaction";'
+params = None, prepare = None, binary = None
+
+    def execute(
+        self,
+        query: Query,
+        params: Params | None = None,
+        *,
+        prepare: bool | None = None,
+        binary: bool | None = None,
+    ) -> Self:
+        """
+        Execute a query or command to the database.
+        """
+        try:
+            with self._conn.lock:
+                self._conn.wait(
+                    self._execute_gen(query, params, prepare=prepare, binary=binary)
+                )
+        except e._NO_TRACEBACK as ex:
+>           raise ex.with_traceback(None)
+E           django.db.utils.ProgrammingError: permission denied for table portfolio_partyidentity
+
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/psycopg/cursor.py:117: ProgrammingError
+
+The above exception was the direct cause of the following exception:
+
+request = <SubRequest '_django_db_helper' for <Function test_ledger_posting_idempotency_period_lock_cash_cap_and_independent_3way_deposit>>
+django_db_setup = None
+django_db_blocker = <pytest_django.plugin.DjangoDbBlocker object at 0x7fbb26090550>
+
+    @pytest.fixture
+    def _django_db_helper(
+        request: pytest.FixtureRequest,
+        django_db_setup: None,  # noqa: ARG001
+        django_db_blocker: DjangoDbBlocker,
+    ) -> Generator[None]:
+        if is_django_unittest(request):
+            yield
+            return
+    
+        from django import VERSION
+    
+        marker = request.node.get_closest_marker("django_db")
+        if marker:
+            (
+                transactional,
+                reset_sequences,
+                databases,
+                serialized_rollback,
+                available_apps,
+            ) = validate_django_db(marker)
+        else:
+            (
+                transactional,
+                reset_sequences,
+                databases,
+                serialized_rollback,
+                available_apps,
+            ) = False, False, None, False, None
+    
+        transactional = (
+            transactional
+            or reset_sequences
+            or ("transactional_db" in request.fixturenames or "live_server" in request.fixturenames)
+        )
+        reset_sequences = reset_sequences or ("django_db_reset_sequences" in request.fixturenames)
+        serialized_rollback = serialized_rollback or (
+            "django_db_serialized_rollback" in request.fixturenames
+        )
+    
+        with django_db_blocker.unblock():
+            import django.db
+            import django.test
+    
+            if transactional:
+                test_case_class = django.test.TransactionTestCase
+            else:
+                test_case_class = django.test.TestCase
+    
+            _reset_sequences = reset_sequences
+            _serialized_rollback = serialized_rollback
+            _databases = databases
+            _available_apps = available_apps
+    
+            class PytestDjangoTestCase(test_case_class):  # type: ignore[misc,valid-type]
+                reset_sequences = _reset_sequences
+                serialized_rollback = _serialized_rollback
+                if _databases is not None:
+                    databases = _databases
+                if _available_apps is not None:
+                    available_apps = _available_apps
+    
+                # For non-transactional tests, skip executing `django.test.TestCase`'s
+                # `setUpClass`/`tearDownClass`, only execute the super class ones.
+                #
+                # `TestCase`'s class setup manages the `setUpTestData`/class-level
+                # transaction functionality. We don't use it; instead we (will) offer
+                # our own alternatives. So it only adds overhead, and does some things
+                # which conflict with our (planned) functionality, particularly, it
+                # closes all database connections in `tearDownClass` which inhibits
+                # wrapping tests in higher-scoped transactions.
+                #
+                # It's possible a new version of Django will add some unrelated
+                # functionality to these methods, in which case skipping them completely
+                # would not be desirable. Let's cross that bridge when we get there...
+                if not transactional:
+    
+                    @classmethod
+                    def setUpClass(cls) -> None:
+                        super(django.test.TestCase, cls).setUpClass()
+    
+                    @classmethod
+                    def tearDownClass(cls) -> None:
+                        super(django.test.TestCase, cls).tearDownClass()
+    
+            PytestDjangoTestCase.setUpClass()
+    
+            test_case = PytestDjangoTestCase(methodName="__init__")
+            if VERSION >= (6, 0):
+                pre_setup_ran_eagerly = PytestDjangoTestCase._pre_setup_ran_eagerly
+            else:
+                pre_setup_ran_eagerly = getattr(PytestDjangoTestCase, "_pre_setup_ran_eagerly", False)
+            if not pre_setup_ran_eagerly:
+                # For a TransactionTestCase, setUpClass() has already run _pre_setup() and set
+                # this flag to say so.
+                test_case._pre_setup()
+    
+            yield
+    
+>           test_case._post_teardown()
+
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/pytest_django/fixtures.py:305: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/test/testcases.py:1202: in _post_teardown
+    self._fixture_teardown()
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/test/testcases.py:1236: in _fixture_teardown
+    call_command(
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/core/management/__init__.py:194: in call_command
+    return command.execute(*args, **defaults)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/core/management/base.py:459: in execute
+    output = self.handle(*args, **options)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <django.core.management.commands.flush.Command object at 0x7fbb1e2e59d0>
+options = {'verbosity': 0, 'settings': None, 'pythonpath': None, 'traceback': False, ...}
+
+        def handle(self, **options):
+            database = options["database"]
+            connection = connections[database]
+            verbosity = options["verbosity"]
+            interactive = options["interactive"]
+            # The following are stealth options used by Django's internals.
+            reset_sequences = options.get("reset_sequences", True)
+            allow_cascade = options.get("allow_cascade", False)
+            inhibit_post_migrate = options.get("inhibit_post_migrate", False)
+    
+            self.style = no_style()
+    
+            # Import the 'management' module within each installed app, to register
+            # dispatcher events.
+            for app_config in apps.get_app_configs():
+                try:
+                    import_module(".management", app_config.name)
+                except ImportError:
+                    pass
+    
+            sql_list = sql_flush(
+                self.style,
+                connection,
+                reset_sequences=reset_sequences,
+                allow_cascade=allow_cascade,
+            )
+    
+            if interactive:
+                confirm = input(
+                    """You have requested a flush of the database.
+    This will IRREVERSIBLY DESTROY all data currently in the "%s" database,
+    and return each table to an empty state.
+    Are you sure you want to do this?
+    
+        Type 'yes' to continue, or 'no' to cancel: """
+                    % connection.settings_dict["NAME"]
+                )
+            else:
+                confirm = "yes"
+    
+            if confirm == "yes":
+                try:
+                    connection.ops.execute_sql_flush(sql_list)
+                except Exception as exc:
+>                   raise CommandError(
+                        "Database %s couldn't be flushed. Possible reasons:\n"
+                        "  * The database isn't running or isn't configured correctly.\n"
+                        "  * At least one of the expected database tables doesn't exist.\n"
+                        "  * The SQL was invalid.\n"
+                        "Hint: Look at the output of 'django-admin sqlflush'. "
+                        "That's the SQL this command wasn't able to run."
+                        % (connection.settings_dict["NAME"],)
+                    ) from exc
+E                   django.core.management.base.CommandError: Database test_adprms couldn't be flushed. Possible reasons:
+E                     * The database isn't running or isn't configured correctly.
+E                     * At least one of the expected database tables doesn't exist.
+E                     * The SQL was invalid.
+E                   Hint: Look at the output of 'django-admin sqlflush'. That's the SQL this command wasn't able to run.
+
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/core/management/commands/flush.py:76: CommandError
+=================================== FAILURES ===================================
+____________ test_api_rbac_approval_forgery_protection_and_prod_ui _____________
+
+self = <redis.connection.Connection(host=localhost,port=6379,db=0)>
+check_health = True, retry_socket_connect = False
+
+    def connect_check_health(
+        self, check_health: bool = True, retry_socket_connect: bool = True
+    ):
+        if self._sock:
+            return
+        # Track actual retry attempts for error reporting
+        actual_retry_attempts = [0]
+    
+        def failure_callback(error, failure_count):
+            actual_retry_attempts[0] = failure_count
+            self.disconnect(error=error, failure_count=failure_count)
+    
+        try:
+            if retry_socket_connect:
+                sock = self.retry.call_with_retry(
+                    self._connect,
+                    failure_callback,
+                    with_failure_count=True,
+                )
+            else:
+>               sock = self._connect()
+                       ^^^^^^^^^^^^^^^
+
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/connection.py:1055: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/connection.py:1617: in _connect
+    raise err
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <redis.connection.Connection(host=localhost,port=6379,db=0)>
+
+    def _connect(self):
+        "Create a TCP socket connection"
+        # we want to mimic what socket.create_connection does to support
+        # ipv4/ipv6, but we want to set options prior to calling
+        # socket.connect()
+        err = None
+    
+        for res in socket.getaddrinfo(
+            self.host, self.port, self.socket_type, socket.SOCK_STREAM
+        ):
+            family, socktype, proto, canonname, socket_address = res
+            sock = None
+            try:
+                sock = socket.socket(family, socktype, proto)
+                # TCP_NODELAY
+                sock.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
+    
+                # TCP_KEEPALIVE
+                if self.socket_keepalive:
+                    sock.setsockopt(socket.SOL_SOCKET, socket.SO_KEEPALIVE, 1)
+                    for k, v in self.socket_keepalive_options.items():
+                        sock.setsockopt(socket.IPPROTO_TCP, k, v)
+    
+                # set the socket_connect_timeout before we connect
+                sock.settimeout(self.socket_connect_timeout)
+    
+                # connect
+>               sock.connect(socket_address)
+E               ConnectionRefusedError: [Errno 111] Connection refused
+
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/connection.py:1601: ConnectionRefusedError
+
+During handling of the above exception, another exception occurred:
+
+tmp_path = PosixPath('/tmp/pytest-of-runner/pytest-0/test_api_rbac_approval_forgery0')
+
+    @pytest.mark.django_db(transaction=True)
+    def test_api_rbac_approval_forgery_protection_and_prod_ui(tmp_path):
+        with transaction.atomic():
+            owner = OwnerEntity.objects.create(
+                code='OWN-API-A',
+                name='API Owner A',
+                entity_type='Undetermined',
+                effective_date=date(2026, 1, 1),
+            )
+            bind_postgres_rls_owner('OWN-API-A')
+    
+            AccountingPeriod.objects.create(
+                owner=owner,
+                fiscal_year_ec=2019,
+                month_index=3,
+                period_code='2019-03',
+                month_name_en='Hidar',
+                start_date_gc=date(2026, 11, 10),
+                end_date_gc=date(2026, 12, 9),
+            )
+            LedgerAccount.objects.create(owner=owner, code='1020', name='CBE Bank', category='Asset', normal_balance='Debit')
+            LedgerAccount.objects.create(owner=owner, code='5600', name='Bank Charges', category='Expense', normal_balance='Debit')
+    
+            fin_user = UserAccount.objects.create_user(
+                username='fin_api',
+                password='StrongPassword!2026',
+                user_type='STAFF',
+                actor_id='ACT-FIN-API',
+                role='Finance Officer',
+                owner_code='OWN-API-A',
+                allowed_owners=['OWN-API-A'],
+            )
+            gm_user = UserAccount.objects.create_user(
+                username='gm_api',
+                password='StrongPassword!2026',
+                user_type='STAFF',
+                actor_id='ACT-GM-API',
+                role='General Manager',
+                owner_code='OWN-API-A',
+                allowed_owners=['OWN-API-A'],
+            )
+            auditor_user = UserAccount.objects.create_user(
+                username='aud_api',
+                password='StrongPassword!2026',
+                user_type='STAFF',
+                actor_id='ACT-AUD-API',
+                role='Auditor / Read-only reviewer',
+                owner_code='OWN-API-A',
+                allowed_owners=['OWN-API-A'],
+            )
+            tenant_user = UserAccount.objects.create_user(
+                username='ten_api',
+                password='StrongPassword!2026',
+                user_type='TENANT',
+                actor_id='ACT-TEN-API',
+                role='Tenant',
+                owner_code='OWN-API-A',
+                allowed_owners=['OWN-API-A'],
+                tenant_id_ref=uuid.uuid4(),
+            )
+    
+            client = APIClient()
+    
+            # 1. Unauthenticated blocked
+            assert client.get('/api/v1/ledger/accounts/').status_code == 401
+            assert client.get('/prod/').status_code == 302
+    
+            # 2. Auditor blocked on writes
+            client.force_authenticate(user=auditor_user)
+            assert client.post('/api/v1/ledger/post/', {}, format='json').status_code == 403
+    
+            # 3. Tenant blocked from staff API and /prod/
+            client.force_authenticate(user=tenant_user)
+            assert client.get('/api/v1/ledger/accounts/').status_code == 403
+            client.force_login(tenant_user)
+            assert client.get('/prod/').status_code == 403
+    
+            # 4. Staff /prod/ UI works cleanly
+            client.force_login(fin_user)
+            prod_res = client.get('/prod/')
+            assert prod_res.status_code == 200
+            assert b'AUTHORITATIVE PRODUCTION STACK' in prod_res.content
+    
+            # 5. Manual journal posting requires server-verified ApprovalRequest & prevents self-approval
+            client.force_authenticate(user=fin_user)
+            payload = {
+                'period_code': '2019-03',
+                'entry_date': '2026-11-25',
+                'rule_id': 'Manual',
+                'idempotency_key': 'API-MJ-001',
+                'lines': [
+                    {'account_code': '5600', 'debit_etb': '500.00'},
+                    {'account_code': '1020', 'credit_etb': '500.00'},
+                ],
+            }
+            # Without approval_request_id -> 403
+>           assert client.post('/api/v1/ledger/post/', payload, format='json').status_code == 403
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_api_security_and_backup.py:117: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/rest_framework/test.py:295: in post
+    response = super().post(
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/rest_framework/test.py:209: in post
+    return self.generic('POST', path, data, content_type, **extra)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/rest_framework/test.py:233: in generic
+    return super().generic(
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/test/client.py:676: in generic
+    return self.request(**r)
+           ^^^^^^^^^^^^^^^^^
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/rest_framework/test.py:285: in request
+    return super().request(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/rest_framework/test.py:237: in request
+    request = super().request(**kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/test/client.py:1092: in request
+    self.check_exception(response)
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/test/client.py:805: in check_exception
+    raise exc_value
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/core/handlers/exception.py:55: in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/core/handlers/base.py:197: in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/views/decorators/csrf.py:65: in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/views/generic/base.py:105: in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+apps/common/permissions.py:71: in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/rest_framework/views.py:509: in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/rest_framework/views.py:469: in handle_exception
+    self.raise_uncaught_exception(exc)
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/rest_framework/views.py:480: in raise_uncaught_exception
+    raise exc
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/rest_framework/views.py:497: in dispatch
+    self.initial(request, *args, **kwargs)
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/rest_framework/views.py:416: in initial
+    self.check_throttles(request)
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/rest_framework/views.py:359: in check_throttles
+    if not throttle.allow_request(request, self):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/rest_framework/throttling.py:123: in allow_request
+    self.history = self.cache.get(self.key, [])
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/core/cache/backends/redis.py:187: in get
+    return self._cache.get(key, default)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/core/cache/backends/redis.py:99: in get
+    value = client.get(key)
+            ^^^^^^^^^^^^^^^
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/commands/core.py:3200: in get
+    return self.execute_command("GET", name, keys=[name])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/client.py:867: in execute_command
+    return self._execute_command(*args, **options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/client.py:873: in _execute_command
+    conn = self.connection or pool.get_connection()
+                              ^^^^^^^^^^^^^^^^^^^^^
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/utils.py:258: in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/connection.py:3273: in get_connection
+    connection.connect()
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/connection.py:1028: in connect
+    self.retry.call_with_retry(
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/retry.py:132: in call_with_retry
+    raise error
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/retry.py:120: in call_with_retry
+    return do()
+           ^^^^
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/connection.py:1029: in <lambda>
+    lambda: self.connect_check_health(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <redis.connection.Connection(host=localhost,port=6379,db=0)>
+check_health = True, retry_socket_connect = False
+
+    def connect_check_health(
+        self, check_health: bool = True, retry_socket_connect: bool = True
+    ):
+        if self._sock:
+            return
+        # Track actual retry attempts for error reporting
+        actual_retry_attempts = [0]
+    
+        def failure_callback(error, failure_count):
+            actual_retry_attempts[0] = failure_count
+            self.disconnect(error=error, failure_count=failure_count)
+    
+        try:
+            if retry_socket_connect:
+                sock = self.retry.call_with_retry(
+                    self._connect,
+                    failure_callback,
+                    with_failure_count=True,
+                )
+            else:
+                sock = self._connect()
+        except socket.timeout:
+            e = TimeoutError("Timeout connecting to server")
+            record_error_count(
+                server_address=self.host,
+                server_port=self.port,
+                network_peer_address=self.host,
+                network_peer_port=self.port,
+                error_type=e,
+                retry_attempts=actual_retry_attempts[0],
+            )
+            raise e
+        except OSError as e:
+            e = ConnectionError(self._error_message(e))
+            record_error_count(
+                server_address=getattr(self, "host", None),
+                server_port=getattr(self, "port", None),
+                network_peer_address=getattr(self, "host", None),
+                network_peer_port=getattr(self, "port", None),
+                error_type=e,
+                retry_attempts=actual_retry_attempts[0],
+            )
+>           raise e
+E           redis.exceptions.ConnectionError: Error 111 connecting to localhost:6379. Connection refused.
+
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/connection.py:1077: ConnectionError
+----------------------------- Captured stderr call -----------------------------
+2026-11-18 16:14:59,231 WARNING django.request Unauthorized: /api/v1/ledger/accounts/
+2026-11-18 16:14:59,247 WARNING django.request Forbidden: /api/v1/ledger/post/
+2026-11-18 16:14:59,248 WARNING django.request Forbidden: /api/v1/ledger/accounts/
+2026-11-18 16:14:59,257 WARNING django.request Forbidden: /prod/
+2026-11-18 16:14:59,319 ERROR django.request Internal Server Error: /api/v1/ledger/post/
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/connection.py", line 1055, in connect_check_health
+    sock = self._connect()
+           ^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/connection.py", line 1617, in _connect
+    raise err
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/connection.py", line 1601, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/views/generic/base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/AD-PRMS-Training-Simulation-Architecture-Reference/AD-PRMS-Training-Simulation-Architecture-Reference/backend/apps/common/permissions.py", line 71, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/rest_framework/views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/rest_framework/views.py", line 416, in initial
+    self.check_throttles(request)
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/rest_framework/views.py", line 359, in check_throttles
+    if not throttle.allow_request(request, self):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/rest_framework/throttling.py", line 123, in allow_request
+    self.history = self.cache.get(self.key, [])
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/core/cache/backends/redis.py", line 187, in get
+    return self._cache.get(key, default)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/core/cache/backends/redis.py", line 99, in get
+    value = client.get(key)
+            ^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/commands/core.py", line 3200, in get
+    return self.execute_command("GET", name, keys=[name])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/client.py", line 867, in execute_command
+    return self._execute_command(*args, **options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/client.py", line 873, in _execute_command
+    conn = self.connection or pool.get_connection()
+                              ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/utils.py", line 258, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/connection.py", line 3273, in get_connection
+    connection.connect()
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/connection.py", line 1028, in connect
+    self.retry.call_with_retry(
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/retry.py", line 132, in call_with_retry
+    raise error
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/retry.py", line 120, in call_with_retry
+    return do()
+           ^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/connection.py", line 1029, in <lambda>
+    lambda: self.connect_check_health(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/connection.py", line 1077, in connect_check_health
+    raise e
+redis.exceptions.ConnectionError: Error 111 connecting to localhost:6379. Connection refused.
+------------------------------ Captured log call -------------------------------
+WARNING  django.request:log.py:253 Unauthorized: /api/v1/ledger/accounts/
+WARNING  django.request:log.py:253 Forbidden: /api/v1/ledger/post/
+WARNING  django.request:log.py:253 Forbidden: /api/v1/ledger/accounts/
+WARNING  django.request:log.py:253 Forbidden: /prod/
+ERROR    django.request:log.py:253 Internal Server Error: /api/v1/ledger/post/
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/connection.py", line 1055, in connect_check_health
+    sock = self._connect()
+           ^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/connection.py", line 1617, in _connect
+    raise err
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/connection.py", line 1601, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/views/generic/base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/AD-PRMS-Training-Simulation-Architecture-Reference/AD-PRMS-Training-Simulation-Architecture-Reference/backend/apps/common/permissions.py", line 71, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/rest_framework/views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/rest_framework/views.py", line 416, in initial
+    self.check_throttles(request)
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/rest_framework/views.py", line 359, in check_throttles
+    if not throttle.allow_request(request, self):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/rest_framework/throttling.py", line 123, in allow_request
+    self.history = self.cache.get(self.key, [])
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/core/cache/backends/redis.py", line 187, in get
+    return self._cache.get(key, default)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/core/cache/backends/redis.py", line 99, in get
+    value = client.get(key)
+            ^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/commands/core.py", line 3200, in get
+    return self.execute_command("GET", name, keys=[name])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/client.py", line 867, in execute_command
+    return self._execute_command(*args, **options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/client.py", line 873, in _execute_command
+    conn = self.connection or pool.get_connection()
+                              ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/utils.py", line 258, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/connection.py", line 3273, in get_connection
+    connection.connect()
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/connection.py", line 1028, in connect
+    self.retry.call_with_retry(
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/retry.py", line 132, in call_with_retry
+    raise error
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/retry.py", line 120, in call_with_retry
+    return do()
+           ^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/connection.py", line 1029, in <lambda>
+    lambda: self.connect_check_health(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/redis/connection.py", line 1077, in connect_check_health
+    raise e
+redis.exceptions.ConnectionError: Error 111 connecting to localhost:6379. Connection refused.
+________ test_single_title_holder_five_buildings_and_inter_entity_block ________
+
+    @pytest.mark.django_db(transaction=True)
+    def test_single_title_holder_five_buildings_and_inter_entity_block():
+        with transaction.atomic():
+            owner = OwnerEntity.objects.create(
+                code='OWN-DEKEBO',
+                name='Abdulwehab Dekebo',
+                entity_type='Undetermined',
+                effective_date=date(2026, 1, 1),
+            )
+            bind_postgres_rls_owner('OWN-DEKEBO')
+>           result = seed_single_title_holder_portfolio(owner=owner)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_governance_invariants.py:113: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+args = ()
+kwds = {'owner': <OwnerEntity: OwnerEntity object (1c9f576b-32cd-4a2b-8cdb-f355b28081c5)>}
+
+    @wraps(func)
+    def inner(*args, **kwds):
+        with self._recreate_cm():
+>           return func(*args, **kwds)
+                   ^^^^^^^^^^^^^^^^^^^
+E           TypeError: seed_single_title_holder_portfolio() got an unexpected keyword argument 'owner'
+
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/contextlib.py:81: TypeError
+_______________ test_pr08_failed_gateway_and_sod_reversal_guards _______________
+
+    def test_pr08_failed_gateway_and_sod_reversal_guards():
+        dummy_owner = OwnerEntity(id=uuid.uuid4(), code='OWN-UNIT', name='Unit Owner', entity_type='Individual', effective_date=date(2026, 1, 1))
+>       res = post_ledger_event(
+            owner=dummy_owner,
+            period_code='2019-03',
+            entry_date=date(2026, 11, 24),
+            rule_id='PR-08',
+            source_type='GatewayAttempt',
+            source_id='E1',
+            idempotency_key='UNIT-PR08-E1',
+            description='Failed Telebirr E1',
+            lines=[],
+            maker_actor_id='ACT-COL-01',
+        )
+
+tests/test_ledger_and_tax.py:139: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/contextlib.py:80: in inner
+    with self._recreate_cm():
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/db/transaction.py:198: in __enter__
+    if not connection.get_autocommit():
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <DatabaseWrapper vendor='postgresql' alias='default'>
+
+    def get_autocommit(self):
+        """Get the autocommit state."""
+>       self.ensure_connection()
+E       RuntimeError: Database access not allowed, use the "django_db" mark, or the "db" or "transactional_db" fixtures to enable it.
+
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/django/db/backends/base/base.py:453: RuntimeError
+=============================== warnings summary ===============================
+tests/test_api_security_and_backup.py::test_api_rbac_approval_forgery_protection_and_prod_ui
+tests/test_api_security_and_backup.py::test_api_rbac_approval_forgery_protection_and_prod_ui
+tests/test_api_security_and_backup.py::test_api_rbac_approval_forgery_protection_and_prod_ui
+tests/test_api_security_and_backup.py::test_api_rbac_approval_forgery_protection_and_prod_ui
+tests/test_api_security_and_backup.py::test_api_rbac_approval_forgery_protection_and_prod_ui
+tests/test_api_security_and_backup.py::test_api_rbac_approval_forgery_protection_and_prod_ui
+  /opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/rest_framework/urlpatterns.py:108: RemovedInDjango60Warning: Converter 'drf_format_suffix' is already registered. Support for overriding registered converters is deprecated and will be removed in Django 6.0.
+    register_converter(suffix_converter, converter_name)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: /home/runner/work/AD-PRMS-Training-Simulation-Architecture-Reference/AD-PRMS-Training-Simulation-Architecture-Reference/ci-reports/backend-postgres-junit.xml -
+=========================== short test summary info ============================
+FAILED tests/test_api_security_and_backup.py::test_api_rbac_approval_forgery_protection_and_prod_ui - redis.exceptions.ConnectionError: Error 111 connecting to localhost:6379. Connection refused.
+FAILED tests/test_governance_invariants.py::test_single_title_holder_five_buildings_and_inter_entity_block - TypeError: seed_single_title_holder_portfolio() got an unexpected keyword argument 'owner'
+FAILED tests/test_ledger_and_tax.py::test_pr08_failed_gateway_and_sod_reversal_guards - RuntimeError: Database access not allowed, use the "django_db" mark, or the "db" or "transactional_db" fixtures to enable it.
+ERROR tests/test_api_security_and_backup.py::test_api_rbac_approval_forgery_protection_and_prod_ui - django.core.management.base.CommandError: Database test_adprms couldn't be flushed. Possible reasons:
+  * The database isn't running or isn't configured correctly.
+  * At least one of the expected database tables doesn't exist.
+  * The SQL was invalid.
+Hint: Look at the output of 'django-admin sqlflush'. That's the SQL this command wasn't able to run.
+ERROR tests/test_governance_invariants.py::test_single_title_holder_five_buildings_and_inter_entity_block - django.core.management.base.CommandError: Database test_adprms couldn't be flushed. Possible reasons:
+  * The database isn't running or isn't configured correctly.
+  * At least one of the expected database tables doesn't exist.
+  * The SQL was invalid.
+Hint: Look at the output of 'django-admin sqlflush'. That's the SQL this command wasn't able to run.
+ERROR tests/test_governance_invariants.py::test_audit_event_hash_chain_and_rls_context_isolation - django.core.management.base.CommandError: Database test_adprms couldn't be flushed. Possible reasons:
+  * The database isn't running or isn't configured correctly.
+  * At least one of the expected database tables doesn't exist.
+  * The SQL was invalid.
+Hint: Look at the output of 'django-admin sqlflush'. That's the SQL this command wasn't able to run.
+ERROR tests/test_ledger_and_tax.py::test_ledger_posting_idempotency_period_lock_cash_cap_and_independent_3way_deposit - django.core.management.base.CommandError: Database test_adprms couldn't be flushed. Possible reasons:
+  * The database isn't running or isn't configured correctly.
+  * At least one of the expected database tables doesn't exist.
+  * The SQL was invalid.
+Hint: Look at the output of 'django-admin sqlflush'. That's the SQL this command wasn't able to run.
+============== 3 failed, 12 passed, 6 warnings, 4 errors in 1.67s ==============
+Error: Process completed with exit code 1.
+0s
+0s
+2s
+0s
+0s
+0s

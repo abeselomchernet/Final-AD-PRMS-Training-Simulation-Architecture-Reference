@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AD-PRMS Production Console — Authoritative Django + PostgreSQL Stack</title>
+    <script src="https://unpkg.com/htmx.org@2.0.3" defer></script>
+    <script src="https://unpkg.com/alpinejs@3.14.3/dist/cdn.min.js" defer></script>
+    <style>
+      body { font-family: system-ui, -apple-system, sans-serif; margin: 0; background: #f4f6f9; color: #0f233a; }
+      header { background: #0f233a; color: #ffffff; padding: 14px 24px; display: flex; justify-content: space-between; align-items: center; }
+      .badge { display: inline-block; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 600; background: #166549; color: #ffffff; }
+      .warn { background: #fef3c7; color: #92400e; border: 1px solid #f59e0b; padding: 10px 14px; border-radius: 8px; margin-bottom: 16px; font-size: 13px; }
+      main { max-width: 1120px; margin: 24px auto; padding: 0 20px; }
+      .card { background: #ffffff; border: 1px solid #dfe5ee; border-radius: 10px; padding: 18px; margin-bottom: 16px; }
+      table { width: 100%; border-collapse: collapse; font-size: 13px; }
+      th, td { padding: 8px 10px; border-bottom: 1px solid #e2e8f0; text-align: left; }
+      th { background: #f8fafc; font-weight: 600; }
+      .btn { padding: 7px 12px; border: 1px solid #cbd5e1; border-radius: 6px; background: #ffffff; cursor: pointer; font-size: 13px; font-weight: 600; }
+      .btn-active { background: #0f233a; color: #ffffff; border-color: #0f233a; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div>
+        <strong>AD-PRMS Production Console</strong>
+        <span style="margin-left: 10px; font-size: 12px; opacity: 0.85;">Owner Scope: {{ owner_code }}</span>
+      </div>
+      <span class="badge">AUTHORITATIVE PRODUCTION STACK · DJANGO + {{ db_vendor|upper }} + HTMX</span>
+    </header>
+    <main>
+      <div class="warn">
+        <strong>NON-FISCAL DRAFT TAX STATUS:</strong> Live tax invoicing remains locked until licensed adviser sign-off, ERCA gate verification, and owner activation are completed.
+      </div>
+      {% block content %}{% endblock %}
+    </main>
+  </body>
+</html>

@@ -1,0 +1,134 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --font-display: 'Plus Jakarta Sans', 'Noto Sans Ethiopic', system-ui, sans-serif;
+    --font-sans: 'Public Sans', 'Noto Sans Ethiopic', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+    /* Abyssinian Slate, Forest Emerald & Warm Gold Tokens (Daylight) */
+    --surface-canvas: #f6f7f9;
+    --surface-card: #ffffff;
+    --surface-subtle: #f1f4f8;
+    --surface-rail: #0d1d30;
+    --border-hairline: #dfe5ee;
+    --text-ink: #0f1d2f;
+    --text-muted: #475569;
+
+    --brand-slate-950: #081320;
+    --brand-slate-900: #0f233a;
+    --brand-slate-800: #173454;
+    --brand-emerald: #166549;
+    --brand-emerald-hover: #11513a;
+    --brand-gold: #c28a24;
+    --brand-gold-soft: #f7eedb;
+  }
+
+  .dark {
+    --surface-canvas: #0b131e;
+    --surface-card: #111c2c;
+    --surface-subtle: #162438;
+    --surface-rail: #08101a;
+    --border-hairline: #233349;
+    --text-ink: #f1f5f9;
+    --text-muted: #94a3b8;
+
+    --brand-emerald: #248f64;
+    --brand-emerald-hover: #1e7a55;
+    --brand-gold: #d9a441;
+    --brand-gold-soft: #2a2112;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--surface-canvas);
+    color: var(--text-ink);
+  }
+
+  .dark body {
+    letter-spacing: 0.004em;
+  }
+
+  /* Accessible keyboard-visible focus ring */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 2px solid var(--brand-emerald);
+    outline-offset: 2px;
+  }
+
+  .dark input,
+  .dark select,
+  .dark textarea {
+    color-scheme: dark;
+  }
+
+  [data-locale="am"] {
+    line-height: 1.65;
+    letter-spacing: 0.005em;
+  }
+
+  [data-locale="am"] table th,
+  [data-locale="am"] table td {
+    line-height: 1.55;
+  }
+
+  [data-locale="am"] button {
+    line-height: 1.45;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+  }
+
+  code, pre, .font-mono {
+    font-family: var(--font-mono);
+  }
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Institutional scrollbars for both themes */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #edf1f6;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #0f1926;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c4cfdc;
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #2c3f59;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
