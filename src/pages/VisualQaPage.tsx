@@ -58,7 +58,7 @@ export const VisualQaPage: React.FC = () => {
   };
 
   return (
-    <div ref={containerRef} className="space-y-6">
+    <div ref={containerRef} className="space-y-6 min-w-0 max-w-full">
       <GovernanceCallout
         title={biText(
           locale,
@@ -116,11 +116,11 @@ export const VisualQaPage: React.FC = () => {
       )}
 
       {/* 1. Ethiopian / Gregorian / Dual Calendar Matrix */}
-      <section className="bg-white dark:bg-[#111C2C] border border-[#DFE5EE] dark:border-[#233349] rounded-xl overflow-hidden shadow-xs">
-        <div className="px-5 py-3.5 border-b border-[#DFE5EE] dark:border-[#233349] bg-[#F8FAFC] dark:bg-[#152236] flex flex-wrap items-center justify-between gap-3">
-          <div className="flex items-center gap-2">
-            <Calendar className="w-4 h-4 text-[#166549] dark:text-emerald-400" />
-            <h2 className="text-sm font-bold text-[#0F233A] dark:text-slate-100">
+      <section className="bg-white dark:bg-[#111C2C] border border-[#DFE5EE] dark:border-[#233349] rounded-xl overflow-hidden shadow-xs min-w-0 max-w-full">
+        <div className="px-5 py-3.5 border-b border-[#DFE5EE] dark:border-[#233349] bg-[#F8FAFC] dark:bg-[#152236] flex flex-wrap items-center justify-between gap-3 min-w-0">
+          <div className="flex items-center gap-2 min-w-0">
+            <Calendar className="w-4 h-4 shrink-0 text-[#166549] dark:text-emerald-400" />
+            <h2 className="text-sm font-bold text-[#0F233A] dark:text-slate-100 break-words min-w-0">
               {biText(
                 locale,
                 'Ethiopian (ዓ.ም), Gregorian & Dual Calendar Matrix (Africa/Addis_Ababa)',
@@ -128,7 +128,7 @@ export const VisualQaPage: React.FC = () => {
               )}
             </h2>
           </div>
-          <div className="flex items-center gap-1.5 text-xs">
+          <div className="flex flex-wrap items-center gap-1.5 text-xs min-w-0">
             {(['gregorian', 'ethiopic', 'dual'] as const).map((m) => (
               <button
                 key={m}
@@ -146,7 +146,7 @@ export const VisualQaPage: React.FC = () => {
           </div>
         </div>
 
-        <div className="overflow-x-auto">
+        <div className="w-full max-w-full min-w-0 overflow-x-auto">
           <table className="w-full text-left text-xs">
             <thead className="bg-[#F8FAFC] dark:bg-[#152236] text-slate-600 dark:text-slate-300 border-b border-[#DFE5EE] dark:border-[#233349]">
               <tr>
@@ -191,26 +191,28 @@ export const VisualQaPage: React.FC = () => {
       </section>
 
       {/* 2. Long Amharic Wrapping & Status Stress Test */}
-      <section className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white dark:bg-[#111C2C] border border-[#DFE5EE] dark:border-[#233349] rounded-xl p-5 space-y-4 text-xs shadow-xs">
-          <div className="flex items-center gap-2 pb-3 border-b border-[#DFE5EE] dark:border-[#233349]">
-            <Languages className="w-4 h-4 text-[#166549] dark:text-emerald-400" />
-            <h2 className="text-sm font-bold text-[#0F233A] dark:text-slate-100">
+      <section className="grid grid-cols-1 lg:grid-cols-2 gap-6 min-w-0">
+        <div className="bg-white dark:bg-[#111C2C] border border-[#DFE5EE] dark:border-[#233349] rounded-xl p-5 space-y-4 text-xs shadow-xs min-w-0 max-w-full">
+          <div className="flex items-center gap-2 pb-3 border-b border-[#DFE5EE] dark:border-[#233349] min-w-0">
+            <Languages className="w-4 h-4 shrink-0 text-[#166549] dark:text-emerald-400" />
+            <h2 className="text-sm font-bold text-[#0F233A] dark:text-slate-100 break-words min-w-0">
               {biText(locale, 'Long Amharic String & Control Wrapping Test', 'ረጅም የአማርኛ ጽሑፍ እና ቁልፎች መፈተሻ')}
             </h2>
           </div>
 
-          <div className="space-y-3">
+          <div className="space-y-3 min-w-0">
             {LONG_AMHARIC_STRINGS.map((item) => (
               <div
                 key={item.context}
-                className="border border-[#DFE5EE] dark:border-[#233349] rounded-lg p-3 bg-[#F8FAFC] dark:bg-[#152236] space-y-2"
+                className="border border-[#DFE5EE] dark:border-[#233349] rounded-lg p-3 bg-[#F8FAFC] dark:bg-[#152236] space-y-2 min-w-0"
               >
-                <p className="font-mono text-[11px] text-slate-500 dark:text-slate-400">{item.context}</p>
-                <div className="flex flex-wrap gap-2 items-center">
+                <p className="font-mono text-[11px] text-slate-500 dark:text-slate-400 break-words">
+                  {item.context}
+                </p>
+                <div className="flex flex-wrap gap-2 items-center min-w-0">
                   <button
                     type="button"
-                    className="px-3.5 py-2 rounded-lg bg-[#166549] hover:bg-[#12533B] dark:bg-[#248F64] dark:hover:bg-[#1E7A55] text-white font-semibold text-left leading-snug transition-colors cursor-pointer"
+                    className="max-w-full min-w-0 break-words px-3.5 py-2 rounded-lg bg-[#166549] hover:bg-[#12533B] dark:bg-[#248F64] dark:hover:bg-[#1E7A55] text-white font-semibold text-left leading-snug transition-colors cursor-pointer"
                   >
                     {locale === 'am' ? item.am : item.en}
                   </button>
@@ -237,45 +239,45 @@ export const VisualQaPage: React.FC = () => {
         </div>
 
         {/* 3. DEMO Printable Receipt Layout Verification (intentionally crisp light paper) */}
-        <div className="bg-white dark:bg-[#111C2C] border border-[#DFE5EE] dark:border-[#233349] rounded-xl p-5 space-y-4 text-xs shadow-xs">
-          <div className="flex items-center justify-between gap-2 pb-3 border-b border-[#DFE5EE] dark:border-[#233349]">
-            <div className="flex items-center gap-2">
-              <Printer className="w-4 h-4 text-[#0F233A] dark:text-slate-100" />
-              <h2 className="text-sm font-bold text-[#0F233A] dark:text-slate-100">
+        <div className="bg-white dark:bg-[#111C2C] border border-[#DFE5EE] dark:border-[#233349] rounded-xl p-5 space-y-4 text-xs shadow-xs min-w-0 max-w-full">
+          <div className="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-[#DFE5EE] dark:border-[#233349] min-w-0">
+            <div className="flex items-center gap-2 min-w-0">
+              <Printer className="w-4 h-4 shrink-0 text-[#0F233A] dark:text-slate-100" />
+              <h2 className="text-sm font-bold text-[#0F233A] dark:text-slate-100 break-words min-w-0">
                 {biText(locale, 'Printable DEMO Receipt Bilingual Check', 'የሚታተም DEMO ደረሰኝ ቅድመ-ዕይታ ፍተሻ')}
               </h2>
             </div>
             <StatusLabel label="Issued — Demo Only" />
           </div>
 
-          <div className="border-2 border-dashed border-amber-400 rounded-lg p-4 bg-white text-slate-900 space-y-3">
-            <div className="flex items-center justify-between gap-2 pb-2 border-b border-amber-200">
-              <span className="font-bold text-red-800 flex items-center gap-1.5">
+          <div className="border-2 border-dashed border-amber-400 rounded-lg p-4 bg-white text-slate-900 space-y-3 min-w-0">
+            <div className="flex flex-wrap items-center justify-between gap-2 pb-2 border-b border-amber-200 min-w-0">
+              <span className="font-bold text-red-800 flex items-center gap-1.5 min-w-0 break-words">
                 <ShieldAlert className="w-4 h-4 shrink-0" />
-                SYNTHETIC DEMO RECEIPT — NOT LEGALLY VALID
+                <span>SYNTHETIC DEMO RECEIPT — NOT LEGALLY VALID</span>
               </span>
-              <span className="font-mono text-[11px] text-slate-600">RCT-SYNTH-QA-001</span>
+              <span className="font-mono text-[11px] text-slate-600 shrink-0">RCT-SYNTH-QA-001</span>
             </div>
-            <dl className="grid grid-cols-2 gap-2.5">
-              <div>
+            <dl className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 min-w-0">
+              <div className="min-w-0">
                 <dt className="text-slate-500">{biText(locale, 'Owner Scope', 'ባለቤት')}</dt>
-                <dd className="font-semibold text-[#0F233A]">{activeOwner.name}</dd>
+                <dd className="font-semibold text-[#0F233A] break-words">{activeOwner.name}</dd>
               </div>
-              <div>
+              <div className="min-w-0">
                 <dt className="text-slate-500">{biText(locale, 'Receipt Date', 'የደረሰኝ ቀን')}</dt>
-                <dd className="font-mono text-slate-900">
+                <dd className="font-mono text-slate-900 break-words">
                   {formatDateDisplay('2026-11-12', locale, dateMode)}
                 </dd>
               </div>
-              <div>
+              <div className="min-w-0">
                 <dt className="text-slate-500">{biText(locale, 'Amount (Synthetic)', 'መጠን (ሰው-ሠራሽ)')}</dt>
                 <dd className="font-mono font-bold text-[#166549] tabular-nums">
                   {fmtEtb(35000)}
                 </dd>
               </div>
-              <div>
+              <div className="min-w-0">
                 <dt className="text-slate-500">{biText(locale, 'Fiscal Device Status', 'የፊስካል መሣሪያ ሁኔታ')}</dt>
-                <dd className="text-red-800 font-semibold">
+                <dd className="text-red-800 font-semibold break-words">
                   {biText(locale, 'Not Connected / Disabled', 'አልተገናኘም / ታግዷል')}
                 </dd>
               </div>

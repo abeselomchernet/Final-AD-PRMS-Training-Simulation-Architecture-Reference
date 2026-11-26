@@ -214,4 +214,46 @@ test.describe('Full Platform Runtime & Governance Audit (All 22 Modules & Roles)
     }));
     expect(dashOverflow.scrollWidth).toBeLessThanOrEqual(dashOverflow.innerWidth + 1);
   });
+
+  test('Visual QA module at 390px viewport wraps long StatusLabel badges and isolates wide tables without document overflow', async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await signInAs(page, 'gm.demo');
+
+    const aside = await getVisibleSidebar(page);
+    await ensureNavGroupExpanded(aside, 'Training & Reference');
+    await aside.getByRole('button', { name: 'Amharic & Date Visual QA', exact: true }).click();
+    await expect(page.getByText(/Loading workspace module/i)).toBeHidden();
+
+    // Long StatusLabel text is visible and fits within 390px viewport width
+    const longBadge = page
+      .locator('span')
+      .filter({ hasText: 'Unverified — Ethiopian licensed adviser confirmation required.' })
+      .first();
+    await expect(longBadge).toBeVisible();
+    const badgeBox = await longBadge.boundingBox();
+    expect(badgeBox).not.toBeNull();
+    expect(badgeBox!.width).toBeLessThanOrEqual(390);
+
+    const englishMetrics = await page.evaluate(() => ({
+      scrollWidth: document.documentElement.scrollWidth,
+      innerWidth: window.innerWidth,
+    }));
+    expect(
+      englishMetrics.scrollWidth,
+      'Visual QA horizontal overflow in English at 390px'
+    ).toBeLessThanOrEqual(englishMetrics.innerWidth + 1);
+
+    // Switch to Amharic inside Visual QA and verify zero horizontal overflow
+    await page.getByRole('button', { name: /Test Amharic \(አማርኛ\)/i }).click();
+    const amharicMetrics = await page.evaluate(() => ({
+      scrollWidth: document.documentElement.scrollWidth,
+      innerWidth: window.innerWidth,
+    }));
+    expect(
+      amharicMetrics.scrollWidth,
+      'Visual QA horizontal overflow in Amharic at 390px'
+    ).toBeLessThanOrEqual(amharicMetrics.innerWidth + 1);
+  });
 });

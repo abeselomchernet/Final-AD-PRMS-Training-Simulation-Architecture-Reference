@@ -177,6 +177,8 @@ jobs:
           PGPASSWORD: wp2_admin_password
           DATABASE_URL: postgres://adprms_admin:wp2_admin_password@127.0.0.1:5432/adprms
           VERIFY_RESTORE_DATABASE_URL: postgres://adprms_admin:wp2_admin_password@127.0.0.1:5432/restore_verify_db
+          DJANGO_SECRET_KEY: ci-verification-secret-key-not-prod
+          DJANGO_ALLOWED_HOSTS: localhost,127.0.0.1,testserver
           BACKUP_ENCRYPTION_PASSPHRASE: ci-drill-passphrase-not-embedded
           BACKUP_ENCRYPTION_KEY_ID: ci-ephemeral-key-01
           BACKUP_DIR: ci-reports/backups

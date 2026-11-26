@@ -129,10 +129,10 @@ export const StatusLabel: React.FC<{
 
   return (
     <span
-      className={`inline-flex items-center gap-1.5 px-2 py-0.5 text-xs font-medium rounded border whitespace-nowrap shrink-0 ${TONE_MAP[resolved]}`}
+      className={`inline-flex items-center gap-1.5 px-2 py-0.5 text-xs font-medium rounded border max-w-full min-w-0 whitespace-normal break-words text-left leading-snug ${TONE_MAP[resolved]}`}
     >
       <Icon className="w-3.5 h-3.5 shrink-0" />
-      <span>{displayLabel}</span>
+      <span className="min-w-0 break-words">{displayLabel}</span>
     </span>
   );
 };
