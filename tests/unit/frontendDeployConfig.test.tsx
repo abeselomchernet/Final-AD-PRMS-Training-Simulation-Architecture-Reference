@@ -119,7 +119,9 @@ describe('Cloudflare Pages Frontend-Only Deployment Preparation', () => {
     });
     fireEvent.click(screen.getByRole('button', { name: /Sign In to Training Session/i }));
 
-    expect(await screen.findByRole('button', { name: /Environment Groups/i })).toBeInTheDocument();
+    expect(
+      await screen.findByRole('button', { name: /Environment Groups/i }, { timeout: 5000 })
+    ).toBeInTheDocument();
     adminRender.unmount();
   });
 

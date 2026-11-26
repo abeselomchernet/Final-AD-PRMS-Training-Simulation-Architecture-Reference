@@ -86,6 +86,13 @@ jobs:
       - name: Install PostgreSQL 16 client tools & backend requirements
         run: |
           sudo apt-get update -qq
+          if ! apt-cache show postgresql-client-16 >/dev/null 2>&1; then
+            sudo apt-get install -y -qq curl ca-certificates gnupg lsb-release
+            sudo install -d /usr/share/postgresql-common/pgdg
+            sudo curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc -o /usr/share/postgresql-common/pgdg/apt.postgresql.org.asc
+            echo "deb [signed-by=/usr/share/postgresql-common/pgdg/apt.postgresql.org.asc] https://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" | sudo tee /etc/apt/sources.list.d/pgdg.list >/dev/null
+            sudo apt-get update -qq
+          fi
           sudo apt-get install -y -qq postgresql-client-16 openssl
           if [ -d /usr/lib/postgresql/16/bin ]; then
             echo "/usr/lib/postgresql/16/bin" >> "$GITHUB_PATH"

@@ -132,12 +132,12 @@ export const AdministrationPage: React.FC = () => {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 min-w-0">
       {/* Prominent System Administrator Restrictions Box */}
-      <div className="bg-red-50/80 dark:bg-red-950/30 border border-red-200 dark:border-red-800/60 rounded-xl p-4 text-red-950 dark:text-red-200">
-        <div className="flex items-start gap-3">
+      <div className="bg-red-50/80 dark:bg-red-950/30 border border-red-200 dark:border-red-800/60 rounded-xl p-4 text-red-950 dark:text-red-200 min-w-0">
+        <div className="flex items-start gap-3 min-w-0">
           <ShieldAlert className="w-5 h-5 text-red-700 dark:text-red-400 shrink-0 mt-0.5" />
-          <div className="space-y-1.5">
+          <div className="space-y-1.5 min-w-0 flex-1">
             <h2 className="text-sm font-bold">
               {biText(
                 locale,
@@ -173,8 +173,8 @@ export const AdministrationPage: React.FC = () => {
       </div>
 
       {/* Fixed-Session Governance Disclosure Bar (No Mid-Session Role Switch) */}
-      <section className="bg-white dark:bg-[#111C2C] border border-[#DFE5EE] dark:border-[#233349] rounded-xl p-4 flex flex-col lg:flex-row lg:items-center justify-between gap-4 shadow-xs">
-        <div className="space-y-1 text-xs">
+      <section className="bg-white dark:bg-[#111C2C] border border-[#DFE5EE] dark:border-[#233349] rounded-xl p-4 flex flex-col lg:flex-row lg:items-center justify-between gap-4 shadow-xs min-w-0">
+        <div className="space-y-1 text-xs min-w-0">
           <div className="flex flex-wrap items-center gap-2">
             <KeyRound className="w-4 h-4 text-[#166549] dark:text-emerald-400" />
             <span className="font-bold text-[#0F233A] dark:text-slate-100">
@@ -219,8 +219,8 @@ export const AdministrationPage: React.FC = () => {
       </section>
 
       {/* Sub-Navigation Tabs + Primary Actions */}
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <div className="flex flex-wrap items-center gap-1 p-1 bg-[#EAEFF5] dark:bg-[#152236] rounded-xl">
+      <div className="flex flex-wrap items-center justify-between gap-3 min-w-0">
+        <div className="flex flex-wrap items-center gap-1 p-1 bg-[#EAEFF5] dark:bg-[#152236] rounded-xl min-w-0 max-w-full">
           {(
             [
               ['environment', biText(locale, 'Environment Groups', 'የአካባቢ ተለዋዋጮች (Environment)')],

@@ -311,11 +311,11 @@ export const EnvironmentGroupsPanel: React.FC = () => {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 min-w-0">
       {/* Top Overview & Export Action Strip */}
-      <section className="bg-white dark:bg-[#111C2C] border border-[#DFE5EE] dark:border-[#233349] rounded-xl p-5 space-y-4">
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-          <div className="space-y-1">
+      <section className="bg-white dark:bg-[#111C2C] border border-[#DFE5EE] dark:border-[#233349] rounded-xl p-4 sm:p-5 space-y-4 min-w-0">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 min-w-0">
+          <div className="space-y-1 min-w-0">
             <h2 className="text-base font-bold text-[#0F233A] dark:text-slate-100 text-balance">
               {biText(
                 locale,
@@ -330,7 +330,7 @@ export const EnvironmentGroupsPanel: React.FC = () => {
                 'የብራውዘር VITE_* ቅንብሮችን ወዲያውኑ ይተግብሩ፤ የExpress እና Django ተለዋዋጮችን ለ.env ማውጫ ያዘጋጁ።'
               )}
             </p>
-            <div className="flex flex-wrap items-center gap-2 pt-1 text-xs text-slate-600 dark:text-slate-400 font-mono tabular-nums">
+            <div className="flex flex-wrap items-center gap-2 pt-1 text-xs text-slate-600 dark:text-slate-400 font-mono tabular-nums min-w-0">
               <span>{ENV_VARIABLE_REGISTRY.length} Variables</span>
               <span aria-hidden="true">·</span>
               <span>{ENV_GROUPS.length} Service Groups</span>
@@ -339,14 +339,14 @@ export const EnvironmentGroupsPanel: React.FC = () => {
               <span aria-hidden="true">·</span>
               <span>Mode: {activeRuntimeMode}</span>
               <span aria-hidden="true">·</span>
-              <span>
+              <span className="min-w-0 break-words">
                 {activeApiUrl
                   ? `API: ${activeApiUrl}`
                   : 'API: Built-in Office SQLite (Default Training Store)'}
               </span>
               <span aria-hidden="true">·</span>
               <span
-                className={
+                className={`min-w-0 break-words ${
                   diagReport?.overallStatus === 'connected-and-verified' ||
                   diagReport?.overallStatus === 'schema-ready-unauthenticated'
                     ? 'text-[#166549] dark:text-emerald-400 font-semibold'
@@ -355,7 +355,7 @@ export const EnvironmentGroupsPanel: React.FC = () => {
                         diagReport?.overallStatus === 'prohibited-key'
                       ? 'text-red-700 dark:text-red-300 font-semibold'
                       : 'text-amber-700 dark:text-amber-300 font-semibold'
-                }
+                }`}
               >
                 {!savedSupabaseConfigured
                   ? 'Supabase: Offline / Key Not Configured'
@@ -368,7 +368,7 @@ export const EnvironmentGroupsPanel: React.FC = () => {
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center gap-2 shrink-0">
+          <div className="flex flex-wrap items-center gap-2 lg:shrink-0">
             <button
               type="button"
               disabled={!isSystemAdmin}
@@ -394,18 +394,18 @@ export const EnvironmentGroupsPanel: React.FC = () => {
         {!isSystemAdmin ? (
           <div
             role="status"
-            className="rounded-lg border border-amber-300 dark:border-amber-800/70 bg-amber-50/80 dark:bg-amber-950/30 p-3.5 flex items-start gap-2.5 text-xs text-amber-950 dark:text-amber-100"
+            className="rounded-lg border border-amber-300 dark:border-amber-800/70 bg-amber-50/80 dark:bg-amber-950/30 p-3.5 flex items-start gap-2.5 text-xs text-amber-950 dark:text-amber-100 min-w-0"
           >
             <Lock className="w-4 h-4 text-amber-700 dark:text-amber-300 shrink-0 mt-0.5" />
-            <div className="space-y-0.5">
-              <p className="font-semibold">
+            <div className="space-y-0.5 min-w-0 flex-1">
+              <p className="font-semibold break-words">
                 {biText(
                   locale,
                   `Read-Only View for ${currentPersona.role}`,
                   `ለ${currentPersona.role} የንባብ ብቻ እይታ`
                 )}
               </p>
-              <p className="opacity-90">
+              <p className="opacity-90 break-words">
                 {biText(
                   locale,
                   'Only the System Administrator role can edit runtime overrides, reveal secrets, or export .env templates. Sensitive values remain redacted.',
@@ -415,9 +415,9 @@ export const EnvironmentGroupsPanel: React.FC = () => {
             </div>
           </div>
         ) : (
-          <div className="rounded-lg border border-[#DFE5EE] dark:border-[#233349] bg-[#F8FAFC] dark:bg-[#152236] p-3.5 flex items-start gap-2.5 text-xs text-slate-700 dark:text-slate-300">
+          <div className="rounded-lg border border-[#DFE5EE] dark:border-[#233349] bg-[#F8FAFC] dark:bg-[#152236] p-3.5 flex items-start gap-2.5 text-xs text-slate-700 dark:text-slate-300 min-w-0">
             <Sliders className="w-4 h-4 text-[#166549] dark:text-emerald-400 shrink-0 mt-0.5" />
-            <p>
+            <p className="min-w-0 flex-1 break-words">
               {biText(
                 locale,
                 'Security boundary: Browser overrides persist only public VITE_* variables locally. Server secrets stay in transient memory for .env export only and are masked in all audit trail entries.',
@@ -428,8 +428,8 @@ export const EnvironmentGroupsPanel: React.FC = () => {
         )}
 
         {/* Filter Toolbar */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 pt-1">
-          <div className="relative flex-1 max-w-md">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 pt-1 min-w-0">
+          <div className="relative flex-1 min-w-0 max-w-md w-full">
             <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
             <input
               type="search"
@@ -441,11 +441,11 @@ export const EnvironmentGroupsPanel: React.FC = () => {
                 'Filter by key (e.g. VITE_API_BASE_URL, ARIFPAY, DATABASE_URL)...',
                 'በቁልፍ ስም ፈልግ (ምሳሌ፡ VITE_API_BASE_URL, ARIFPAY)...'
               )}
-              className="w-full min-h-[40px] pl-9 pr-3 py-2 rounded-lg border border-[#CBD5E1] dark:border-[#2D405B] bg-white dark:bg-[#152236] text-xs text-slate-900 dark:text-slate-100"
+              className="w-full min-w-0 max-w-full min-h-[40px] pl-9 pr-3 py-2 rounded-lg border border-[#CBD5E1] dark:border-[#2D405B] bg-white dark:bg-[#152236] text-xs text-slate-900 dark:text-slate-100"
             />
           </div>
 
-          <div className="flex flex-wrap items-center gap-1 p-1 bg-[#EAEFF5] dark:bg-[#152236] rounded-lg">
+          <div className="flex flex-wrap items-center gap-1 p-1 bg-[#EAEFF5] dark:bg-[#152236] rounded-lg min-w-0 max-w-full">
             {(
               [
                 ['all', biText(locale, 'All Groups', 'ሁሉም ምድቦች')],
@@ -472,7 +472,7 @@ export const EnvironmentGroupsPanel: React.FC = () => {
         {statusBanner && (
           <div
             role="status"
-            className={`rounded-lg border p-3 text-xs font-medium flex items-center gap-2 ${
+            className={`rounded-lg border p-3 text-xs font-medium flex items-center gap-2 min-w-0 ${
               statusBanner.tone === 'success'
                 ? 'border-emerald-300 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-950/35 text-emerald-900 dark:text-emerald-200'
                 : statusBanner.tone === 'warning'
@@ -485,7 +485,7 @@ export const EnvironmentGroupsPanel: React.FC = () => {
             ) : (
               <AlertTriangle className="w-4 h-4 shrink-0" />
             )}
-            <span>{statusBanner.text}</span>
+            <span className="min-w-0 break-words">{statusBanner.text}</span>
           </div>
         )}
       </section>
@@ -519,26 +519,26 @@ export const EnvironmentGroupsPanel: React.FC = () => {
           </button>
         </section>
       ) : (
-        <form onSubmit={handleSaveBrowserRuntime} className="space-y-5">
-          <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
+        <form onSubmit={handleSaveBrowserRuntime} className="space-y-5 min-w-0">
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-5 min-w-0">
             {filteredGroups.map(({ group, specs }) => {
               const isBrowserGroup = group.primaryScope === 'browser';
               return (
                 <section
                   key={group.id}
-                  className="bg-white dark:bg-[#111C2C] border border-[#DFE5EE] dark:border-[#233349] rounded-xl p-5 flex flex-col justify-between gap-4"
+                  className="bg-white dark:bg-[#111C2C] border border-[#DFE5EE] dark:border-[#233349] rounded-xl p-4 sm:p-5 flex flex-col justify-between gap-4 min-w-0 max-w-full"
                 >
-                  <div className="space-y-4">
+                  <div className="space-y-4 min-w-0">
                     {/* Group Header */}
-                    <div className="flex flex-wrap items-start justify-between gap-2 pb-3 border-b border-[#DFE5EE] dark:border-[#233349]">
-                      <div className="space-y-1">
-                        <h3 className="text-sm font-bold text-[#0F233A] dark:text-slate-100">
+                    <div className="flex flex-wrap items-start justify-between gap-2 pb-3 border-b border-[#DFE5EE] dark:border-[#233349] min-w-0">
+                      <div className="space-y-1 min-w-0 flex-1">
+                        <h3 className="text-sm font-bold text-[#0F233A] dark:text-slate-100 break-words">
                           {locale === 'am' ? group.titleAm : group.titleEn}
                         </h3>
-                        <p className="text-xs text-slate-600 dark:text-slate-400">
+                        <p className="text-xs text-slate-600 dark:text-slate-400 break-words">
                           {locale === 'am' ? group.subtitleAm : group.subtitleEn}
                         </p>
-                        <p className="text-[11px] text-slate-500 dark:text-slate-400 font-mono tabular-nums">
+                        <p className="text-[11px] text-slate-500 dark:text-slate-400 font-mono tabular-nums break-words">
                           {specs.length} {specs.length === 1 ? 'Variable' : 'Variables'}
                           <span aria-hidden="true"> · </span>
                           <span
@@ -574,7 +574,7 @@ export const EnvironmentGroupsPanel: React.FC = () => {
                     </div>
 
                     {/* Variables List */}
-                    <div className="divide-y divide-slate-100 dark:divide-[#1D2D42]">
+                    <div className="divide-y divide-slate-100 dark:divide-[#1D2D42] min-w-0">
                       {specs.map((spec) => {
                         const rawVal = values[spec.key] ?? '';
                         const isRevealed = Boolean(revealedKeys[spec.key]);
@@ -585,11 +585,11 @@ export const EnvironmentGroupsPanel: React.FC = () => {
                         const errorMsg = fieldErrors[spec.key];
 
                         return (
-                          <div key={spec.key} className="py-3 first:pt-0 last:pb-0 space-y-1.5 text-xs">
-                            <div className="flex flex-wrap items-baseline justify-between gap-2">
+                          <div key={spec.key} className="py-3 first:pt-0 last:pb-0 space-y-1.5 text-xs min-w-0">
+                            <div className="flex flex-wrap items-baseline justify-between gap-2 min-w-0">
                               <label
                                 htmlFor={`env-input-${spec.key}`}
-                                className="font-mono font-semibold text-[#0F233A] dark:text-[#E5B85C]"
+                                className="font-mono font-semibold text-[#0F233A] dark:text-[#E5B85C] break-all min-w-0"
                               >
                                 {spec.key}
                               </label>
@@ -628,7 +628,7 @@ export const EnvironmentGroupsPanel: React.FC = () => {
                                 disabled={!isSystemAdmin}
                                 value={displayVal || spec.defaultValue}
                                 onChange={(e) => handleFieldChange(spec, e.target.value)}
-                                className="w-full min-h-[40px] px-3 py-2 border border-[#CBD5E1] dark:border-[#2D405B] bg-white dark:bg-[#152236] text-slate-900 dark:text-slate-100 rounded-lg font-mono text-xs disabled:opacity-60 disabled:cursor-not-allowed"
+                                className="w-full min-w-0 max-w-full min-h-[40px] px-3 py-2 border border-[#CBD5E1] dark:border-[#2D405B] bg-white dark:bg-[#152236] text-slate-900 dark:text-slate-100 rounded-lg font-mono text-xs disabled:opacity-60 disabled:cursor-not-allowed"
                               >
                                 {(spec.options || []).map((opt) => (
                                   <option key={opt} value={opt}>
@@ -637,7 +637,7 @@ export const EnvironmentGroupsPanel: React.FC = () => {
                                 ))}
                               </select>
                             ) : spec.inputKind === 'textarea-pem' ? (
-                              <div className="space-y-1.5">
+                              <div className="space-y-1.5 min-w-0">
                                 <textarea
                                   id={`env-input-${spec.key}`}
                                   rows={2}
@@ -650,7 +650,7 @@ export const EnvironmentGroupsPanel: React.FC = () => {
                                   }
                                   onChange={(e) => handleFieldChange(spec, e.target.value)}
                                   placeholder={spec.placeholder}
-                                  className="w-full px-3 py-2 border border-[#CBD5E1] dark:border-[#2D405B] bg-white dark:bg-[#152236] text-slate-900 dark:text-slate-100 rounded-lg font-mono text-xs disabled:opacity-60 disabled:cursor-not-allowed"
+                                  className="w-full min-w-0 max-w-full px-3 py-2 border border-[#CBD5E1] dark:border-[#2D405B] bg-white dark:bg-[#152236] text-slate-900 dark:text-slate-100 rounded-lg font-mono text-xs disabled:opacity-60 disabled:cursor-not-allowed"
                                 />
                                 {spec.sensitive && isSystemAdmin && (
                                   <button
@@ -673,7 +673,7 @@ export const EnvironmentGroupsPanel: React.FC = () => {
                                 )}
                               </div>
                             ) : (
-                              <div className="relative">
+                              <div className="relative min-w-0">
                                 <input
                                   id={`env-input-${spec.key}`}
                                   type={
@@ -688,7 +688,7 @@ export const EnvironmentGroupsPanel: React.FC = () => {
                                   onChange={(e) => handleFieldChange(spec, e.target.value)}
                                   placeholder={spec.placeholder}
                                   autoComplete="off"
-                                  className={`w-full min-h-[40px] px-3 py-2 border border-[#CBD5E1] dark:border-[#2D405B] bg-white dark:bg-[#152236] text-slate-900 dark:text-slate-100 rounded-lg font-mono text-xs disabled:opacity-60 disabled:cursor-not-allowed ${
+                                  className={`w-full min-w-0 max-w-full min-h-[40px] px-3 py-2 border border-[#CBD5E1] dark:border-[#2D405B] bg-white dark:bg-[#152236] text-slate-900 dark:text-slate-100 rounded-lg font-mono text-xs disabled:opacity-60 disabled:cursor-not-allowed ${
                                     spec.sensitive ? 'pr-10' : ''
                                   }`}
                                 />
@@ -711,14 +711,14 @@ export const EnvironmentGroupsPanel: React.FC = () => {
                               </div>
                             )}
 
-                            <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                            <p className="text-[11px] text-slate-500 dark:text-slate-400 break-words [overflow-wrap:anywhere]">
                               {locale === 'am' ? spec.descriptionAm : spec.descriptionEn}
                             </p>
 
                             {errorMsg && (
                               <p
                                 role="alert"
-                                className="text-[11px] font-semibold text-red-700 dark:text-red-300"
+                                className="text-[11px] font-semibold text-red-700 dark:text-red-300 break-words"
                               >
                                 {errorMsg}
                               </p>
@@ -729,13 +729,13 @@ export const EnvironmentGroupsPanel: React.FC = () => {
                     </div>
 
                     {group.id === 'supabase' && (
-                      <div className="mt-4 pt-3 border-t border-[#DFE5EE] dark:border-[#233349] space-y-3 text-xs">
-                        <div className="flex flex-wrap items-center justify-between gap-2">
-                          <div className="space-y-0.5">
-                            <p className="font-semibold text-[#0F233A] dark:text-slate-100">
+                      <div className="mt-4 pt-3 border-t border-[#DFE5EE] dark:border-[#233349] space-y-3 text-xs min-w-0">
+                        <div className="flex flex-wrap items-center justify-between gap-2 min-w-0">
+                          <div className="space-y-0.5 min-w-0">
+                            <p className="font-semibold text-[#0F233A] dark:text-slate-100 break-words">
                               Live Supabase Connectivity, Auth & Schema Verification
                             </p>
-                            <p className="text-[11px] text-slate-500 dark:text-slate-400 font-mono">
+                            <p className="text-[11px] text-slate-500 dark:text-slate-400 font-mono break-words">
                               Key Type:{' '}
                               {savedKeyClassification === 'publishable'
                                 ? 'sb_publishable_... (Public Key)'
@@ -762,58 +762,58 @@ export const EnvironmentGroupsPanel: React.FC = () => {
                         </div>
 
                         {diagReport && (
-                          <div className="rounded-lg border border-[#DFE5EE] dark:border-[#233349] bg-[#F8FAFC] dark:bg-[#152236] p-3 space-y-2.5">
-                            <p className="font-semibold text-[#0F233A] dark:text-slate-100">
+                          <div className="rounded-lg border border-[#DFE5EE] dark:border-[#233349] bg-[#F8FAFC] dark:bg-[#152236] p-3 space-y-2.5 min-w-0">
+                            <p className="font-semibold text-[#0F233A] dark:text-slate-100 break-words">
                               {diagReport.badgeLabel}
                             </p>
-                            <p className="text-[11px] text-slate-600 dark:text-slate-300 leading-relaxed">
+                            <p className="text-[11px] text-slate-600 dark:text-slate-300 leading-relaxed break-words [overflow-wrap:anywhere]">
                               {diagReport.summary}
                             </p>
 
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] font-mono">
-                              <div className="p-2 rounded bg-white dark:bg-[#111C2C] border border-[#DFE5EE] dark:border-[#233349]">
-                                <p className="font-semibold text-slate-700 dark:text-slate-200">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] font-mono min-w-0">
+                              <div className="p-2 rounded bg-white dark:bg-[#111C2C] border border-[#DFE5EE] dark:border-[#233349] min-w-0">
+                                <p className="font-semibold text-slate-700 dark:text-slate-200 break-words">
                                   Auth API: {diagReport.auth.keyAccepted ? 'Accepted' : 'Not Verified'}
                                   {diagReport.auth.httpStatus ? ` (HTTP ${diagReport.auth.httpStatus})` : ''}
                                 </p>
-                                <p className="text-slate-500 dark:text-slate-400 mt-0.5">
+                                <p className="text-slate-500 dark:text-slate-400 mt-0.5 break-words">
                                   Session:{' '}
                                   {diagReport.auth.sessionActive
                                     ? diagReport.auth.sessionEmail || diagReport.auth.sessionUid
                                     : 'None (Anon)'}
                                 </p>
                                 {diagReport.auth.providers && (
-                                  <p className="text-slate-500 dark:text-slate-400 mt-0.5">
+                                  <p className="text-slate-500 dark:text-slate-400 mt-0.5 break-words">
                                     Providers: Email({diagReport.auth.providers.email ? 'on' : 'off'}) · Google(
                                     {diagReport.auth.providers.google ? 'on' : 'off'}) · Phone(
                                     {diagReport.auth.providers.phone ? 'on' : 'off'})
                                   </p>
                                 )}
                               </div>
-                              <div className="p-2 rounded bg-white dark:bg-[#111C2C] border border-[#DFE5EE] dark:border-[#233349]">
-                                <p className="font-semibold text-slate-700 dark:text-slate-200">
+                              <div className="p-2 rounded bg-white dark:bg-[#111C2C] border border-[#DFE5EE] dark:border-[#233349] min-w-0">
+                                <p className="font-semibold text-slate-700 dark:text-slate-200 break-words">
                                   Data API: {diagReport.dataApi.enabled ? 'Enabled' : 'Disabled / Unreachable'}
                                   {diagReport.dataApi.httpStatus ? ` (HTTP ${diagReport.dataApi.httpStatus})` : ''}
                                 </p>
-                                <p className="text-slate-500 dark:text-slate-400 mt-0.5">
+                                <p className="text-slate-500 dark:text-slate-400 mt-0.5 break-words">
                                   Workspace Sync:{' '}
                                   {diagReport.workspaceSyncOperational
                                     ? 'Operational'
                                     : 'Not Operational'}
                                 </p>
-                                <p className="text-slate-500 dark:text-slate-400 mt-0.5">
+                                <p className="text-slate-500 dark:text-slate-400 mt-0.5 break-words">
                                   Default Store: Office SQLite
                                 </p>
                               </div>
                             </div>
 
                             {diagReport.tables.length > 0 && (
-                              <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5 text-[10px] font-mono">
+                              <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5 text-[10px] font-mono min-w-0">
                                 {diagReport.tables.map((tbl) => (
                                   <div
                                     key={tbl.table}
                                     title={tbl.detail}
-                                    className={`px-2 py-1 rounded border ${
+                                    className={`px-2 py-1 rounded border min-w-0 ${
                                       !tbl.exists
                                         ? 'border-amber-300 dark:border-amber-800 bg-amber-50 dark:bg-amber-950/30 text-amber-900 dark:text-amber-200'
                                         : tbl.accessState === 'anon-exposed'
@@ -848,15 +848,15 @@ export const EnvironmentGroupsPanel: React.FC = () => {
           </div>
 
           {/* Sticky-Free Bottom Action Bar for Browser Overrides */}
-          <section className="bg-white dark:bg-[#111C2C] border border-[#DFE5EE] dark:border-[#233349] rounded-xl p-4 flex flex-wrap items-center justify-between gap-3">
-            <div className="text-xs text-slate-600 dark:text-slate-300">
+          <section className="bg-white dark:bg-[#111C2C] border border-[#DFE5EE] dark:border-[#233349] rounded-xl p-4 flex flex-wrap items-center justify-between gap-3 min-w-0">
+            <div className="text-xs text-slate-600 dark:text-slate-300 min-w-0">
               {biText(
                 locale,
                 'Saving applies browser VITE_* overrides immediately across Supabase, login mode, API client, and WebSocket sync.',
                 'ማስቀመጥ የብራውዘር VITE_* ቅንብሮችን ወዲያውኑ በSupabase፣ በመግቢያ፣ በAPI እና በWebSocket ላይ ይተገብራል።'
               )}
             </div>
-            <div className="flex flex-wrap items-center gap-2 shrink-0">
+            <div className="flex flex-wrap items-center gap-2 sm:shrink-0">
               <button
                 type="button"
                 disabled={!isSystemAdmin || activeOverrideCount === 0}
