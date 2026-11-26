@@ -465,3 +465,52 @@ export function verifyTelebirrWebhookSignature(params: {
     return { ok: false, status: 403, reason: 'Invalid Telebirr RSA signature.' };
   }
 }
+
+export const AUTH_RATE_LIMIT_PRODUCTION_DEFAULT = 10;
+export const AUTH_RATE_LIMIT_DEV_DEFAULT = 100;
+export const AUTH_RATE_LIMIT_OVERRIDE_MIN = 1;
+export const AUTH_RATE_LIMIT_OVERRIDE_MAX = 500;
+export const AUTH_RATE_LIMIT_PLAYWRIGHT_DEFAULT = 120;
+
+export function resolveAuthRateLimitMax(
+  override: number | undefined,
+  isProductionEnv: boolean
+): number {
+  if (override === undefined) {
+    return isProductionEnv ? AUTH_RATE_LIMIT_PRODUCTION_DEFAULT : AUTH_RATE_LIMIT_DEV_DEFAULT;
+  }
+  if (
+    typeof override !== 'number' ||
+    !Number.isInteger(override) ||
+    override < AUTH_RATE_LIMIT_OVERRIDE_MIN ||
+    override > AUTH_RATE_LIMIT_OVERRIDE_MAX
+  ) {
+    throw new RangeError(
+      `Invalid authRateLimitMax override (${String(override)}): must be an integer between ${AUTH_RATE_LIMIT_OVERRIDE_MIN} and ${AUTH_RATE_LIMIT_OVERRIDE_MAX}.`
+    );
+  }
+  return override;
+}
+
+export function parsePlaywrightAuthRateLimitOverride(
+  env: NodeJS.ProcessEnv = process.env
+): number {
+  if (env.ADPRMS_E2E_HARNESS !== '1') {
+    throw new Error(
+      'Refusing Playwright E2E rate-limit override outside designated ADPRMS_E2E_HARNESS=1 launcher.'
+    );
+  }
+  const raw = env.ADPRMS_E2E_AUTH_RATE_LIMIT_MAX;
+  if (raw === undefined || raw.trim() === '') {
+    return AUTH_RATE_LIMIT_PLAYWRIGHT_DEFAULT;
+  }
+  const trimmed = raw.trim();
+  if (!/^[1-9]\d*$/.test(trimmed)) {
+    throw new RangeError(
+      `Invalid ADPRMS_E2E_AUTH_RATE_LIMIT_MAX (${raw}): must be a positive integer between ${AUTH_RATE_LIMIT_OVERRIDE_MIN} and ${AUTH_RATE_LIMIT_OVERRIDE_MAX}.`
+    );
+  }
+  const parsed = Number(trimmed);
+  return resolveAuthRateLimitMax(parsed, true);
+}
+

@@ -5,7 +5,11 @@ import http from 'node:http';
 import os from 'node:os';
 import path from 'node:path';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
-import { resolveBindHost } from '../../server/security';
+import {
+  parsePlaywrightAuthRateLimitOverride,
+  resolveAuthRateLimitMax,
+  resolveBindHost,
+} from '../../server/security';
 
 let baseUrl = '';
 let srv: http.Server;
@@ -214,5 +218,146 @@ describe('Express Training Server Security, Loopback Default & Fail-Closed Webho
       body: JSON.stringify({ merch_order_id: 'TB-UNIT-1', sign: 'dummy' }),
     });
     expect(tbFailClosed.status).toBe(503);
+  });
+
+  it('keeps production authRateLimitMax=10 by default, ignores E2E env vars on normal startup, validates overrides, and allows designated E2E harness', async () => {
+    // 1. Validation & fail-closed guarantees on invalid/out-of-range overrides
+    expect(resolveAuthRateLimitMax(undefined, true)).toBe(10);
+    expect(resolveAuthRateLimitMax(undefined, false)).toBe(100);
+    expect(resolveAuthRateLimitMax(120, true)).toBe(120);
+    expect(() => resolveAuthRateLimitMax(0, true)).toThrow(RangeError);
+    expect(() => resolveAuthRateLimitMax(-5, true)).toThrow(RangeError);
+    expect(() => resolveAuthRateLimitMax(1.5, true)).toThrow(RangeError);
+    expect(() => resolveAuthRateLimitMax(501, true)).toThrow(RangeError);
+    expect(() => resolveAuthRateLimitMax(Number.NaN, true)).toThrow(RangeError);
+
+    expect(() =>
+      parsePlaywrightAuthRateLimitOverride({ ADPRMS_E2E_AUTH_RATE_LIMIT_MAX: '120' })
+    ).toThrow(/ADPRMS_E2E_HARNESS=1/);
+    expect(parsePlaywrightAuthRateLimitOverride({ ADPRMS_E2E_HARNESS: '1' })).toBe(120);
+    expect(
+      parsePlaywrightAuthRateLimitOverride({
+        ADPRMS_E2E_HARNESS: '1',
+        ADPRMS_E2E_AUTH_RATE_LIMIT_MAX: '75',
+      })
+    ).toBe(75);
+    expect(() =>
+      parsePlaywrightAuthRateLimitOverride({
+        ADPRMS_E2E_HARNESS: '1',
+        ADPRMS_E2E_AUTH_RATE_LIMIT_MAX: '0',
+      })
+    ).toThrow(RangeError);
+    expect(() =>
+      parsePlaywrightAuthRateLimitOverride({
+        ADPRMS_E2E_HARNESS: '1',
+        ADPRMS_E2E_AUTH_RATE_LIMIT_MAX: '999',
+      })
+    ).toThrow(RangeError);
+    expect(() =>
+      parsePlaywrightAuthRateLimitOverride({
+        ADPRMS_E2E_HARNESS: '1',
+        ADPRMS_E2E_AUTH_RATE_LIMIT_MAX: 'not-a-number',
+      })
+    ).toThrow(RangeError);
+
+    const prevNodeEnv = process.env.NODE_ENV;
+    const prevHarness = process.env.ADPRMS_E2E_HARNESS;
+    const prevMax = process.env.ADPRMS_E2E_AUTH_RATE_LIMIT_MAX;
+    const prevDbPath = process.env.OFFICE_DB_PATH;
+    const prodTmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'adprms-prod-rl-'));
+    const harnessTmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'adprms-e2e-rl-'));
+    let prodSrv: http.Server | undefined;
+    let harnessSrv: http.Server | undefined;
+
+    try {
+      const { createTrainingServerApp } = await import('../../server');
+
+      // Invalid explicit option to createTrainingServerApp fails safely
+      await expect(
+        createTrainingServerApp({ attachVite: false, dbPath: path.join(prodTmpDir, 'bad.sqlite'), authRateLimitMax: 0 })
+      ).rejects.toThrow(RangeError);
+
+      // 2. Ordinary production startup ignores ADPRMS_E2E_* env vars and enforces strictly 10 attempts
+      process.env.NODE_ENV = 'production';
+      process.env.ADPRMS_E2E_HARNESS = '1';
+      process.env.ADPRMS_E2E_AUTH_RATE_LIMIT_MAX = '120';
+
+      const { app: prodApp } = await createTrainingServerApp({
+        attachVite: false,
+        dbPath: path.join(prodTmpDir, 'prod.sqlite'),
+      });
+      const prodUrl = await new Promise<string>((resolve) => {
+        prodSrv = http.createServer(prodApp);
+        prodSrv.listen(0, '127.0.0.1', () => {
+          const addr = prodSrv!.address();
+          resolve(`http://127.0.0.1:${typeof addr === 'object' && addr ? addr.port : 0}`);
+        });
+      });
+
+      for (let i = 1; i <= 10; i += 1) {
+        const res = await fetch(`${prodUrl}/api/office/auth/login`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username: 'gm.demo', password: 'WRONG' }),
+        });
+        expect(res.status, `Attempt ${i} should not hit 429`).toBe(401);
+      }
+      const eleventhProd = await fetch(`${prodUrl}/api/office/auth/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username: 'gm.demo', password: 'WRONG' }),
+      });
+      expect(eleventhProd.status).toBe(429);
+
+      // 3. Designated Playwright harness option raises limit to bounded integer (e.g. 14) under production mode
+      const harnessLimit = parsePlaywrightAuthRateLimitOverride({
+        ADPRMS_E2E_HARNESS: '1',
+        ADPRMS_E2E_AUTH_RATE_LIMIT_MAX: '14',
+      });
+      const { app: harnessApp } = await createTrainingServerApp({
+        attachVite: false,
+        dbPath: path.join(harnessTmpDir, 'e2e.sqlite'),
+        authRateLimitMax: harnessLimit,
+      });
+      const harnessUrl = await new Promise<string>((resolve) => {
+        harnessSrv = http.createServer(harnessApp);
+        harnessSrv.listen(0, '127.0.0.1', () => {
+          const addr = harnessSrv!.address();
+          resolve(`http://127.0.0.1:${typeof addr === 'object' && addr ? addr.port : 0}`);
+        });
+      });
+
+      for (let i = 1; i <= 14; i += 1) {
+        const res = await fetch(`${harnessUrl}/api/office/auth/login`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username: 'gm.demo', password: 'WRONG' }),
+        });
+        expect(res.status, `Harness attempt ${i} should stay under limit`).toBe(401);
+      }
+      const fifteenthHarness = await fetch(`${harnessUrl}/api/office/auth/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username: 'gm.demo', password: 'WRONG' }),
+      });
+      expect(fifteenthHarness.status).toBe(429);
+    } finally {
+      if (prodSrv) {
+        await new Promise<void>((resolve) => prodSrv!.close(() => resolve()));
+      }
+      if (harnessSrv) {
+        await new Promise<void>((resolve) => harnessSrv!.close(() => resolve()));
+      }
+      if (prevNodeEnv === undefined) delete process.env.NODE_ENV;
+      else process.env.NODE_ENV = prevNodeEnv;
+      if (prevHarness === undefined) delete process.env.ADPRMS_E2E_HARNESS;
+      else process.env.ADPRMS_E2E_HARNESS = prevHarness;
+      if (prevMax === undefined) delete process.env.ADPRMS_E2E_AUTH_RATE_LIMIT_MAX;
+      else process.env.ADPRMS_E2E_AUTH_RATE_LIMIT_MAX = prevMax;
+      if (prevDbPath === undefined) delete process.env.OFFICE_DB_PATH;
+      else process.env.OFFICE_DB_PATH = prevDbPath;
+      fs.rmSync(prodTmpDir, { recursive: true, force: true });
+      fs.rmSync(harnessTmpDir, { recursive: true, force: true });
+    }
   });
 });

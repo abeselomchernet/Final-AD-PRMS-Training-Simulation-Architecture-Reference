@@ -1,5 +1,25 @@
 import { expect, test } from '@playwright/test';
 
+async function assertLoginResponseOk(
+  loginRes: import('@playwright/test').Response,
+  username: string
+) {
+  const status = loginRes.status();
+  let msg = '';
+  if (!loginRes.ok()) {
+    try {
+      const body = (await loginRes.json()) as { msg?: unknown; error?: unknown };
+      msg = typeof body?.msg === 'string' ? body.msg : JSON.stringify(body);
+    } catch {
+      msg = await loginRes.text().catch(() => '');
+    }
+  }
+  expect(
+    loginRes.ok(),
+    `Login failed for ${username}: HTTP ${status}${msg ? ` — ${msg}` : ''}`
+  ).toBe(true);
+}
+
 async function signInAs(page: import('@playwright/test').Page, username: string) {
   await page.goto('/');
   await expect(page.getByText('TRAINING MODE — SYNTHETIC DATA — NOT PRODUCTION')).toBeVisible();
@@ -11,16 +31,17 @@ async function signInAs(page: import('@playwright/test').Page, username: string)
   );
   await page.getByRole('button', { name: /Sign In to Training Session/i }).click();
   const loginRes = await loginResPromise;
-  expect(loginRes.ok()).toBe(true);
+  await assertLoginResponseOk(loginRes, username);
   await expect(page.getByRole('banner')).toBeVisible();
 }
 
 async function getVisibleSidebar(page: import('@playwright/test').Page) {
-  const visibleAside = page.locator('aside:visible');
+  const navSelector = 'aside[aria-label="Workspace Navigation"]:visible, aside[aria-label="Mobile Navigation"]:visible';
+  const visibleAside = page.locator(navSelector);
   if ((await visibleAside.count()) === 0) {
     await page.getByRole('button', { name: 'Open navigation' }).click();
   }
-  const aside = page.locator('aside:visible').first();
+  const aside = page.locator(navSelector).first();
   await expect(aside).toBeVisible();
   return aside;
 }
@@ -197,7 +218,11 @@ test.describe('AD-PRMS End-to-End Governance, Isolation & UI Flows', () => {
     await page.getByRole('button', { name: 'Sign out tenant' }).click();
     const gmRow = page.locator('tr', { hasText: 'gm.demo' });
     await gmRow.getByRole('button', { name: /Use Credentials/i }).click();
+    const gmLoginResPromise = page.waitForResponse(
+      (res) => res.url().includes('/api/office/auth/login') && res.request().method() === 'POST'
+    );
     await page.getByRole('button', { name: /Sign In to Training Session/i }).click();
+    await assertLoginResponseOk(await gmLoginResPromise, 'gm.demo');
 
     await page.getByRole('button', { name: /Switch to Out-of-Office Mobile/i }).click();
     await expect(page.getByTestId('owner-mobile-app')).toBeVisible();

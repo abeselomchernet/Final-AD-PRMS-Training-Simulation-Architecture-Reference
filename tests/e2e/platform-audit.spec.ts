@@ -10,17 +10,31 @@ async function signInAs(page: import('@playwright/test').Page, username: string)
   );
   await page.getByRole('button', { name: /Sign In to Training Session/i }).click();
   const loginRes = await loginResPromise;
-  expect(loginRes.ok()).toBe(true);
+  const status = loginRes.status();
+  let msg = '';
+  if (!loginRes.ok()) {
+    try {
+      const body = (await loginRes.json()) as { msg?: unknown };
+      msg = typeof body?.msg === 'string' ? body.msg : JSON.stringify(body);
+    } catch {
+      msg = await loginRes.text().catch(() => '');
+    }
+  }
+  expect(
+    loginRes.ok(),
+    `Login failed for ${username}: HTTP ${status}${msg ? ` — ${msg}` : ''}`
+  ).toBe(true);
   await expect(page.getByRole('banner')).toBeVisible();
   await expect(page.getByText(/Loading workspace module/i)).toBeHidden();
 }
 
 async function getVisibleSidebar(page: import('@playwright/test').Page) {
-  const visibleAside = page.locator('aside:visible');
+  const navSelector = 'aside[aria-label="Workspace Navigation"]:visible, aside[aria-label="Mobile Navigation"]:visible';
+  const visibleAside = page.locator(navSelector);
   if ((await visibleAside.count()) === 0) {
     await page.getByRole('button', { name: 'Open navigation' }).click();
   }
-  const aside = page.locator('aside:visible').first();
+  const aside = page.locator(navSelector).first();
   await expect(aside).toBeVisible();
   return aside;
 }

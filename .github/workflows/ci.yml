@@ -86,7 +86,19 @@ jobs:
       - name: Install PostgreSQL 16 client tools & backend requirements
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y -qq postgresql-client openssl
+          sudo apt-get install -y -qq postgresql-client-16 openssl
+          if [ -d /usr/lib/postgresql/16/bin ]; then
+            echo "/usr/lib/postgresql/16/bin" >> "$GITHUB_PATH"
+            export PATH="/usr/lib/postgresql/16/bin:$PATH"
+          fi
+          command -v pg_dump
+          command -v pg_restore
+          pg_dump --version
+          pg_restore --version
+          PG_DUMP_MAJOR="$(pg_dump --version | sed -nE 's/^.*\(PostgreSQL\) ([0-9]+).*/\1/p' | head -n1)"
+          PG_RESTORE_MAJOR="$(pg_restore --version | sed -nE 's/^.*\(PostgreSQL\) ([0-9]+).*/\1/p' | head -n1)"
+          [ "${PG_DUMP_MAJOR}" = "16" ] || { echo "ERROR: Expected pg_dump major version 16, got '${PG_DUMP_MAJOR}'" >&2; exit 1; }
+          [ "${PG_RESTORE_MAJOR}" = "16" ] || { echo "ERROR: Expected pg_restore major version 16, got '${PG_RESTORE_MAJOR}'" >&2; exit 1; }
           pip install -r backend/requirements.txt
 
       - name: Bootstrap WP-2 roles before migrations (order-independent check)
@@ -163,6 +175,12 @@ jobs:
           BACKUP_DIR: ci-reports/backups
         run: |
           set -eo pipefail
+          pg_dump --version
+          pg_restore --version
+          PG_DUMP_MAJOR="$(pg_dump --version | sed -nE 's/^.*\(PostgreSQL\) ([0-9]+).*/\1/p' | head -n1)"
+          PG_RESTORE_MAJOR="$(pg_restore --version | sed -nE 's/^.*\(PostgreSQL\) ([0-9]+).*/\1/p' | head -n1)"
+          [ "${PG_DUMP_MAJOR}" = "16" ] || { echo "ERROR: Expected pg_dump major version 16, got '${PG_DUMP_MAJOR}'" >&2; exit 1; }
+          [ "${PG_RESTORE_MAJOR}" = "16" ] || { echo "ERROR: Expected pg_restore major version 16, got '${PG_RESTORE_MAJOR}'" >&2; exit 1; }
           psql -h 127.0.0.1 -U adprms_admin -d adprms -v ON_ERROR_STOP=1 -c "DROP DATABASE IF EXISTS restore_verify_db;"
           psql -h 127.0.0.1 -U adprms_admin -d adprms -v ON_ERROR_STOP=1 -c "CREATE DATABASE restore_verify_db OWNER adprms_admin;"
           bash ./backend/scripts/backup_and_restore_drill.sh | tee ci-reports/restore-drill.log
@@ -176,7 +194,7 @@ jobs:
           retention-days: 14
 
   e2e-playwright:
-    name: Playwright Chromium E2E (Security, UI & Offline/LAN)
+    name: Playwright E2E (Chromium, Mobile Chrome & WebKit)
     runs-on: ubuntu-latest
     needs: quality-and-unit
     steps:
@@ -198,8 +216,8 @@ jobs:
           name: dist-and-vitest-reports
           path: .
 
-      - name: Install Playwright Chromium browser
-        run: npx playwright install --with-deps chromium
+      - name: Install Playwright Chromium and WebKit browsers
+        run: npx playwright install --with-deps chromium webkit
 
       - name: Run Playwright E2E tests against production preview
         run: npm run test:e2e

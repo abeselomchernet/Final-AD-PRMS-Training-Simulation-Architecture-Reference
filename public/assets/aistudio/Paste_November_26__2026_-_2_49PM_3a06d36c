@@ -1,0 +1,1787 @@
+  [pid=8952][err]   "num-switches" = "10"
+    [pid=8952][err]   "osarch" = "x86_64"
+    [pid=8952][err]   "pid" = "8952"
+    [pid=8952][err]   "ptype" = "browser"
+    [pid=8952][err] 
+    [pid=8952][err] Received signal 6
+    [pid=8952][err] #0 0x5da993472f72 base::debug::CollectStackTrace()
+    [pid=8952][err] #1 0x5da99345d35e base::debug::StackTrace::StackTrace()
+    [pid=8952][err] #2 0x5da9934729d8 base::debug::(anonymous namespace)::StackDumpSignalHandler()
+    [pid=8952][err] #3 0x7e3629a47dd0 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x47dcf)
+    [pid=8952][err] #4 0x7e3629aae0cc pthread_kill
+    [pid=8952][err] #5 0x7e3629a47c9e gsignal
+    [pid=8952][err] #6 0x7e3629a288ec abort
+    [pid=8952][err] #7 0x5da99344c165 base::debug::BreakDebuggerAsyncSafe()
+    [pid=8952][err] #8 0x5da993390473 base::RepeatingCallback<>::Run()
+    [pid=8952][err] #9 0x5da993390335 logging::LogMessage::HandleFatal()
+    [pid=8952][err] #10 0x5da99338ff27 logging::LogMessage::Flush()
+    [pid=8952][err] #11 0x5da9933904c9 logging::LogMessageFatal::~LogMessageFatal()
+    [pid=8952][err] #12 0x5da98ff5d952 content::ZygoteHostImpl::Init()
+    [pid=8952][err] #13 0x5da99335ba99 content::ContentMainRunnerImpl::Initialize()
+    [pid=8952][err] #14 0x5da99335913c content::RunContentProcess()
+    [pid=8952][err] #15 0x5da993359587 content::ContentMain()
+    [pid=8952][err] #16 0x5da98c06637d ChromeMain
+    [pid=8952][err] #17 0x7e3629a2a8c1 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a8c0)
+    [pid=8952][err] #18 0x7e3629a2a9d8 __libc_start_main
+    [pid=8952][err] #19 0x5da98c06602a _start
+    [pid=8952][err]   r8: 0000000000000016  r9: 0000000000000444 r10: 000008580014c263 r11: 0000000000000246
+    [pid=8952][err]  r12: 0000000000000006 r13: 00000000000006a7 r14: 00005da98bdceac1 r15: 00007ffd30d38200
+    [pid=8952][err]   di: 00000000000022f8  si: 00000000000022f8  bp: 00007ffd30d380a0  bx: 00000000000022f8
+    [pid=8952][err]   dx: 0000000000000006  ax: 0000000000000000  cx: 00007e3629aae0cc  sp: 00007ffd30d38060
+    [pid=8952][err]   ip: 00007e3629aae0cc efl: 0000000000000246 cgf: 002b000000000033 erf: 0000000000000000
+    [pid=8952][err]  trp: 0000000000000000 msk: 0000000000000000 cr2: 0000000000000000
+    [pid=8952][err] [end of stack trace]
+    Call log:
+      - <launching> /usr/bin/chromium --inspector-pipe --headless --no-startup-window
+      - <launched> pid=8952
+      - [pid=8952][err] [8952:8952:1125/174546.162047:FATAL:content/browser/zygote_host/zygote_host_impl_linux.cc:144] No usable sandbox! If you are running on Ubuntu 23.10+ or another Linux distro that has disabled unprivileged user namespaces with AppArmor, see https://chromium.googlesource.com/chromium/src/+/main/docs/security/apparmor-userns-restrictions.md. Otherwise see https://chromium.googlesource.com/chromium/src/+/main/docs/linux/suid_sandbox_development.md for more information on developing with the (older) SUID sandbox. If you want to live dangerously and need an immediate workaround, you can try using --no-sandbox.
+      - [pid=8952][err] #0 0x5da993472f72 base::debug::CollectStackTrace()
+      - [pid=8952][err] #1 0x5da99345d35e base::debug::StackTrace::StackTrace()
+      - [pid=8952][err] #2 0x5da99338f92c logging::LogMessage::Flush()
+      - [pid=8952][err] #3 0x5da9933904c9 logging::LogMessageFatal::~LogMessageFatal()
+      - [pid=8952][err] #4 0x5da98ff5d952 content::ZygoteHostImpl::Init()
+      - [pid=8952][err] #5 0x5da99335ba99 content::ContentMainRunnerImpl::Initialize()
+      - [pid=8952][err] #6 0x5da99335913c content::RunContentProcess()
+      - [pid=8952][err] #7 0x5da993359587 content::ContentMain()
+      - [pid=8952][err] #8 0x5da98c06637d ChromeMain
+      - [pid=8952][err] #9 0x7e3629a2a8c1 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a8c0)
+      - [pid=8952][err] #10 0x7e3629a2a9d8 __libc_start_main
+      - [pid=8952][err] #11 0x5da98c06602a _start
+      - [pid=8952][err] Crash keys:
+      - [pid=8952][err]   "switch-10" = "--use-angle=swiftshader-webgl"
+      - [pid=8952][err]   "switch-9" = "--ozone-override-screen-size=800,600"
+      - [pid=8952][err]   "switch-8" = "--ozone-platform=headless"
+      - [pid=8952][err]   "switch-7" = "--user-data-dir=/home/runner/.config/chromium-headless/scoped_di"
+      - [pid=8952][err]   "switch-6" = "--no-first-run"
+      - [pid=8952][err]   "switch-5" = "--noerrdialogs"
+      - [pid=8952][err]   "switch-4" = "--incognito"
+      - [pid=8952][err]   "switch-3" = "--no-startup-window"
+      - [pid=8952][err]   "switch-2" = "--headless"
+      - [pid=8952][err]   "switch-1" = "--inspector-pipe"
+      - [pid=8952][err]   "num-switches" = "10"
+      - [pid=8952][err]   "osarch" = "x86_64"
+      - [pid=8952][err]   "pid" = "8952"
+      - [pid=8952][err]   "ptype" = "browser"
+      - [pid=8952][err]
+      - [pid=8952][err] Received signal 6
+      - [pid=8952][err] #0 0x5da993472f72 base::debug::CollectStackTrace()
+      - [pid=8952][err] #1 0x5da99345d35e base::debug::StackTrace::StackTrace()
+      - [pid=8952][err] #2 0x5da9934729d8 base::debug::(anonymous namespace)::StackDumpSignalHandler()
+      - [pid=8952][err] #3 0x7e3629a47dd0 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x47dcf)
+      - [pid=8952][err] #4 0x7e3629aae0cc pthread_kill
+      - [pid=8952][err] #5 0x7e3629a47c9e gsignal
+      - [pid=8952][err] #6 0x7e3629a288ec abort
+      - [pid=8952][err] #7 0x5da99344c165 base::debug::BreakDebuggerAsyncSafe()
+      - [pid=8952][err] #8 0x5da993390473 base::RepeatingCallback<>::Run()
+      - [pid=8952][err] #9 0x5da993390335 logging::LogMessage::HandleFatal()
+      - [pid=8952][err] #10 0x5da99338ff27 logging::LogMessage::Flush()
+      - [pid=8952][err] #11 0x5da9933904c9 logging::LogMessageFatal::~LogMessageFatal()
+      - [pid=8952][err] #12 0x5da98ff5d952 content::ZygoteHostImpl::Init()
+      - [pid=8952][err] #13 0x5da99335ba99 content::ContentMainRunnerImpl::Initialize()
+      - [pid=8952][err] #14 0x5da99335913c content::RunContentProcess()
+      - [pid=8952][err] #15 0x5da993359587 content::ContentMain()
+      - [pid=8952][err] #16 0x5da98c06637d ChromeMain
+      - [pid=8952][err] #17 0x7e3629a2a8c1 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a8c0)
+      - [pid=8952][err] #18 0x7e3629a2a9d8 __libc_start_main
+      - [pid=8952][err] #19 0x5da98c06602a _start
+      - [pid=8952][err]   r8: 0000000000000016  r9: 0000000000000444 r10: 000008580014c263 r11: 0000000000000246
+      - [pid=8952][err]  r12: 0000000000000006 r13: 00000000000006a7 r14: 00005da98bdceac1 r15: 00007ffd30d38200
+      - [pid=8952][err]   di: 00000000000022f8  si: 00000000000022f8  bp: 00007ffd30d380a0  bx: 00000000000022f8
+      - [pid=8952][err]   dx: 0000000000000006  ax: 0000000000000000  cx: 00007e3629aae0cc  sp: 00007ffd30d38060
+      - [pid=8952][err]   ip: 00007e3629aae0cc efl: 0000000000000246 cgf: 002b000000000033 erf: 0000000000000000
+      - [pid=8952][err]  trp: 0000000000000000 msk: 0000000000000000 cr2: 0000000000000000
+      - [pid=8952][err] [end of stack trace]
+      - [pid=8952] <gracefully close start>
+      - [pid=8952] <kill>
+      - [pid=8952] <will force kill>
+      - [pid=8952] <process did exit: exitCode=null, signal=SIGABRT>
+      - [pid=8952] starting temporary directories cleanup
+      - [pid=8952] finished temporary directories cleanup
+      - [pid=8952] <gracefully close end>
+
+
+    Error Context: test-results/ad-prms-AD-PRMS-End-to-End-ab8b3-own-Offline-LAN-modes-9-14--mobile-safari-retry2/error-context.md
+
+  20) [mobile-safari] › tests/e2e/platform-audit.spec.ts:64:3 › Full Platform Runtime & Governance Audit (All 22 Modules & Roles) › All 22 modules render cleanly for gm.demo with zero page/console errors and zero horizontal overflow 
+
+    Error: browserType.launch: Target page, context or browser has been closed
+    Browser logs:
+
+    <launching> /usr/bin/chromium --inspector-pipe --headless --no-startup-window
+    <launched> pid=8985
+    [pid=8985][err] [8985:8985:1125/174547.585198:FATAL:content/browser/zygote_host/zygote_host_impl_linux.cc:144] No usable sandbox! If you are running on Ubuntu 23.10+ or another Linux distro that has disabled unprivileged user namespaces with AppArmor, see https://chromium.googlesource.com/chromium/src/+/main/docs/security/apparmor-userns-restrictions.md. Otherwise see https://chromium.googlesource.com/chromium/src/+/main/docs/linux/suid_sandbox_development.md for more information on developing with the (older) SUID sandbox. If you want to live dangerously and need an immediate workaround, you can try using --no-sandbox.
+    [pid=8985][err] #0 0x5b583e1bff72 base::debug::CollectStackTrace()
+    [pid=8985][err] #1 0x5b583e1aa35e base::debug::StackTrace::StackTrace()
+    [pid=8985][err] #2 0x5b583e0dc92c logging::LogMessage::Flush()
+    [pid=8985][err] #3 0x5b583e0dd4c9 logging::LogMessageFatal::~LogMessageFatal()
+    [pid=8985][err] #4 0x5b583acaa952 content::ZygoteHostImpl::Init()
+    [pid=8985][err] #5 0x5b583e0a8a99 content::ContentMainRunnerImpl::Initialize()
+    [pid=8985][err] #6 0x5b583e0a613c content::RunContentProcess()
+    [pid=8985][err] #7 0x5b583e0a6587 content::ContentMain()
+    [pid=8985][err] #8 0x5b5836db337d ChromeMain
+    [pid=8985][err] #9 0x74a3e4c2a8c1 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a8c0)
+    [pid=8985][err] #10 0x74a3e4c2a9d8 __libc_start_main
+    [pid=8985][err] #11 0x5b5836db302a _start
+    [pid=8985][err] Crash keys:
+    [pid=8985][err]   "switch-10" = "--use-angle=swiftshader-webgl"
+    [pid=8985][err]   "switch-9" = "--ozone-override-screen-size=800,600"
+    [pid=8985][err]   "switch-8" = "--ozone-platform=headless"
+    [pid=8985][err]   "switch-7" = "--user-data-dir=/home/runner/.config/chromium-headless/scoped_di"
+    [pid=8985][err]   "switch-6" = "--no-first-run"
+    [pid=8985][err]   "switch-5" = "--noerrdialogs"
+    [pid=8985][err]   "switch-4" = "--incognito"
+    [pid=8985][err]   "switch-3" = "--no-startup-window"
+    [pid=8985][err]   "switch-2" = "--headless"
+    [pid=8985][err]   "switch-1" = "--inspector-pipe"
+    [pid=8985][err]   "num-switches" = "10"
+    [pid=8985][err]   "osarch" = "x86_64"
+    [pid=8985][err]   "pid" = "8985"
+    [pid=8985][err]   "ptype" = "browser"
+    [pid=8985][err] 
+    [pid=8985][err] Received signal 6
+    [pid=8985][err] #0 0x5b583e1bff72 base::debug::CollectStackTrace()
+    [pid=8985][err] #1 0x5b583e1aa35e base::debug::StackTrace::StackTrace()
+    [pid=8985][err] #2 0x5b583e1bf9d8 base::debug::(anonymous namespace)::StackDumpSignalHandler()
+    [pid=8985][err] #3 0x74a3e4c47dd0 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x47dcf)
+    [pid=8985][err] #4 0x74a3e4cae0cc pthread_kill
+    [pid=8985][err] #5 0x74a3e4c47c9e gsignal
+    [pid=8985][err] #6 0x74a3e4c288ec abort
+    [pid=8985][err] #7 0x5b583e199165 base::debug::BreakDebuggerAsyncSafe()
+    [pid=8985][err] #8 0x5b583e0dd473 base::RepeatingCallback<>::Run()
+    [pid=8985][err] #9 0x5b583e0dd335 logging::LogMessage::HandleFatal()
+    [pid=8985][err] #10 0x5b583e0dcf27 logging::LogMessage::Flush()
+    [pid=8985][err] #11 0x5b583e0dd4c9 logging::LogMessageFatal::~LogMessageFatal()
+    [pid=8985][err] #12 0x5b583acaa952 content::ZygoteHostImpl::Init()
+    [pid=8985][err] #13 0x5b583e0a8a99 content::ContentMainRunnerImpl::Initialize()
+    [pid=8985][err] #14 0x5b583e0a613c content::RunContentProcess()
+    [pid=8985][err] #15 0x5b583e0a6587 content::ContentMain()
+    [pid=8985][err] #16 0x5b5836db337d ChromeMain
+    [pid=8985][err] #17 0x74a3e4c2a8c1 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a8c0)
+    [pid=8985][err] #18 0x74a3e4c2a9d8 __libc_start_main
+    [pid=8985][err] #19 0x5b5836db302a _start
+    [pid=8985][err]   r8: 0000000000000016  r9: 0000000000000444 r10: 00000b780014c263 r11: 0000000000000246
+    [pid=8985][err]  r12: 0000000000000006 r13: 00000000000006a7 r14: 00005b5836b1bac1 r15: 00007fff9260bd90
+    [pid=8985][err]   di: 0000000000002319  si: 0000000000002319  bp: 00007fff9260bc30  bx: 0000000000002319
+    [pid=8985][err]   dx: 0000000000000006  ax: 0000000000000000  cx: 000074a3e4cae0cc  sp: 00007fff9260bbf0
+    [pid=8985][err]   ip: 000074a3e4cae0cc efl: 0000000000000246 cgf: 002b000000000033 erf: 0000000000000000
+    [pid=8985][err]  trp: 0000000000000000 msk: 0000000000000000 cr2: 0000000000000000
+    [pid=8985][err] [end of stack trace]
+    Call log:
+      - <launching> /usr/bin/chromium --inspector-pipe --headless --no-startup-window
+      - <launched> pid=8985
+      - [pid=8985][err] [8985:8985:1125/174547.585198:FATAL:content/browser/zygote_host/zygote_host_impl_linux.cc:144] No usable sandbox! If you are running on Ubuntu 23.10+ or another Linux distro that has disabled unprivileged user namespaces with AppArmor, see https://chromium.googlesource.com/chromium/src/+/main/docs/security/apparmor-userns-restrictions.md. Otherwise see https://chromium.googlesource.com/chromium/src/+/main/docs/linux/suid_sandbox_development.md for more information on developing with the (older) SUID sandbox. If you want to live dangerously and need an immediate workaround, you can try using --no-sandbox.
+      - [pid=8985][err] #0 0x5b583e1bff72 base::debug::CollectStackTrace()
+      - [pid=8985][err] #1 0x5b583e1aa35e base::debug::StackTrace::StackTrace()
+      - [pid=8985][err] #2 0x5b583e0dc92c logging::LogMessage::Flush()
+      - [pid=8985][err] #3 0x5b583e0dd4c9 logging::LogMessageFatal::~LogMessageFatal()
+      - [pid=8985][err] #4 0x5b583acaa952 content::ZygoteHostImpl::Init()
+      - [pid=8985][err] #5 0x5b583e0a8a99 content::ContentMainRunnerImpl::Initialize()
+      - [pid=8985][err] #6 0x5b583e0a613c content::RunContentProcess()
+      - [pid=8985][err] #7 0x5b583e0a6587 content::ContentMain()
+      - [pid=8985][err] #8 0x5b5836db337d ChromeMain
+      - [pid=8985][err] #9 0x74a3e4c2a8c1 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a8c0)
+      - [pid=8985][err] #10 0x74a3e4c2a9d8 __libc_start_main
+      - [pid=8985][err] #11 0x5b5836db302a _start
+      - [pid=8985][err] Crash keys:
+      - [pid=8985][err]   "switch-10" = "--use-angle=swiftshader-webgl"
+      - [pid=8985][err]   "switch-9" = "--ozone-override-screen-size=800,600"
+      - [pid=8985][err]   "switch-8" = "--ozone-platform=headless"
+      - [pid=8985][err]   "switch-7" = "--user-data-dir=/home/runner/.config/chromium-headless/scoped_di"
+      - [pid=8985][err]   "switch-6" = "--no-first-run"
+      - [pid=8985][err]   "switch-5" = "--noerrdialogs"
+      - [pid=8985][err]   "switch-4" = "--incognito"
+      - [pid=8985][err]   "switch-3" = "--no-startup-window"
+      - [pid=8985][err]   "switch-2" = "--headless"
+      - [pid=8985][err]   "switch-1" = "--inspector-pipe"
+      - [pid=8985][err]   "num-switches" = "10"
+      - [pid=8985][err]   "osarch" = "x86_64"
+      - [pid=8985][err]   "pid" = "8985"
+      - [pid=8985][err]   "ptype" = "browser"
+      - [pid=8985][err]
+      - [pid=8985][err] Received signal 6
+      - [pid=8985][err] #0 0x5b583e1bff72 base::debug::CollectStackTrace()
+      - [pid=8985][err] #1 0x5b583e1aa35e base::debug::StackTrace::StackTrace()
+      - [pid=8985][err] #2 0x5b583e1bf9d8 base::debug::(anonymous namespace)::StackDumpSignalHandler()
+      - [pid=8985][err] #3 0x74a3e4c47dd0 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x47dcf)
+      - [pid=8985][err] #4 0x74a3e4cae0cc pthread_kill
+      - [pid=8985][err] #5 0x74a3e4c47c9e gsignal
+      - [pid=8985][err] #6 0x74a3e4c288ec abort
+      - [pid=8985][err] #7 0x5b583e199165 base::debug::BreakDebuggerAsyncSafe()
+      - [pid=8985][err] #8 0x5b583e0dd473 base::RepeatingCallback<>::Run()
+      - [pid=8985][err] #9 0x5b583e0dd335 logging::LogMessage::HandleFatal()
+      - [pid=8985][err] #10 0x5b583e0dcf27 logging::LogMessage::Flush()
+      - [pid=8985][err] #11 0x5b583e0dd4c9 logging::LogMessageFatal::~LogMessageFatal()
+      - [pid=8985][err] #12 0x5b583acaa952 content::ZygoteHostImpl::Init()
+      - [pid=8985][err] #13 0x5b583e0a8a99 content::ContentMainRunnerImpl::Initialize()
+      - [pid=8985][err] #14 0x5b583e0a613c content::RunContentProcess()
+      - [pid=8985][err] #15 0x5b583e0a6587 content::ContentMain()
+      - [pid=8985][err] #16 0x5b5836db337d ChromeMain
+      - [pid=8985][err] #17 0x74a3e4c2a8c1 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a8c0)
+      - [pid=8985][err] #18 0x74a3e4c2a9d8 __libc_start_main
+      - [pid=8985][err] #19 0x5b5836db302a _start
+      - [pid=8985][err]   r8: 0000000000000016  r9: 0000000000000444 r10: 00000b780014c263 r11: 0000000000000246
+      - [pid=8985][err]  r12: 0000000000000006 r13: 00000000000006a7 r14: 00005b5836b1bac1 r15: 00007fff9260bd90
+      - [pid=8985][err]   di: 0000000000002319  si: 0000000000002319  bp: 00007fff9260bc30  bx: 0000000000002319
+      - [pid=8985][err]   dx: 0000000000000006  ax: 0000000000000000  cx: 000074a3e4cae0cc  sp: 00007fff9260bbf0
+      - [pid=8985][err]   ip: 000074a3e4cae0cc efl: 0000000000000246 cgf: 002b000000000033 erf: 0000000000000000
+      - [pid=8985][err]  trp: 0000000000000000 msk: 0000000000000000 cr2: 0000000000000000
+      - [pid=8985][err] [end of stack trace]
+      - [pid=8985] <gracefully close start>
+      - [pid=8985] <kill>
+      - [pid=8985] <will force kill>
+      - [pid=8985] <process did exit: exitCode=null, signal=SIGABRT>
+      - [pid=8985] starting temporary directories cleanup
+      - [pid=8985] finished temporary directories cleanup
+      - [pid=8985] <gracefully close end>
+
+
+    Error Context: test-results/platform-audit-Full-Platfo-b2efb-nd-zero-horizontal-overflow-mobile-safari/error-context.md
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: browserType.launch: Target page, context or browser has been closed
+    Browser logs:
+
+    <launching> /usr/bin/chromium --inspector-pipe --headless --no-startup-window
+    <launched> pid=9018
+    [pid=9018][err] [9018:9018:1125/174549.004239:FATAL:content/browser/zygote_host/zygote_host_impl_linux.cc:144] No usable sandbox! If you are running on Ubuntu 23.10+ or another Linux distro that has disabled unprivileged user namespaces with AppArmor, see https://chromium.googlesource.com/chromium/src/+/main/docs/security/apparmor-userns-restrictions.md. Otherwise see https://chromium.googlesource.com/chromium/src/+/main/docs/linux/suid_sandbox_development.md for more information on developing with the (older) SUID sandbox. If you want to live dangerously and need an immediate workaround, you can try using --no-sandbox.
+    [pid=9018][err] #0 0x5f15f222af72 base::debug::CollectStackTrace()
+    [pid=9018][err] #1 0x5f15f221535e base::debug::StackTrace::StackTrace()
+    [pid=9018][err] #2 0x5f15f214792c logging::LogMessage::Flush()
+    [pid=9018][err] #3 0x5f15f21484c9 logging::LogMessageFatal::~LogMessageFatal()
+    [pid=9018][err] #4 0x5f15eed15952 content::ZygoteHostImpl::Init()
+    [pid=9018][err] #5 0x5f15f2113a99 content::ContentMainRunnerImpl::Initialize()
+    [pid=9018][err] #6 0x5f15f211113c content::RunContentProcess()
+    [pid=9018][err] #7 0x5f15f2111587 content::ContentMain()
+    [pid=9018][err] #8 0x5f15eae1e37d ChromeMain
+    [pid=9018][err] #9 0x714b75a2a8c1 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a8c0)
+    [pid=9018][err] #10 0x714b75a2a9d8 __libc_start_main
+    [pid=9018][err] #11 0x5f15eae1e02a _start
+    [pid=9018][err] Crash keys:
+    [pid=9018][err]   "switch-10" = "--use-angle=swiftshader-webgl"
+    [pid=9018][err]   "switch-9" = "--ozone-override-screen-size=800,600"
+    [pid=9018][err]   "switch-8" = "--ozone-platform=headless"
+    [pid=9018][err]   "switch-7" = "--user-data-dir=/home/runner/.config/chromium-headless/scoped_di"
+    [pid=9018][err]   "switch-6" = "--no-first-run"
+    [pid=9018][err]   "switch-5" = "--noerrdialogs"
+    [pid=9018][err]   "switch-4" = "--incognito"
+    [pid=9018][err]   "switch-3" = "--no-startup-window"
+    [pid=9018][err]   "switch-2" = "--headless"
+    [pid=9018][err]   "switch-1" = "--inspector-pipe"
+    [pid=9018][err]   "num-switches" = "10"
+    [pid=9018][err]   "osarch" = "x86_64"
+    [pid=9018][err]   "pid" = "9018"
+    [pid=9018][err]   "ptype" = "browser"
+    [pid=9018][err] 
+    [pid=9018][err] Received signal 6
+    [pid=9018][err] #0 0x5f15f222af72 base::debug::CollectStackTrace()
+    [pid=9018][err] #1 0x5f15f221535e base::debug::StackTrace::StackTrace()
+    [pid=9018][err] #2 0x5f15f222a9d8 base::debug::(anonymous namespace)::StackDumpSignalHandler()
+    [pid=9018][err] #3 0x714b75a47dd0 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x47dcf)
+    [pid=9018][err] #4 0x714b75aae0cc pthread_kill
+    [pid=9018][err] #5 0x714b75a47c9e gsignal
+    [pid=9018][err] #6 0x714b75a288ec abort
+    [pid=9018][err] #7 0x5f15f2204165 base::debug::BreakDebuggerAsyncSafe()
+    [pid=9018][err] #8 0x5f15f2148473 base::RepeatingCallback<>::Run()
+    [pid=9018][err] #9 0x5f15f2148335 logging::LogMessage::HandleFatal()
+    [pid=9018][err] #10 0x5f15f2147f27 logging::LogMessage::Flush()
+    [pid=9018][err] #11 0x5f15f21484c9 logging::LogMessageFatal::~LogMessageFatal()
+    [pid=9018][err] #12 0x5f15eed15952 content::ZygoteHostImpl::Init()
+    [pid=9018][err] #13 0x5f15f2113a99 content::ContentMainRunnerImpl::Initialize()
+    [pid=9018][err] #14 0x5f15f211113c content::RunContentProcess()
+    [pid=9018][err] #15 0x5f15f2111587 content::ContentMain()
+    [pid=9018][err] #16 0x5f15eae1e37d ChromeMain
+    [pid=9018][err] #17 0x714b75a2a8c1 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a8c0)
+    [pid=9018][err] #18 0x714b75a2a9d8 __libc_start_main
+    [pid=9018][err] #19 0x5f15eae1e02a _start
+    [pid=9018][err]   r8: 0000000000000016  r9: 0000000000000444 r10: 000025a80014c263 r11: 0000000000000246
+    [pid=9018][err]  r12: 0000000000000006 r13: 00000000000006a7 r14: 00005f15eab86ac1 r15: 00007ffeead992a0
+    [pid=9018][err]   di: 000000000000233a  si: 000000000000233a  bp: 00007ffeead99140  bx: 000000000000233a
+    [pid=9018][err]   dx: 0000000000000006  ax: 0000000000000000  cx: 0000714b75aae0cc  sp: 00007ffeead99100
+    [pid=9018][err]   ip: 0000714b75aae0cc efl: 0000000000000246 cgf: 002b000000000033 erf: 0000000000000000
+    [pid=9018][err]  trp: 0000000000000000 msk: 0000000000000000 cr2: 0000000000000000
+    [pid=9018][err] [end of stack trace]
+    Call log:
+      - <launching> /usr/bin/chromium --inspector-pipe --headless --no-startup-window
+      - <launched> pid=9018
+      - [pid=9018][err] [9018:9018:1125/174549.004239:FATAL:content/browser/zygote_host/zygote_host_impl_linux.cc:144] No usable sandbox! If you are running on Ubuntu 23.10+ or another Linux distro that has disabled unprivileged user namespaces with AppArmor, see https://chromium.googlesource.com/chromium/src/+/main/docs/security/apparmor-userns-restrictions.md. Otherwise see https://chromium.googlesource.com/chromium/src/+/main/docs/linux/suid_sandbox_development.md for more information on developing with the (older) SUID sandbox. If you want to live dangerously and need an immediate workaround, you can try using --no-sandbox.
+      - [pid=9018][err] #0 0x5f15f222af72 base::debug::CollectStackTrace()
+      - [pid=9018][err] #1 0x5f15f221535e base::debug::StackTrace::StackTrace()
+      - [pid=9018][err] #2 0x5f15f214792c logging::LogMessage::Flush()
+      - [pid=9018][err] #3 0x5f15f21484c9 logging::LogMessageFatal::~LogMessageFatal()
+      - [pid=9018][err] #4 0x5f15eed15952 content::ZygoteHostImpl::Init()
+      - [pid=9018][err] #5 0x5f15f2113a99 content::ContentMainRunnerImpl::Initialize()
+      - [pid=9018][err] #6 0x5f15f211113c content::RunContentProcess()
+      - [pid=9018][err] #7 0x5f15f2111587 content::ContentMain()
+      - [pid=9018][err] #8 0x5f15eae1e37d ChromeMain
+      - [pid=9018][err] #9 0x714b75a2a8c1 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a8c0)
+      - [pid=9018][err] #10 0x714b75a2a9d8 __libc_start_main
+      - [pid=9018][err] #11 0x5f15eae1e02a _start
+      - [pid=9018][err] Crash keys:
+      - [pid=9018][err]   "switch-10" = "--use-angle=swiftshader-webgl"
+      - [pid=9018][err]   "switch-9" = "--ozone-override-screen-size=800,600"
+      - [pid=9018][err]   "switch-8" = "--ozone-platform=headless"
+      - [pid=9018][err]   "switch-7" = "--user-data-dir=/home/runner/.config/chromium-headless/scoped_di"
+      - [pid=9018][err]   "switch-6" = "--no-first-run"
+      - [pid=9018][err]   "switch-5" = "--noerrdialogs"
+      - [pid=9018][err]   "switch-4" = "--incognito"
+      - [pid=9018][err]   "switch-3" = "--no-startup-window"
+      - [pid=9018][err]   "switch-2" = "--headless"
+      - [pid=9018][err]   "switch-1" = "--inspector-pipe"
+      - [pid=9018][err]   "num-switches" = "10"
+      - [pid=9018][err]   "osarch" = "x86_64"
+      - [pid=9018][err]   "pid" = "9018"
+      - [pid=9018][err]   "ptype" = "browser"
+      - [pid=9018][err]
+      - [pid=9018][err] Received signal 6
+      - [pid=9018][err] #0 0x5f15f222af72 base::debug::CollectStackTrace()
+      - [pid=9018][err] #1 0x5f15f221535e base::debug::StackTrace::StackTrace()
+      - [pid=9018][err] #2 0x5f15f222a9d8 base::debug::(anonymous namespace)::StackDumpSignalHandler()
+      - [pid=9018][err] #3 0x714b75a47dd0 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x47dcf)
+      - [pid=9018][err] #4 0x714b75aae0cc pthread_kill
+      - [pid=9018][err] #5 0x714b75a47c9e gsignal
+      - [pid=9018][err] #6 0x714b75a288ec abort
+      - [pid=9018][err] #7 0x5f15f2204165 base::debug::BreakDebuggerAsyncSafe()
+      - [pid=9018][err] #8 0x5f15f2148473 base::RepeatingCallback<>::Run()
+      - [pid=9018][err] #9 0x5f15f2148335 logging::LogMessage::HandleFatal()
+      - [pid=9018][err] #10 0x5f15f2147f27 logging::LogMessage::Flush()
+      - [pid=9018][err] #11 0x5f15f21484c9 logging::LogMessageFatal::~LogMessageFatal()
+      - [pid=9018][err] #12 0x5f15eed15952 content::ZygoteHostImpl::Init()
+      - [pid=9018][err] #13 0x5f15f2113a99 content::ContentMainRunnerImpl::Initialize()
+      - [pid=9018][err] #14 0x5f15f211113c content::RunContentProcess()
+      - [pid=9018][err] #15 0x5f15f2111587 content::ContentMain()
+      - [pid=9018][err] #16 0x5f15eae1e37d ChromeMain
+      - [pid=9018][err] #17 0x714b75a2a8c1 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a8c0)
+      - [pid=9018][err] #18 0x714b75a2a9d8 __libc_start_main
+      - [pid=9018][err] #19 0x5f15eae1e02a _start
+      - [pid=9018][err]   r8: 0000000000000016  r9: 0000000000000444 r10: 000025a80014c263 r11: 0000000000000246
+      - [pid=9018][err]  r12: 0000000000000006 r13: 00000000000006a7 r14: 00005f15eab86ac1 r15: 00007ffeead992a0
+      - [pid=9018][err]   di: 000000000000233a  si: 000000000000233a  bp: 00007ffeead99140  bx: 000000000000233a
+      - [pid=9018][err]   dx: 0000000000000006  ax: 0000000000000000  cx: 0000714b75aae0cc  sp: 00007ffeead99100
+      - [pid=9018][err]   ip: 0000714b75aae0cc efl: 0000000000000246 cgf: 002b000000000033 erf: 0000000000000000
+      - [pid=9018][err]  trp: 0000000000000000 msk: 0000000000000000 cr2: 0000000000000000
+      - [pid=9018][err] [end of stack trace]
+      - [pid=9018] <gracefully close start>
+      - [pid=9018] <kill>
+      - [pid=9018] <will force kill>
+      - [pid=9018] <process did exit: exitCode=null, signal=SIGABRT>
+      - [pid=9018] starting temporary directories cleanup
+      - [pid=9018] finished temporary directories cleanup
+      - [pid=9018] <gracefully close end>
+
+
+    Error Context: test-results/platform-audit-Full-Platfo-b2efb-nd-zero-horizontal-overflow-mobile-safari-retry1/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/platform-audit-Full-Platfo-b2efb-nd-zero-horizontal-overflow-mobile-safari-retry1/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/platform-audit-Full-Platfo-b2efb-nd-zero-horizontal-overflow-mobile-safari-retry1/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #2 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: browserType.launch: Target page, context or browser has been closed
+    Browser logs:
+
+    <launching> /usr/bin/chromium --inspector-pipe --headless --no-startup-window
+    <launched> pid=9050
+    [pid=9050][err] [9050:9050:1125/174550.454793:FATAL:content/browser/zygote_host/zygote_host_impl_linux.cc:144] No usable sandbox! If you are running on Ubuntu 23.10+ or another Linux distro that has disabled unprivileged user namespaces with AppArmor, see https://chromium.googlesource.com/chromium/src/+/main/docs/security/apparmor-userns-restrictions.md. Otherwise see https://chromium.googlesource.com/chromium/src/+/main/docs/linux/suid_sandbox_development.md for more information on developing with the (older) SUID sandbox. If you want to live dangerously and need an immediate workaround, you can try using --no-sandbox.
+    [pid=9050][err] #0 0x5f8bf4a8ef72 base::debug::CollectStackTrace()
+    [pid=9050][err] #1 0x5f8bf4a7935e base::debug::StackTrace::StackTrace()
+    [pid=9050][err] #2 0x5f8bf49ab92c logging::LogMessage::Flush()
+    [pid=9050][err] #3 0x5f8bf49ac4c9 logging::LogMessageFatal::~LogMessageFatal()
+    [pid=9050][err] #4 0x5f8bf1579952 content::ZygoteHostImpl::Init()
+    [pid=9050][err] #5 0x5f8bf4977a99 content::ContentMainRunnerImpl::Initialize()
+    [pid=9050][err] #6 0x5f8bf497513c content::RunContentProcess()
+    [pid=9050][err] #7 0x5f8bf4975587 content::ContentMain()
+    [pid=9050][err] #8 0x5f8bed68237d ChromeMain
+    [pid=9050][err] #9 0x7b1ccc02a8c1 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a8c0)
+    [pid=9050][err] #10 0x7b1ccc02a9d8 __libc_start_main
+    [pid=9050][err] #11 0x5f8bed68202a _start
+    [pid=9050][err] Crash keys:
+    [pid=9050][err]   "switch-10" = "--use-angle=swiftshader-webgl"
+    [pid=9050][err]   "switch-9" = "--ozone-override-screen-size=800,600"
+    [pid=9050][err]   "switch-8" = "--ozone-platform=headless"
+    [pid=9050][err]   "switch-7" = "--user-data-dir=/home/runner/.config/chromium-headless/scoped_di"
+    [pid=9050][err]   "switch-6" = "--no-first-run"
+    [pid=9050][err]   "switch-5" = "--noerrdialogs"
+    [pid=9050][err]   "switch-4" = "--incognito"
+    [pid=9050][err]   "switch-3" = "--no-startup-window"
+    [pid=9050][err]   "switch-2" = "--headless"
+    [pid=9050][err]   "switch-1" = "--inspector-pipe"
+    [pid=9050][err]   "num-switches" = "10"
+    [pid=9050][err]   "osarch" = "x86_64"
+    [pid=9050][err]   "pid" = "9050"
+    [pid=9050][err]   "ptype" = "browser"
+    [pid=9050][err] 
+    [pid=9050][err] Received signal 6
+    [pid=9050][err] #0 0x5f8bf4a8ef72 base::debug::CollectStackTrace()
+    [pid=9050][err] #1 0x5f8bf4a7935e base::debug::StackTrace::StackTrace()
+    [pid=9050][err] #2 0x5f8bf4a8e9d8 base::debug::(anonymous namespace)::StackDumpSignalHandler()
+    [pid=9050][err] #3 0x7b1ccc047dd0 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x47dcf)
+    [pid=9050][err] #4 0x7b1ccc0ae0cc pthread_kill
+    [pid=9050][err] #5 0x7b1ccc047c9e gsignal
+    [pid=9050][err] #6 0x7b1ccc0288ec abort
+    [pid=9050][err] #7 0x5f8bf4a68165 base::debug::BreakDebuggerAsyncSafe()
+    [pid=9050][err] #8 0x5f8bf49ac473 base::RepeatingCallback<>::Run()
+    [pid=9050][err] #9 0x5f8bf49ac335 logging::LogMessage::HandleFatal()
+    [pid=9050][err] #10 0x5f8bf49abf27 logging::LogMessage::Flush()
+    [pid=9050][err] #11 0x5f8bf49ac4c9 logging::LogMessageFatal::~LogMessageFatal()
+    [pid=9050][err] #12 0x5f8bf1579952 content::ZygoteHostImpl::Init()
+    [pid=9050][err] #13 0x5f8bf4977a99 content::ContentMainRunnerImpl::Initialize()
+    [pid=9050][err] #14 0x5f8bf497513c content::RunContentProcess()
+    [pid=9050][err] #15 0x5f8bf4975587 content::ContentMain()
+    [pid=9050][err] #16 0x5f8bed68237d ChromeMain
+    [pid=9050][err] #17 0x7b1ccc02a8c1 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a8c0)
+    [pid=9050][err] #18 0x7b1ccc02a9d8 __libc_start_main
+    [pid=9050][err] #19 0x5f8bed68202a _start
+    [pid=9050][err]   r8: 0000000000000016  r9: 0000000000000444 r10: 000013500014c263 r11: 0000000000000246
+    [pid=9050][err]  r12: 0000000000000006 r13: 00000000000006a7 r14: 00005f8bed3eaac1 r15: 00007ffd46bdf240
+    [pid=9050][err]   di: 000000000000235a  si: 000000000000235a  bp: 00007ffd46bdf0e0  bx: 000000000000235a
+    [pid=9050][err]   dx: 0000000000000006  ax: 0000000000000000  cx: 00007b1ccc0ae0cc  sp: 00007ffd46bdf0a0
+    [pid=9050][err]   ip: 00007b1ccc0ae0cc efl: 0000000000000246 cgf: 002b000000000033 erf: 0000000000000000
+    [pid=9050][err]  trp: 0000000000000000 msk: 0000000000000000 cr2: 0000000000000000
+    [pid=9050][err] [end of stack trace]
+    Call log:
+      - <launching> /usr/bin/chromium --inspector-pipe --headless --no-startup-window
+      - <launched> pid=9050
+      - [pid=9050][err] [9050:9050:1125/174550.454793:FATAL:content/browser/zygote_host/zygote_host_impl_linux.cc:144] No usable sandbox! If you are running on Ubuntu 23.10+ or another Linux distro that has disabled unprivileged user namespaces with AppArmor, see https://chromium.googlesource.com/chromium/src/+/main/docs/security/apparmor-userns-restrictions.md. Otherwise see https://chromium.googlesource.com/chromium/src/+/main/docs/linux/suid_sandbox_development.md for more information on developing with the (older) SUID sandbox. If you want to live dangerously and need an immediate workaround, you can try using --no-sandbox.
+      - [pid=9050][err] #0 0x5f8bf4a8ef72 base::debug::CollectStackTrace()
+      - [pid=9050][err] #1 0x5f8bf4a7935e base::debug::StackTrace::StackTrace()
+      - [pid=9050][err] #2 0x5f8bf49ab92c logging::LogMessage::Flush()
+      - [pid=9050][err] #3 0x5f8bf49ac4c9 logging::LogMessageFatal::~LogMessageFatal()
+      - [pid=9050][err] #4 0x5f8bf1579952 content::ZygoteHostImpl::Init()
+      - [pid=9050][err] #5 0x5f8bf4977a99 content::ContentMainRunnerImpl::Initialize()
+      - [pid=9050][err] #6 0x5f8bf497513c content::RunContentProcess()
+      - [pid=9050][err] #7 0x5f8bf4975587 content::ContentMain()
+      - [pid=9050][err] #8 0x5f8bed68237d ChromeMain
+      - [pid=9050][err] #9 0x7b1ccc02a8c1 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a8c0)
+      - [pid=9050][err] #10 0x7b1ccc02a9d8 __libc_start_main
+      - [pid=9050][err] #11 0x5f8bed68202a _start
+      - [pid=9050][err] Crash keys:
+      - [pid=9050][err]   "switch-10" = "--use-angle=swiftshader-webgl"
+      - [pid=9050][err]   "switch-9" = "--ozone-override-screen-size=800,600"
+      - [pid=9050][err]   "switch-8" = "--ozone-platform=headless"
+      - [pid=9050][err]   "switch-7" = "--user-data-dir=/home/runner/.config/chromium-headless/scoped_di"
+      - [pid=9050][err]   "switch-6" = "--no-first-run"
+      - [pid=9050][err]   "switch-5" = "--noerrdialogs"
+      - [pid=9050][err]   "switch-4" = "--incognito"
+      - [pid=9050][err]   "switch-3" = "--no-startup-window"
+      - [pid=9050][err]   "switch-2" = "--headless"
+      - [pid=9050][err]   "switch-1" = "--inspector-pipe"
+      - [pid=9050][err]   "num-switches" = "10"
+      - [pid=9050][err]   "osarch" = "x86_64"
+      - [pid=9050][err]   "pid" = "9050"
+      - [pid=9050][err]   "ptype" = "browser"
+      - [pid=9050][err]
+      - [pid=9050][err] Received signal 6
+      - [pid=9050][err] #0 0x5f8bf4a8ef72 base::debug::CollectStackTrace()
+      - [pid=9050][err] #1 0x5f8bf4a7935e base::debug::StackTrace::StackTrace()
+      - [pid=9050][err] #2 0x5f8bf4a8e9d8 base::debug::(anonymous namespace)::StackDumpSignalHandler()
+      - [pid=9050][err] #3 0x7b1ccc047dd0 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x47dcf)
+      - [pid=9050][err] #4 0x7b1ccc0ae0cc pthread_kill
+      - [pid=9050][err] #5 0x7b1ccc047c9e gsignal
+      - [pid=9050][err] #6 0x7b1ccc0288ec abort
+      - [pid=9050][err] #7 0x5f8bf4a68165 base::debug::BreakDebuggerAsyncSafe()
+      - [pid=9050][err] #8 0x5f8bf49ac473 base::RepeatingCallback<>::Run()
+      - [pid=9050][err] #9 0x5f8bf49ac335 logging::LogMessage::HandleFatal()
+      - [pid=9050][err] #10 0x5f8bf49abf27 logging::LogMessage::Flush()
+      - [pid=9050][err] #11 0x5f8bf49ac4c9 logging::LogMessageFatal::~LogMessageFatal()
+      - [pid=9050][err] #12 0x5f8bf1579952 content::ZygoteHostImpl::Init()
+      - [pid=9050][err] #13 0x5f8bf4977a99 content::ContentMainRunnerImpl::Initialize()
+      - [pid=9050][err] #14 0x5f8bf497513c content::RunContentProcess()
+      - [pid=9050][err] #15 0x5f8bf4975587 content::ContentMain()
+      - [pid=9050][err] #16 0x5f8bed68237d ChromeMain
+      - [pid=9050][err] #17 0x7b1ccc02a8c1 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a8c0)
+      - [pid=9050][err] #18 0x7b1ccc02a9d8 __libc_start_main
+      - [pid=9050][err] #19 0x5f8bed68202a _start
+      - [pid=9050][err]   r8: 0000000000000016  r9: 0000000000000444 r10: 000013500014c263 r11: 0000000000000246
+      - [pid=9050][err]  r12: 0000000000000006 r13: 00000000000006a7 r14: 00005f8bed3eaac1 r15: 00007ffd46bdf240
+      - [pid=9050][err]   di: 000000000000235a  si: 000000000000235a  bp: 00007ffd46bdf0e0  bx: 000000000000235a
+      - [pid=9050][err]   dx: 0000000000000006  ax: 0000000000000000  cx: 00007b1ccc0ae0cc  sp: 00007ffd46bdf0a0
+      - [pid=9050][err]   ip: 00007b1ccc0ae0cc efl: 0000000000000246 cgf: 002b000000000033 erf: 0000000000000000
+      - [pid=9050][err]  trp: 0000000000000000 msk: 0000000000000000 cr2: 0000000000000000
+      - [pid=9050][err] [end of stack trace]
+      - [pid=9050] <gracefully close start>
+      - [pid=9050] <kill>
+      - [pid=9050] <will force kill>
+      - [pid=9050] <process did exit: exitCode=null, signal=SIGABRT>
+      - [pid=9050] starting temporary directories cleanup
+      - [pid=9050] finished temporary directories cleanup
+      - [pid=9050] <gracefully close end>
+
+
+    Error Context: test-results/platform-audit-Full-Platfo-b2efb-nd-zero-horizontal-overflow-mobile-safari-retry2/error-context.md
+
+  21) [mobile-safari] › tests/e2e/platform-audit.spec.ts:117:3 › Full Platform Runtime & Governance Audit (All 22 Modules & Roles) › Bilingual Amharic + Ethiopic (ዓ.ም) mode renders cleanly across operational & governance screens without overflow 
+
+    Error: browserType.launch: Target page, context or browser has been closed
+    Browser logs:
+
+    <launching> /usr/bin/chromium --inspector-pipe --headless --no-startup-window
+    <launched> pid=9082
+    [pid=9082][err] [9082:9082:1125/174551.875875:FATAL:content/browser/zygote_host/zygote_host_impl_linux.cc:144] No usable sandbox! If you are running on Ubuntu 23.10+ or another Linux distro that has disabled unprivileged user namespaces with AppArmor, see https://chromium.googlesource.com/chromium/src/+/main/docs/security/apparmor-userns-restrictions.md. Otherwise see https://chromium.googlesource.com/chromium/src/+/main/docs/linux/suid_sandbox_development.md for more information on developing with the (older) SUID sandbox. If you want to live dangerously and need an immediate workaround, you can try using --no-sandbox.
+    [pid=9082][err] #0 0x5b8847b63f72 base::debug::CollectStackTrace()
+    [pid=9082][err] #1 0x5b8847b4e35e base::debug::StackTrace::StackTrace()
+    [pid=9082][err] #2 0x5b8847a8092c logging::LogMessage::Flush()
+    [pid=9082][err] #3 0x5b8847a814c9 logging::LogMessageFatal::~LogMessageFatal()
+    [pid=9082][err] #4 0x5b884464e952 content::ZygoteHostImpl::Init()
+    [pid=9082][err] #5 0x5b8847a4ca99 content::ContentMainRunnerImpl::Initialize()
+    [pid=9082][err] #6 0x5b8847a4a13c content::RunContentProcess()
+    [pid=9082][err] #7 0x5b8847a4a587 content::ContentMain()
+    [pid=9082][err] #8 0x5b884075737d ChromeMain
+    [pid=9082][err] #9 0x77a5c022a8c1 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a8c0)
+    [pid=9082][err] #10 0x77a5c022a9d8 __libc_start_main
+    [pid=9082][err] #11 0x5b884075702a _start
+    [pid=9082][err] Crash keys:
+    [pid=9082][err]   "switch-10" = "--use-angle=swiftshader-webgl"
+    [pid=9082][err]   "switch-9" = "--ozone-override-screen-size=800,600"
+    [pid=9082][err]   "switch-8" = "--ozone-platform=headless"
+    [pid=9082][err]   "switch-7" = "--user-data-dir=/home/runner/.config/chromium-headless/scoped_di"
+    [pid=9082][err]   "switch-6" = "--no-first-run"
+    [pid=9082][err]   "switch-5" = "--noerrdialogs"
+    [pid=9082][err]   "switch-4" = "--incognito"
+    [pid=9082][err]   "switch-3" = "--no-startup-window"
+    [pid=9082][err]   "switch-2" = "--headless"
+    [pid=9082][err]   "switch-1" = "--inspector-pipe"
+    [pid=9082][err]   "num-switches" = "10"
+    [pid=9082][err]   "osarch" = "x86_64"
+    [pid=9082][err]   "pid" = "9082"
+    [pid=9082][err]   "ptype" = "browser"
+    [pid=9082][err] 
+    [pid=9082][err] Received signal 6
+    [pid=9082][err] #0 0x5b8847b63f72 base::debug::CollectStackTrace()
+    [pid=9082][err] #1 0x5b8847b4e35e base::debug::StackTrace::StackTrace()
+    [pid=9082][err] #2 0x5b8847b639d8 base::debug::(anonymous namespace)::StackDumpSignalHandler()
+    [pid=9082][err] #3 0x77a5c0247dd0 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x47dcf)
+    [pid=9082][err] #4 0x77a5c02ae0cc pthread_kill
+    [pid=9082][err] #5 0x77a5c0247c9e gsignal
+    [pid=9082][err] #6 0x77a5c02288ec abort
+    [pid=9082][err] #7 0x5b8847b3d165 base::debug::BreakDebuggerAsyncSafe()
+    [pid=9082][err] #8 0x5b8847a81473 base::RepeatingCallback<>::Run()
+    [pid=9082][err] #9 0x5b8847a81335 logging::LogMessage::HandleFatal()
+    [pid=9082][err] #10 0x5b8847a80f27 logging::LogMessage::Flush()
+    [pid=9082][err] #11 0x5b8847a814c9 logging::LogMessageFatal::~LogMessageFatal()
+    [pid=9082][err] #12 0x5b884464e952 content::ZygoteHostImpl::Init()
+    [pid=9082][err] #13 0x5b8847a4ca99 content::ContentMainRunnerImpl::Initialize()
+    [pid=9082][err] #14 0x5b8847a4a13c content::RunContentProcess()
+    [pid=9082][err] #15 0x5b8847a4a587 content::ContentMain()
+    [pid=9082][err] #16 0x5b884075737d ChromeMain
+    [pid=9082][err] #17 0x77a5c022a8c1 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a8c0)
+    [pid=9082][err] #18 0x77a5c022a9d8 __libc_start_main
+    [pid=9082][err] #19 0x5b884075702a _start
+    [pid=9082][err]   r8: 0000000000000016  r9: 0000000000000444 r10: 000034300014c263 r11: 0000000000000246
+    [pid=9082][err]  r12: 0000000000000006 r13: 00000000000006a7 r14: 00005b88404bfac1 r15: 00007fff3b727ec0
+    [pid=9082][err]   di: 000000000000237a  si: 000000000000237a  bp: 00007fff3b727d60  bx: 000000000000237a
+    [pid=9082][err]   dx: 0000000000000006  ax: 0000000000000000  cx: 000077a5c02ae0cc  sp: 00007fff3b727d20
+    [pid=9082][err]   ip: 000077a5c02ae0cc efl: 0000000000000246 cgf: 002b000000000033 erf: 0000000000000000
+    [pid=9082][err]  trp: 0000000000000000 msk: 0000000000000000 cr2: 0000000000000000
+    [pid=9082][err] [end of stack trace]
+    Call log:
+      - <launching> /usr/bin/chromium --inspector-pipe --headless --no-startup-window
+      - <launched> pid=9082
+      - [pid=9082][err] [9082:9082:1125/174551.875875:FATAL:content/browser/zygote_host/zygote_host_impl_linux.cc:144] No usable sandbox! If you are running on Ubuntu 23.10+ or another Linux distro that has disabled unprivileged user namespaces with AppArmor, see https://chromium.googlesource.com/chromium/src/+/main/docs/security/apparmor-userns-restrictions.md. Otherwise see https://chromium.googlesource.com/chromium/src/+/main/docs/linux/suid_sandbox_development.md for more information on developing with the (older) SUID sandbox. If you want to live dangerously and need an immediate workaround, you can try using --no-sandbox.
+      - [pid=9082][err] #0 0x5b8847b63f72 base::debug::CollectStackTrace()
+      - [pid=9082][err] #1 0x5b8847b4e35e base::debug::StackTrace::StackTrace()
+      - [pid=9082][err] #2 0x5b8847a8092c logging::LogMessage::Flush()
+      - [pid=9082][err] #3 0x5b8847a814c9 logging::LogMessageFatal::~LogMessageFatal()
+      - [pid=9082][err] #4 0x5b884464e952 content::ZygoteHostImpl::Init()
+      - [pid=9082][err] #5 0x5b8847a4ca99 content::ContentMainRunnerImpl::Initialize()
+      - [pid=9082][err] #6 0x5b8847a4a13c content::RunContentProcess()
+      - [pid=9082][err] #7 0x5b8847a4a587 content::ContentMain()
+      - [pid=9082][err] #8 0x5b884075737d ChromeMain
+      - [pid=9082][err] #9 0x77a5c022a8c1 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a8c0)
+      - [pid=9082][err] #10 0x77a5c022a9d8 __libc_start_main
+      - [pid=9082][err] #11 0x5b884075702a _start
+      - [pid=9082][err] Crash keys:
+      - [pid=9082][err]   "switch-10" = "--use-angle=swiftshader-webgl"
+      - [pid=9082][err]   "switch-9" = "--ozone-override-screen-size=800,600"
+      - [pid=9082][err]   "switch-8" = "--ozone-platform=headless"
+      - [pid=9082][err]   "switch-7" = "--user-data-dir=/home/runner/.config/chromium-headless/scoped_di"
+      - [pid=9082][err]   "switch-6" = "--no-first-run"
+      - [pid=9082][err]   "switch-5" = "--noerrdialogs"
+      - [pid=9082][err]   "switch-4" = "--incognito"
+      - [pid=9082][err]   "switch-3" = "--no-startup-window"
+      - [pid=9082][err]   "switch-2" = "--headless"
+      - [pid=9082][err]   "switch-1" = "--inspector-pipe"
+      - [pid=9082][err]   "num-switches" = "10"
+      - [pid=9082][err]   "osarch" = "x86_64"
+      - [pid=9082][err]   "pid" = "9082"
+      - [pid=9082][err]   "ptype" = "browser"
+      - [pid=9082][err]
+      - [pid=9082][err] Received signal 6
+      - [pid=9082][err] #0 0x5b8847b63f72 base::debug::CollectStackTrace()
+      - [pid=9082][err] #1 0x5b8847b4e35e base::debug::StackTrace::StackTrace()
+      - [pid=9082][err] #2 0x5b8847b639d8 base::debug::(anonymous namespace)::StackDumpSignalHandler()
+      - [pid=9082][err] #3 0x77a5c0247dd0 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x47dcf)
+      - [pid=9082][err] #4 0x77a5c02ae0cc pthread_kill
+      - [pid=9082][err] #5 0x77a5c0247c9e gsignal
+      - [pid=9082][err] #6 0x77a5c02288ec abort
+      - [pid=9082][err] #7 0x5b8847b3d165 base::debug::BreakDebuggerAsyncSafe()
+      - [pid=9082][err] #8 0x5b8847a81473 base::RepeatingCallback<>::Run()
+      - [pid=9082][err] #9 0x5b8847a81335 logging::LogMessage::HandleFatal()
+      - [pid=9082][err] #10 0x5b8847a80f27 logging::LogMessage::Flush()
+      - [pid=9082][err] #11 0x5b8847a814c9 logging::LogMessageFatal::~LogMessageFatal()
+      - [pid=9082][err] #12 0x5b884464e952 content::ZygoteHostImpl::Init()
+      - [pid=9082][err] #13 0x5b8847a4ca99 content::ContentMainRunnerImpl::Initialize()
+      - [pid=9082][err] #14 0x5b8847a4a13c content::RunContentProcess()
+      - [pid=9082][err] #15 0x5b8847a4a587 content::ContentMain()
+      - [pid=9082][err] #16 0x5b884075737d ChromeMain
+      - [pid=9082][err] #17 0x77a5c022a8c1 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a8c0)
+      - [pid=9082][err] #18 0x77a5c022a9d8 __libc_start_main
+      - [pid=9082][err] #19 0x5b884075702a _start
+      - [pid=9082][err]   r8: 0000000000000016  r9: 0000000000000444 r10: 000034300014c263 r11: 0000000000000246
+      - [pid=9082][err]  r12: 0000000000000006 r13: 00000000000006a7 r14: 00005b88404bfac1 r15: 00007fff3b727ec0
+      - [pid=9082][err]   di: 000000000000237a  si: 000000000000237a  bp: 00007fff3b727d60  bx: 000000000000237a
+      - [pid=9082][err]   dx: 0000000000000006  ax: 0000000000000000  cx: 000077a5c02ae0cc  sp: 00007fff3b727d20
+      - [pid=9082][err]   ip: 000077a5c02ae0cc efl: 0000000000000246 cgf: 002b000000000033 erf: 0000000000000000
+      - [pid=9082][err]  trp: 0000000000000000 msk: 0000000000000000 cr2: 0000000000000000
+      - [pid=9082][err] [end of stack trace]
+      - [pid=9082] <gracefully close start>
+      - [pid=9082] <kill>
+      - [pid=9082] <will force kill>
+      - [pid=9082] <process did exit: exitCode=null, signal=SIGABRT>
+      - [pid=9082] starting temporary directories cleanup
+      - [pid=9082] finished temporary directories cleanup
+      - [pid=9082] <gracefully close end>
+
+
+    Error Context: test-results/platform-audit-Full-Platfo-7239c-ce-screens-without-overflow-mobile-safari/error-context.md
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: browserType.launch: Target page, context or browser has been closed
+    Browser logs:
+
+    <launching> /usr/bin/chromium --inspector-pipe --headless --no-startup-window
+    <launched> pid=9114
+    [pid=9114][err] [9114:9114:1125/174553.285792:FATAL:content/browser/zygote_host/zygote_host_impl_linux.cc:144] No usable sandbox! If you are running on Ubuntu 23.10+ or another Linux distro that has disabled unprivileged user namespaces with AppArmor, see https://chromium.googlesource.com/chromium/src/+/main/docs/security/apparmor-userns-restrictions.md. Otherwise see https://chromium.googlesource.com/chromium/src/+/main/docs/linux/suid_sandbox_development.md for more information on developing with the (older) SUID sandbox. If you want to live dangerously and need an immediate workaround, you can try using --no-sandbox.
+    [pid=9114][err] #0 0x55ae46360f72 base::debug::CollectStackTrace()
+    [pid=9114][err] #1 0x55ae4634b35e base::debug::StackTrace::StackTrace()
+    [pid=9114][err] #2 0x55ae4627d92c logging::LogMessage::Flush()
+    [pid=9114][err] #3 0x55ae4627e4c9 logging::LogMessageFatal::~LogMessageFatal()
+    [pid=9114][err] #4 0x55ae42e4b952 content::ZygoteHostImpl::Init()
+    [pid=9114][err] #5 0x55ae46249a99 content::ContentMainRunnerImpl::Initialize()
+    [pid=9114][err] #6 0x55ae4624713c content::RunContentProcess()
+    [pid=9114][err] #7 0x55ae46247587 content::ContentMain()
+    [pid=9114][err] #8 0x55ae3ef5437d ChromeMain
+    [pid=9114][err] #9 0x73aff522a8c1 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a8c0)
+    [pid=9114][err] #10 0x73aff522a9d8 __libc_start_main
+    [pid=9114][err] #11 0x55ae3ef5402a _start
+    [pid=9114][err] Crash keys:
+    [pid=9114][err]   "switch-10" = "--use-angle=swiftshader-webgl"
+    [pid=9114][err]   "switch-9" = "--ozone-override-screen-size=800,600"
+    [pid=9114][err]   "switch-8" = "--ozone-platform=headless"
+    [pid=9114][err]   "switch-7" = "--user-data-dir=/home/runner/.config/chromium-headless/scoped_di"
+    [pid=9114][err]   "switch-6" = "--no-first-run"
+    [pid=9114][err]   "switch-5" = "--noerrdialogs"
+    [pid=9114][err]   "switch-4" = "--incognito"
+    [pid=9114][err]   "switch-3" = "--no-startup-window"
+    [pid=9114][err]   "switch-2" = "--headless"
+    [pid=9114][err]   "switch-1" = "--inspector-pipe"
+    [pid=9114][err]   "num-switches" = "10"
+    [pid=9114][err]   "osarch" = "x86_64"
+    [pid=9114][err]   "pid" = "9114"
+    [pid=9114][err]   "ptype" = "browser"
+    [pid=9114][err] 
+    [pid=9114][err] Received signal 6
+    [pid=9114][err] #0 0x55ae46360f72 base::debug::CollectStackTrace()
+    [pid=9114][err] #1 0x55ae4634b35e base::debug::StackTrace::StackTrace()
+    [pid=9114][err] #2 0x55ae463609d8 base::debug::(anonymous namespace)::StackDumpSignalHandler()
+    [pid=9114][err] #3 0x73aff5247dd0 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x47dcf)
+    [pid=9114][err] #4 0x73aff52ae0cc pthread_kill
+    [pid=9114][err] #5 0x73aff5247c9e gsignal
+    [pid=9114][err] #6 0x73aff52288ec abort
+    [pid=9114][err] #7 0x55ae4633a165 base::debug::BreakDebuggerAsyncSafe()
+    [pid=9114][err] #8 0x55ae4627e473 base::RepeatingCallback<>::Run()
+    [pid=9114][err] #9 0x55ae4627e335 logging::LogMessage::HandleFatal()
+    [pid=9114][err] #10 0x55ae4627df27 logging::LogMessage::Flush()
+    [pid=9114][err] #11 0x55ae4627e4c9 logging::LogMessageFatal::~LogMessageFatal()
+    [pid=9114][err] #12 0x55ae42e4b952 content::ZygoteHostImpl::Init()
+    [pid=9114][err] #13 0x55ae46249a99 content::ContentMainRunnerImpl::Initialize()
+    [pid=9114][err] #14 0x55ae4624713c content::RunContentProcess()
+    [pid=9114][err] #15 0x55ae46247587 content::ContentMain()
+    [pid=9114][err] #16 0x55ae3ef5437d ChromeMain
+    [pid=9114][err] #17 0x73aff522a8c1 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a8c0)
+    [pid=9114][err] #18 0x73aff522a9d8 __libc_start_main
+    [pid=9114][err] #19 0x55ae3ef5402a _start
+    [pid=9114][err]   r8: 0000000000000016  r9: 0000000000000444 r10: 00000cd00014c263 r11: 0000000000000246
+    [pid=9114][err]  r12: 0000000000000006 r13: 00000000000006a7 r14: 000055ae3ecbcac1 r15: 00007ffd88e84ca0
+    [pid=9114][err]   di: 000000000000239a  si: 000000000000239a  bp: 00007ffd88e84b40  bx: 000000000000239a
+    [pid=9114][err]   dx: 0000000000000006  ax: 0000000000000000  cx: 000073aff52ae0cc  sp: 00007ffd88e84b00
+    [pid=9114][err]   ip: 000073aff52ae0cc efl: 0000000000000246 cgf: 002b000000000033 erf: 0000000000000000
+    [pid=9114][err]  trp: 0000000000000000 msk: 0000000000000000 cr2: 0000000000000000
+    [pid=9114][err] [end of stack trace]
+    Call log:
+      - <launching> /usr/bin/chromium --inspector-pipe --headless --no-startup-window
+      - <launched> pid=9114
+      - [pid=9114][err] [9114:9114:1125/174553.285792:FATAL:content/browser/zygote_host/zygote_host_impl_linux.cc:144] No usable sandbox! If you are running on Ubuntu 23.10+ or another Linux distro that has disabled unprivileged user namespaces with AppArmor, see https://chromium.googlesource.com/chromium/src/+/main/docs/security/apparmor-userns-restrictions.md. Otherwise see https://chromium.googlesource.com/chromium/src/+/main/docs/linux/suid_sandbox_development.md for more information on developing with the (older) SUID sandbox. If you want to live dangerously and need an immediate workaround, you can try using --no-sandbox.
+      - [pid=9114][err] #0 0x55ae46360f72 base::debug::CollectStackTrace()
+      - [pid=9114][err] #1 0x55ae4634b35e base::debug::StackTrace::StackTrace()
+      - [pid=9114][err] #2 0x55ae4627d92c logging::LogMessage::Flush()
+      - [pid=9114][err] #3 0x55ae4627e4c9 logging::LogMessageFatal::~LogMessageFatal()
+      - [pid=9114][err] #4 0x55ae42e4b952 content::ZygoteHostImpl::Init()
+      - [pid=9114][err] #5 0x55ae46249a99 content::ContentMainRunnerImpl::Initialize()
+      - [pid=9114][err] #6 0x55ae4624713c content::RunContentProcess()
+      - [pid=9114][err] #7 0x55ae46247587 content::ContentMain()
+      - [pid=9114][err] #8 0x55ae3ef5437d ChromeMain
+      - [pid=9114][err] #9 0x73aff522a8c1 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a8c0)
+      - [pid=9114][err] #10 0x73aff522a9d8 __libc_start_main
+      - [pid=9114][err] #11 0x55ae3ef5402a _start
+      - [pid=9114][err] Crash keys:
+      - [pid=9114][err]   "switch-10" = "--use-angle=swiftshader-webgl"
+      - [pid=9114][err]   "switch-9" = "--ozone-override-screen-size=800,600"
+      - [pid=9114][err]   "switch-8" = "--ozone-platform=headless"
+      - [pid=9114][err]   "switch-7" = "--user-data-dir=/home/runner/.config/chromium-headless/scoped_di"
+      - [pid=9114][err]   "switch-6" = "--no-first-run"
+      - [pid=9114][err]   "switch-5" = "--noerrdialogs"
+      - [pid=9114][err]   "switch-4" = "--incognito"
+      - [pid=9114][err]   "switch-3" = "--no-startup-window"
+      - [pid=9114][err]   "switch-2" = "--headless"
+      - [pid=9114][err]   "switch-1" = "--inspector-pipe"
+      - [pid=9114][err]   "num-switches" = "10"
+      - [pid=9114][err]   "osarch" = "x86_64"
+      - [pid=9114][err]   "pid" = "9114"
+      - [pid=9114][err]   "ptype" = "browser"
+      - [pid=9114][err]
+      - [pid=9114][err] Received signal 6
+      - [pid=9114][err] #0 0x55ae46360f72 base::debug::CollectStackTrace()
+      - [pid=9114][err] #1 0x55ae4634b35e base::debug::StackTrace::StackTrace()
+      - [pid=9114][err] #2 0x55ae463609d8 base::debug::(anonymous namespace)::StackDumpSignalHandler()
+      - [pid=9114][err] #3 0x73aff5247dd0 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x47dcf)
+      - [pid=9114][err] #4 0x73aff52ae0cc pthread_kill
+      - [pid=9114][err] #5 0x73aff5247c9e gsignal
+      - [pid=9114][err] #6 0x73aff52288ec abort
+      - [pid=9114][err] #7 0x55ae4633a165 base::debug::BreakDebuggerAsyncSafe()
+      - [pid=9114][err] #8 0x55ae4627e473 base::RepeatingCallback<>::Run()
+      - [pid=9114][err] #9 0x55ae4627e335 logging::LogMessage::HandleFatal()
+      - [pid=9114][err] #10 0x55ae4627df27 logging::LogMessage::Flush()
+      - [pid=9114][err] #11 0x55ae4627e4c9 logging::LogMessageFatal::~LogMessageFatal()
+      - [pid=9114][err] #12 0x55ae42e4b952 content::ZygoteHostImpl::Init()
+      - [pid=9114][err] #13 0x55ae46249a99 content::ContentMainRunnerImpl::Initialize()
+      - [pid=9114][err] #14 0x55ae4624713c content::RunContentProcess()
+      - [pid=9114][err] #15 0x55ae46247587 content::ContentMain()
+      - [pid=9114][err] #16 0x55ae3ef5437d ChromeMain
+      - [pid=9114][err] #17 0x73aff522a8c1 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a8c0)
+      - [pid=9114][err] #18 0x73aff522a9d8 __libc_start_main
+      - [pid=9114][err] #19 0x55ae3ef5402a _start
+      - [pid=9114][err]   r8: 0000000000000016  r9: 0000000000000444 r10: 00000cd00014c263 r11: 0000000000000246
+      - [pid=9114][err]  r12: 0000000000000006 r13: 00000000000006a7 r14: 000055ae3ecbcac1 r15: 00007ffd88e84ca0
+      - [pid=9114][err]   di: 000000000000239a  si: 000000000000239a  bp: 00007ffd88e84b40  bx: 000000000000239a
+      - [pid=9114][err]   dx: 0000000000000006  ax: 0000000000000000  cx: 000073aff52ae0cc  sp: 00007ffd88e84b00
+      - [pid=9114][err]   ip: 000073aff52ae0cc efl: 0000000000000246 cgf: 002b000000000033 erf: 0000000000000000
+      - [pid=9114][err]  trp: 0000000000000000 msk: 0000000000000000 cr2: 0000000000000000
+      - [pid=9114][err] [end of stack trace]
+      - [pid=9114] <gracefully close start>
+      - [pid=9114] <kill>
+      - [pid=9114] <will force kill>
+      - [pid=9114] <process did exit: exitCode=null, signal=SIGABRT>
+      - [pid=9114] starting temporary directories cleanup
+      - [pid=9114] finished temporary directories cleanup
+      - [pid=9114] <gracefully close end>
+
+
+    Error Context: test-results/platform-audit-Full-Platfo-7239c-ce-screens-without-overflow-mobile-safari-retry1/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/platform-audit-Full-Platfo-7239c-ce-screens-without-overflow-mobile-safari-retry1/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/platform-audit-Full-Platfo-7239c-ce-screens-without-overflow-mobile-safari-retry1/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #2 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: browserType.launch: Target page, context or browser has been closed
+    Browser logs:
+
+    <launching> /usr/bin/chromium --inspector-pipe --headless --no-startup-window
+    <launched> pid=9146
+    [pid=9146][err] [9146:9146:1125/174554.792877:FATAL:content/browser/zygote_host/zygote_host_impl_linux.cc:144] No usable sandbox! If you are running on Ubuntu 23.10+ or another Linux distro that has disabled unprivileged user namespaces with AppArmor, see https://chromium.googlesource.com/chromium/src/+/main/docs/security/apparmor-userns-restrictions.md. Otherwise see https://chromium.googlesource.com/chromium/src/+/main/docs/linux/suid_sandbox_development.md for more information on developing with the (older) SUID sandbox. If you want to live dangerously and need an immediate workaround, you can try using --no-sandbox.
+    [pid=9146][err] #0 0x572d5caf8f72 base::debug::CollectStackTrace()
+    [pid=9146][err] #1 0x572d5cae335e base::debug::StackTrace::StackTrace()
+    [pid=9146][err] #2 0x572d5ca1592c logging::LogMessage::Flush()
+    [pid=9146][err] #3 0x572d5ca164c9 logging::LogMessageFatal::~LogMessageFatal()
+    [pid=9146][err] #4 0x572d595e3952 content::ZygoteHostImpl::Init()
+    [pid=9146][err] #5 0x572d5c9e1a99 content::ContentMainRunnerImpl::Initialize()
+    [pid=9146][err] #6 0x572d5c9df13c content::RunContentProcess()
+    [pid=9146][err] #7 0x572d5c9df587 content::ContentMain()
+    [pid=9146][err] #8 0x572d556ec37d ChromeMain
+    [pid=9146][err] #9 0x77612902a8c1 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a8c0)
+    [pid=9146][err] #10 0x77612902a9d8 __libc_start_main
+    [pid=9146][err] #11 0x572d556ec02a _start
+    [pid=9146][err] Crash keys:
+    [pid=9146][err]   "switch-10" = "--use-angle=swiftshader-webgl"
+    [pid=9146][err]   "switch-9" = "--ozone-override-screen-size=800,600"
+    [pid=9146][err]   "switch-8" = "--ozone-platform=headless"
+    [pid=9146][err]   "switch-7" = "--user-data-dir=/home/runner/.config/chromium-headless/scoped_di"
+    [pid=9146][err]   "switch-6" = "--no-first-run"
+    [pid=9146][err]   "switch-5" = "--noerrdialogs"
+    [pid=9146][err]   "switch-4" = "--incognito"
+    [pid=9146][err]   "switch-3" = "--no-startup-window"
+    [pid=9146][err]   "switch-2" = "--headless"
+    [pid=9146][err]   "switch-1" = "--inspector-pipe"
+    [pid=9146][err]   "num-switches" = "10"
+    [pid=9146][err]   "osarch" = "x86_64"
+    [pid=9146][err]   "pid" = "9146"
+    [pid=9146][err]   "ptype" = "browser"
+    [pid=9146][err] 
+    [pid=9146][err] Received signal 6
+    [pid=9146][err] #0 0x572d5caf8f72 base::debug::CollectStackTrace()
+    [pid=9146][err] #1 0x572d5cae335e base::debug::StackTrace::StackTrace()
+    [pid=9146][err] #2 0x572d5caf89d8 base::debug::(anonymous namespace)::StackDumpSignalHandler()
+    [pid=9146][err] #3 0x776129047dd0 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x47dcf)
+    [pid=9146][err] #4 0x7761290ae0cc pthread_kill
+    [pid=9146][err] #5 0x776129047c9e gsignal
+    [pid=9146][err] #6 0x7761290288ec abort
+    [pid=9146][err] #7 0x572d5cad2165 base::debug::BreakDebuggerAsyncSafe()
+    [pid=9146][err] #8 0x572d5ca16473 base::RepeatingCallback<>::Run()
+    [pid=9146][err] #9 0x572d5ca16335 logging::LogMessage::HandleFatal()
+    [pid=9146][err] #10 0x572d5ca15f27 logging::LogMessage::Flush()
+    [pid=9146][err] #11 0x572d5ca164c9 logging::LogMessageFatal::~LogMessageFatal()
+    [pid=9146][err] #12 0x572d595e3952 content::ZygoteHostImpl::Init()
+    [pid=9146][err] #13 0x572d5c9e1a99 content::ContentMainRunnerImpl::Initialize()
+    [pid=9146][err] #14 0x572d5c9df13c content::RunContentProcess()
+    [pid=9146][err] #15 0x572d5c9df587 content::ContentMain()
+    [pid=9146][err] #16 0x572d556ec37d ChromeMain
+    [pid=9146][err] #17 0x77612902a8c1 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a8c0)
+    [pid=9146][err] #18 0x77612902a9d8 __libc_start_main
+    [pid=9146][err] #19 0x572d556ec02a _start
+    [pid=9146][err]   r8: 0000000000000016  r9: 0000000000000444 r10: 00002c380014c263 r11: 0000000000000246
+    [pid=9146][err]  r12: 0000000000000006 r13: 00000000000006a7 r14: 0000572d55454ac1 r15: 00007ffc1ac77170
+    [pid=9146][err]   di: 00000000000023ba  si: 00000000000023ba  bp: 00007ffc1ac77010  bx: 00000000000023ba
+    [pid=9146][err]   dx: 0000000000000006  ax: 0000000000000000  cx: 00007761290ae0cc  sp: 00007ffc1ac76fd0
+    [pid=9146][err]   ip: 00007761290ae0cc efl: 0000000000000246 cgf: 002b000000000033 erf: 0000000000000000
+    [pid=9146][err]  trp: 0000000000000000 msk: 0000000000000000 cr2: 0000000000000000
+    [pid=9146][err] [end of stack trace]
+    Call log:
+      - <launching> /usr/bin/chromium --inspector-pipe --headless --no-startup-window
+      - <launched> pid=9146
+      - [pid=9146][err] [9146:9146:1125/174554.792877:FATAL:content/browser/zygote_host/zygote_host_impl_linux.cc:144] No usable sandbox! If you are running on Ubuntu 23.10+ or another Linux distro that has disabled unprivileged user namespaces with AppArmor, see https://chromium.googlesource.com/chromium/src/+/main/docs/security/apparmor-userns-restrictions.md. Otherwise see https://chromium.googlesource.com/chromium/src/+/main/docs/linux/suid_sandbox_development.md for more information on developing with the (older) SUID sandbox. If you want to live dangerously and need an immediate workaround, you can try using --no-sandbox.
+      - [pid=9146][err] #0 0x572d5caf8f72 base::debug::CollectStackTrace()
+      - [pid=9146][err] #1 0x572d5cae335e base::debug::StackTrace::StackTrace()
+      - [pid=9146][err] #2 0x572d5ca1592c logging::LogMessage::Flush()
+      - [pid=9146][err] #3 0x572d5ca164c9 logging::LogMessageFatal::~LogMessageFatal()
+      - [pid=9146][err] #4 0x572d595e3952 content::ZygoteHostImpl::Init()
+      - [pid=9146][err] #5 0x572d5c9e1a99 content::ContentMainRunnerImpl::Initialize()
+      - [pid=9146][err] #6 0x572d5c9df13c content::RunContentProcess()
+      - [pid=9146][err] #7 0x572d5c9df587 content::ContentMain()
+      - [pid=9146][err] #8 0x572d556ec37d ChromeMain
+      - [pid=9146][err] #9 0x77612902a8c1 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a8c0)
+      - [pid=9146][err] #10 0x77612902a9d8 __libc_start_main
+      - [pid=9146][err] #11 0x572d556ec02a _start
+      - [pid=9146][err] Crash keys:
+      - [pid=9146][err]   "switch-10" = "--use-angle=swiftshader-webgl"
+      - [pid=9146][err]   "switch-9" = "--ozone-override-screen-size=800,600"
+      - [pid=9146][err]   "switch-8" = "--ozone-platform=headless"
+      - [pid=9146][err]   "switch-7" = "--user-data-dir=/home/runner/.config/chromium-headless/scoped_di"
+      - [pid=9146][err]   "switch-6" = "--no-first-run"
+      - [pid=9146][err]   "switch-5" = "--noerrdialogs"
+      - [pid=9146][err]   "switch-4" = "--incognito"
+      - [pid=9146][err]   "switch-3" = "--no-startup-window"
+      - [pid=9146][err]   "switch-2" = "--headless"
+      - [pid=9146][err]   "switch-1" = "--inspector-pipe"
+      - [pid=9146][err]   "num-switches" = "10"
+      - [pid=9146][err]   "osarch" = "x86_64"
+      - [pid=9146][err]   "pid" = "9146"
+      - [pid=9146][err]   "ptype" = "browser"
+      - [pid=9146][err]
+      - [pid=9146][err] Received signal 6
+      - [pid=9146][err] #0 0x572d5caf8f72 base::debug::CollectStackTrace()
+      - [pid=9146][err] #1 0x572d5cae335e base::debug::StackTrace::StackTrace()
+      - [pid=9146][err] #2 0x572d5caf89d8 base::debug::(anonymous namespace)::StackDumpSignalHandler()
+      - [pid=9146][err] #3 0x776129047dd0 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x47dcf)
+      - [pid=9146][err] #4 0x7761290ae0cc pthread_kill
+      - [pid=9146][err] #5 0x776129047c9e gsignal
+      - [pid=9146][err] #6 0x7761290288ec abort
+      - [pid=9146][err] #7 0x572d5cad2165 base::debug::BreakDebuggerAsyncSafe()
+      - [pid=9146][err] #8 0x572d5ca16473 base::RepeatingCallback<>::Run()
+      - [pid=9146][err] #9 0x572d5ca16335 logging::LogMessage::HandleFatal()
+      - [pid=9146][err] #10 0x572d5ca15f27 logging::LogMessage::Flush()
+      - [pid=9146][err] #11 0x572d5ca164c9 logging::LogMessageFatal::~LogMessageFatal()
+      - [pid=9146][err] #12 0x572d595e3952 content::ZygoteHostImpl::Init()
+      - [pid=9146][err] #13 0x572d5c9e1a99 content::ContentMainRunnerImpl::Initialize()
+      - [pid=9146][err] #14 0x572d5c9df13c content::RunContentProcess()
+      - [pid=9146][err] #15 0x572d5c9df587 content::ContentMain()
+      - [pid=9146][err] #16 0x572d556ec37d ChromeMain
+      - [pid=9146][err] #17 0x77612902a8c1 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a8c0)
+      - [pid=9146][err] #18 0x77612902a9d8 __libc_start_main
+      - [pid=9146][err] #19 0x572d556ec02a _start
+      - [pid=9146][err]   r8: 0000000000000016  r9: 0000000000000444 r10: 00002c380014c263 r11: 0000000000000246
+      - [pid=9146][err]  r12: 0000000000000006 r13: 00000000000006a7 r14: 0000572d55454ac1 r15: 00007ffc1ac77170
+      - [pid=9146][err]   di: 00000000000023ba  si: 00000000000023ba  bp: 00007ffc1ac77010  bx: 00000000000023ba
+      - [pid=9146][err]   dx: 0000000000000006  ax: 0000000000000000  cx: 00007761290ae0cc  sp: 00007ffc1ac76fd0
+      - [pid=9146][err]   ip: 00007761290ae0cc efl: 0000000000000246 cgf: 002b000000000033 erf: 0000000000000000
+      - [pid=9146][err]  trp: 0000000000000000 msk: 0000000000000000 cr2: 0000000000000000
+      - [pid=9146][err] [end of stack trace]
+      - [pid=9146] <gracefully close start>
+      - [pid=9146] <kill>
+      - [pid=9146] <will force kill>
+      - [pid=9146] <process did exit: exitCode=null, signal=SIGABRT>
+      - [pid=9146] starting temporary directories cleanup
+      - [pid=9146] finished temporary directories cleanup
+      - [pid=9146] <gracefully close end>
+
+
+    Error Context: test-results/platform-audit-Full-Platfo-7239c-ce-screens-without-overflow-mobile-safari-retry2/error-context.md
+
+  22) [mobile-safari] › tests/e2e/platform-audit.spec.ts:156:3 › Full Platform Runtime & Governance Audit (All 22 Modules & Roles) › Enforces read-only Auditor controls, Owner / Director single-owner lock, and Trainer seed reset exclusivity 
+
+    Error: browserType.launch: Target page, context or browser has been closed
+    Browser logs:
+
+    <launching> /usr/bin/chromium --inspector-pipe --headless --no-startup-window
+    <launched> pid=9179
+    [pid=9179][err] [9179:9179:1125/174556.238937:FATAL:content/browser/zygote_host/zygote_host_impl_linux.cc:144] No usable sandbox! If you are running on Ubuntu 23.10+ or another Linux distro that has disabled unprivileged user namespaces with AppArmor, see https://chromium.googlesource.com/chromium/src/+/main/docs/security/apparmor-userns-restrictions.md. Otherwise see https://chromium.googlesource.com/chromium/src/+/main/docs/linux/suid_sandbox_development.md for more information on developing with the (older) SUID sandbox. If you want to live dangerously and need an immediate workaround, you can try using --no-sandbox.
+    [pid=9179][err] #0 0x5c16a368ff72 base::debug::CollectStackTrace()
+    [pid=9179][err] #1 0x5c16a367a35e base::debug::StackTrace::StackTrace()
+    [pid=9179][err] #2 0x5c16a35ac92c logging::LogMessage::Flush()
+    [pid=9179][err] #3 0x5c16a35ad4c9 logging::LogMessageFatal::~LogMessageFatal()
+    [pid=9179][err] #4 0x5c16a017a952 content::ZygoteHostImpl::Init()
+    [pid=9179][err] #5 0x5c16a3578a99 content::ContentMainRunnerImpl::Initialize()
+    [pid=9179][err] #6 0x5c16a357613c content::RunContentProcess()
+    [pid=9179][err] #7 0x5c16a3576587 content::ContentMain()
+    [pid=9179][err] #8 0x5c169c28337d ChromeMain
+    [pid=9179][err] #9 0x72aa54e2a8c1 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a8c0)
+    [pid=9179][err] #10 0x72aa54e2a9d8 __libc_start_main
+    [pid=9179][err] #11 0x5c169c28302a _start
+    [pid=9179][err] Crash keys:
+    [pid=9179][err]   "switch-10" = "--use-angle=swiftshader-webgl"
+    [pid=9179][err]   "switch-9" = "--ozone-override-screen-size=800,600"
+    [pid=9179][err]   "switch-8" = "--ozone-platform=headless"
+    [pid=9179][err]   "switch-7" = "--user-data-dir=/home/runner/.config/chromium-headless/scoped_di"
+    [pid=9179][err]   "switch-6" = "--no-first-run"
+    [pid=9179][err]   "switch-5" = "--noerrdialogs"
+    [pid=9179][err]   "switch-4" = "--incognito"
+    [pid=9179][err]   "switch-3" = "--no-startup-window"
+    [pid=9179][err]   "switch-2" = "--headless"
+    [pid=9179][err]   "switch-1" = "--inspector-pipe"
+    [pid=9179][err]   "num-switches" = "10"
+    [pid=9179][err]   "osarch" = "x86_64"
+    [pid=9179][err]   "pid" = "9179"
+    [pid=9179][err]   "ptype" = "browser"
+    [pid=9179][err] 
+    [pid=9179][err] Received signal 6
+    [pid=9179][err] #0 0x5c16a368ff72 base::debug::CollectStackTrace()
+    [pid=9179][err] #1 0x5c16a367a35e base::debug::StackTrace::StackTrace()
+    [pid=9179][err] #2 0x5c16a368f9d8 base::debug::(anonymous namespace)::StackDumpSignalHandler()
+    [pid=9179][err] #3 0x72aa54e47dd0 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x47dcf)
+    [pid=9179][err] #4 0x72aa54eae0cc pthread_kill
+    [pid=9179][err] #5 0x72aa54e47c9e gsignal
+    [pid=9179][err] #6 0x72aa54e288ec abort
+    [pid=9179][err] #7 0x5c16a3669165 base::debug::BreakDebuggerAsyncSafe()
+    [pid=9179][err] #8 0x5c16a35ad473 base::RepeatingCallback<>::Run()
+    [pid=9179][err] #9 0x5c16a35ad335 logging::LogMessage::HandleFatal()
+    [pid=9179][err] #10 0x5c16a35acf27 logging::LogMessage::Flush()
+    [pid=9179][err] #11 0x5c16a35ad4c9 logging::LogMessageFatal::~LogMessageFatal()
+    [pid=9179][err] #12 0x5c16a017a952 content::ZygoteHostImpl::Init()
+    [pid=9179][err] #13 0x5c16a3578a99 content::ContentMainRunnerImpl::Initialize()
+    [pid=9179][err] #14 0x5c16a357613c content::RunContentProcess()
+    [pid=9179][err] #15 0x5c16a3576587 content::ContentMain()
+    [pid=9179][err] #16 0x5c169c28337d ChromeMain
+    [pid=9179][err] #17 0x72aa54e2a8c1 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a8c0)
+    [pid=9179][err] #18 0x72aa54e2a9d8 __libc_start_main
+    [pid=9179][err] #19 0x5c169c28302a _start
+    [pid=9179][err]   r8: 0000000000000016  r9: 0000000000000444 r10: 000026f80014c263 r11: 0000000000000246
+    [pid=9179][err]  r12: 0000000000000006 r13: 00000000000006a7 r14: 00005c169bfebac1 r15: 00007ffef3964dd0
+    [pid=9179][err]   di: 00000000000023db  si: 00000000000023db  bp: 00007ffef3964c70  bx: 00000000000023db
+    [pid=9179][err]   dx: 0000000000000006  ax: 0000000000000000  cx: 000072aa54eae0cc  sp: 00007ffef3964c30
+    [pid=9179][err]   ip: 000072aa54eae0cc efl: 0000000000000246 cgf: 002b000000000033 erf: 0000000000000000
+    [pid=9179][err]  trp: 0000000000000000 msk: 0000000000000000 cr2: 0000000000000000
+    [pid=9179][err] [end of stack trace]
+    Call log:
+      - <launching> /usr/bin/chromium --inspector-pipe --headless --no-startup-window
+      - <launched> pid=9179
+      - [pid=9179][err] [9179:9179:1125/174556.238937:FATAL:content/browser/zygote_host/zygote_host_impl_linux.cc:144] No usable sandbox! If you are running on Ubuntu 23.10+ or another Linux distro that has disabled unprivileged user namespaces with AppArmor, see https://chromium.googlesource.com/chromium/src/+/main/docs/security/apparmor-userns-restrictions.md. Otherwise see https://chromium.googlesource.com/chromium/src/+/main/docs/linux/suid_sandbox_development.md for more information on developing with the (older) SUID sandbox. If you want to live dangerously and need an immediate workaround, you can try using --no-sandbox.
+      - [pid=9179][err] #0 0x5c16a368ff72 base::debug::CollectStackTrace()
+      - [pid=9179][err] #1 0x5c16a367a35e base::debug::StackTrace::StackTrace()
+      - [pid=9179][err] #2 0x5c16a35ac92c logging::LogMessage::Flush()
+      - [pid=9179][err] #3 0x5c16a35ad4c9 logging::LogMessageFatal::~LogMessageFatal()
+      - [pid=9179][err] #4 0x5c16a017a952 content::ZygoteHostImpl::Init()
+      - [pid=9179][err] #5 0x5c16a3578a99 content::ContentMainRunnerImpl::Initialize()
+      - [pid=9179][err] #6 0x5c16a357613c content::RunContentProcess()
+      - [pid=9179][err] #7 0x5c16a3576587 content::ContentMain()
+      - [pid=9179][err] #8 0x5c169c28337d ChromeMain
+      - [pid=9179][err] #9 0x72aa54e2a8c1 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a8c0)
+      - [pid=9179][err] #10 0x72aa54e2a9d8 __libc_start_main
+      - [pid=9179][err] #11 0x5c169c28302a _start
+      - [pid=9179][err] Crash keys:
+      - [pid=9179][err]   "switch-10" = "--use-angle=swiftshader-webgl"
+      - [pid=9179][err]   "switch-9" = "--ozone-override-screen-size=800,600"
+      - [pid=9179][err]   "switch-8" = "--ozone-platform=headless"
+      - [pid=9179][err]   "switch-7" = "--user-data-dir=/home/runner/.config/chromium-headless/scoped_di"
+      - [pid=9179][err]   "switch-6" = "--no-first-run"
+      - [pid=9179][err]   "switch-5" = "--noerrdialogs"
+      - [pid=9179][err]   "switch-4" = "--incognito"
+      - [pid=9179][err]   "switch-3" = "--no-startup-window"
+      - [pid=9179][err]   "switch-2" = "--headless"
+      - [pid=9179][err]   "switch-1" = "--inspector-pipe"
+      - [pid=9179][err]   "num-switches" = "10"
+      - [pid=9179][err]   "osarch" = "x86_64"
+      - [pid=9179][err]   "pid" = "9179"
+      - [pid=9179][err]   "ptype" = "browser"
+      - [pid=9179][err]
+      - [pid=9179][err] Received signal 6
+      - [pid=9179][err] #0 0x5c16a368ff72 base::debug::CollectStackTrace()
+      - [pid=9179][err] #1 0x5c16a367a35e base::debug::StackTrace::StackTrace()
+      - [pid=9179][err] #2 0x5c16a368f9d8 base::debug::(anonymous namespace)::StackDumpSignalHandler()
+      - [pid=9179][err] #3 0x72aa54e47dd0 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x47dcf)
+      - [pid=9179][err] #4 0x72aa54eae0cc pthread_kill
+      - [pid=9179][err] #5 0x72aa54e47c9e gsignal
+      - [pid=9179][err] #6 0x72aa54e288ec abort
+      - [pid=9179][err] #7 0x5c16a3669165 base::debug::BreakDebuggerAsyncSafe()
+      - [pid=9179][err] #8 0x5c16a35ad473 base::RepeatingCallback<>::Run()
+      - [pid=9179][err] #9 0x5c16a35ad335 logging::LogMessage::HandleFatal()
+      - [pid=9179][err] #10 0x5c16a35acf27 logging::LogMessage::Flush()
+      - [pid=9179][err] #11 0x5c16a35ad4c9 logging::LogMessageFatal::~LogMessageFatal()
+      - [pid=9179][err] #12 0x5c16a017a952 content::ZygoteHostImpl::Init()
+      - [pid=9179][err] #13 0x5c16a3578a99 content::ContentMainRunnerImpl::Initialize()
+      - [pid=9179][err] #14 0x5c16a357613c content::RunContentProcess()
+      - [pid=9179][err] #15 0x5c16a3576587 content::ContentMain()
+      - [pid=9179][err] #16 0x5c169c28337d ChromeMain
+      - [pid=9179][err] #17 0x72aa54e2a8c1 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a8c0)
+      - [pid=9179][err] #18 0x72aa54e2a9d8 __libc_start_main
+      - [pid=9179][err] #19 0x5c169c28302a _start
+      - [pid=9179][err]   r8: 0000000000000016  r9: 0000000000000444 r10: 000026f80014c263 r11: 0000000000000246
+      - [pid=9179][err]  r12: 0000000000000006 r13: 00000000000006a7 r14: 00005c169bfebac1 r15: 00007ffef3964dd0
+      - [pid=9179][err]   di: 00000000000023db  si: 00000000000023db  bp: 00007ffef3964c70  bx: 00000000000023db
+      - [pid=9179][err]   dx: 0000000000000006  ax: 0000000000000000  cx: 000072aa54eae0cc  sp: 00007ffef3964c30
+      - [pid=9179][err]   ip: 000072aa54eae0cc efl: 0000000000000246 cgf: 002b000000000033 erf: 0000000000000000
+      - [pid=9179][err]  trp: 0000000000000000 msk: 0000000000000000 cr2: 0000000000000000
+      - [pid=9179][err] [end of stack trace]
+      - [pid=9179] <gracefully close start>
+      - [pid=9179] <kill>
+      - [pid=9179] <will force kill>
+      - [pid=9179] <process did exit: exitCode=null, signal=SIGABRT>
+      - [pid=9179] starting temporary directories cleanup
+      - [pid=9179] finished temporary directories cleanup
+      - [pid=9179] <gracefully close end>
+
+
+    Error Context: test-results/platform-audit-Full-Platfo-75d27-iner-seed-reset-exclusivity-mobile-safari/error-context.md
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: browserType.launch: Target page, context or browser has been closed
+    Browser logs:
+
+    <launching> /usr/bin/chromium --inspector-pipe --headless --no-startup-window
+    <launched> pid=9211
+    [pid=9211][err] [9211:9211:1125/174557.673323:FATAL:content/browser/zygote_host/zygote_host_impl_linux.cc:144] No usable sandbox! If you are running on Ubuntu 23.10+ or another Linux distro that has disabled unprivileged user namespaces with AppArmor, see https://chromium.googlesource.com/chromium/src/+/main/docs/security/apparmor-userns-restrictions.md. Otherwise see https://chromium.googlesource.com/chromium/src/+/main/docs/linux/suid_sandbox_development.md for more information on developing with the (older) SUID sandbox. If you want to live dangerously and need an immediate workaround, you can try using --no-sandbox.
+    [pid=9211][err] #0 0x5a3052825f72 base::debug::CollectStackTrace()
+    [pid=9211][err] #1 0x5a305281035e base::debug::StackTrace::StackTrace()
+    [pid=9211][err] #2 0x5a305274292c logging::LogMessage::Flush()
+    [pid=9211][err] #3 0x5a30527434c9 logging::LogMessageFatal::~LogMessageFatal()
+    [pid=9211][err] #4 0x5a304f310952 content::ZygoteHostImpl::Init()
+    [pid=9211][err] #5 0x5a305270ea99 content::ContentMainRunnerImpl::Initialize()
+    [pid=9211][err] #6 0x5a305270c13c content::RunContentProcess()
+    [pid=9211][err] #7 0x5a305270c587 content::ContentMain()
+    [pid=9211][err] #8 0x5a304b41937d ChromeMain
+    [pid=9211][err] #9 0x70b8e742a8c1 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a8c0)
+    [pid=9211][err] #10 0x70b8e742a9d8 __libc_start_main
+    [pid=9211][err] #11 0x5a304b41902a _start
+    [pid=9211][err] Crash keys:
+    [pid=9211][err]   "switch-10" = "--use-angle=swiftshader-webgl"
+    [pid=9211][err]   "switch-9" = "--ozone-override-screen-size=800,600"
+    [pid=9211][err]   "switch-8" = "--ozone-platform=headless"
+    [pid=9211][err]   "switch-7" = "--user-data-dir=/home/runner/.config/chromium-headless/scoped_di"
+    [pid=9211][err]   "switch-6" = "--no-first-run"
+    [pid=9211][err]   "switch-5" = "--noerrdialogs"
+    [pid=9211][err]   "switch-4" = "--incognito"
+    [pid=9211][err]   "switch-3" = "--no-startup-window"
+    [pid=9211][err]   "switch-2" = "--headless"
+    [pid=9211][err]   "switch-1" = "--inspector-pipe"
+    [pid=9211][err]   "num-switches" = "10"
+    [pid=9211][err]   "osarch" = "x86_64"
+    [pid=9211][err]   "pid" = "9211"
+    [pid=9211][err]   "ptype" = "browser"
+    [pid=9211][err] 
+    [pid=9211][err] Received signal 6
+    [pid=9211][err] #0 0x5a3052825f72 base::debug::CollectStackTrace()
+    [pid=9211][err] #1 0x5a305281035e base::debug::StackTrace::StackTrace()
+    [pid=9211][err] #2 0x5a30528259d8 base::debug::(anonymous namespace)::StackDumpSignalHandler()
+    [pid=9211][err] #3 0x70b8e7447dd0 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x47dcf)
+    [pid=9211][err] #4 0x70b8e74ae0cc pthread_kill
+    [pid=9211][err] #5 0x70b8e7447c9e gsignal
+    [pid=9211][err] #6 0x70b8e74288ec abort
+    [pid=9211][err] #7 0x5a30527ff165 base::debug::BreakDebuggerAsyncSafe()
+    [pid=9211][err] #8 0x5a3052743473 base::RepeatingCallback<>::Run()
+    [pid=9211][err] #9 0x5a3052743335 logging::LogMessage::HandleFatal()
+    [pid=9211][err] #10 0x5a3052742f27 logging::LogMessage::Flush()
+    [pid=9211][err] #11 0x5a30527434c9 logging::LogMessageFatal::~LogMessageFatal()
+    [pid=9211][err] #12 0x5a304f310952 content::ZygoteHostImpl::Init()
+    [pid=9211][err] #13 0x5a305270ea99 content::ContentMainRunnerImpl::Initialize()
+    [pid=9211][err] #14 0x5a305270c13c content::RunContentProcess()
+    [pid=9211][err] #15 0x5a305270c587 content::ContentMain()
+    [pid=9211][err] #16 0x5a304b41937d ChromeMain
+    [pid=9211][err] #17 0x70b8e742a8c1 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a8c0)
+    [pid=9211][err] #18 0x70b8e742a9d8 __libc_start_main
+    [pid=9211][err] #19 0x5a304b41902a _start
+    [pid=9211][err]   r8: 0000000000000016  r9: 0000000000000444 r10: 00003d080014c263 r11: 0000000000000246
+    [pid=9211][err]  r12: 0000000000000006 r13: 00000000000006a7 r14: 00005a304b181ac1 r15: 00007ffc3d93e600
+    [pid=9211][err]   di: 00000000000023fb  si: 00000000000023fb  bp: 00007ffc3d93e4a0  bx: 00000000000023fb
+    [pid=9211][err]   dx: 0000000000000006  ax: 0000000000000000  cx: 000070b8e74ae0cc  sp: 00007ffc3d93e460
+    [pid=9211][err]   ip: 000070b8e74ae0cc efl: 0000000000000246 cgf: 002b000000000033 erf: 0000000000000000
+    [pid=9211][err]  trp: 0000000000000000 msk: 0000000000000000 cr2: 0000000000000000
+    [pid=9211][err] [end of stack trace]
+    Call log:
+      - <launching> /usr/bin/chromium --inspector-pipe --headless --no-startup-window
+      - <launched> pid=9211
+      - [pid=9211][err] [9211:9211:1125/174557.673323:FATAL:content/browser/zygote_host/zygote_host_impl_linux.cc:144] No usable sandbox! If you are running on Ubuntu 23.10+ or another Linux distro that has disabled unprivileged user namespaces with AppArmor, see https://chromium.googlesource.com/chromium/src/+/main/docs/security/apparmor-userns-restrictions.md. Otherwise see https://chromium.googlesource.com/chromium/src/+/main/docs/linux/suid_sandbox_development.md for more information on developing with the (older) SUID sandbox. If you want to live dangerously and need an immediate workaround, you can try using --no-sandbox.
+      - [pid=9211][err] #0 0x5a3052825f72 base::debug::CollectStackTrace()
+      - [pid=9211][err] #1 0x5a305281035e base::debug::StackTrace::StackTrace()
+      - [pid=9211][err] #2 0x5a305274292c logging::LogMessage::Flush()
+      - [pid=9211][err] #3 0x5a30527434c9 logging::LogMessageFatal::~LogMessageFatal()
+      - [pid=9211][err] #4 0x5a304f310952 content::ZygoteHostImpl::Init()
+      - [pid=9211][err] #5 0x5a305270ea99 content::ContentMainRunnerImpl::Initialize()
+      - [pid=9211][err] #6 0x5a305270c13c content::RunContentProcess()
+      - [pid=9211][err] #7 0x5a305270c587 content::ContentMain()
+      - [pid=9211][err] #8 0x5a304b41937d ChromeMain
+      - [pid=9211][err] #9 0x70b8e742a8c1 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a8c0)
+      - [pid=9211][err] #10 0x70b8e742a9d8 __libc_start_main
+      - [pid=9211][err] #11 0x5a304b41902a _start
+      - [pid=9211][err] Crash keys:
+      - [pid=9211][err]   "switch-10" = "--use-angle=swiftshader-webgl"
+      - [pid=9211][err]   "switch-9" = "--ozone-override-screen-size=800,600"
+      - [pid=9211][err]   "switch-8" = "--ozone-platform=headless"
+      - [pid=9211][err]   "switch-7" = "--user-data-dir=/home/runner/.config/chromium-headless/scoped_di"
+      - [pid=9211][err]   "switch-6" = "--no-first-run"
+      - [pid=9211][err]   "switch-5" = "--noerrdialogs"
+      - [pid=9211][err]   "switch-4" = "--incognito"
+      - [pid=9211][err]   "switch-3" = "--no-startup-window"
+      - [pid=9211][err]   "switch-2" = "--headless"
+      - [pid=9211][err]   "switch-1" = "--inspector-pipe"
+      - [pid=9211][err]   "num-switches" = "10"
+      - [pid=9211][err]   "osarch" = "x86_64"
+      - [pid=9211][err]   "pid" = "9211"
+      - [pid=9211][err]   "ptype" = "browser"
+      - [pid=9211][err]
+      - [pid=9211][err] Received signal 6
+      - [pid=9211][err] #0 0x5a3052825f72 base::debug::CollectStackTrace()
+      - [pid=9211][err] #1 0x5a305281035e base::debug::StackTrace::StackTrace()
+      - [pid=9211][err] #2 0x5a30528259d8 base::debug::(anonymous namespace)::StackDumpSignalHandler()
+      - [pid=9211][err] #3 0x70b8e7447dd0 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x47dcf)
+      - [pid=9211][err] #4 0x70b8e74ae0cc pthread_kill
+      - [pid=9211][err] #5 0x70b8e7447c9e gsignal
+      - [pid=9211][err] #6 0x70b8e74288ec abort
+      - [pid=9211][err] #7 0x5a30527ff165 base::debug::BreakDebuggerAsyncSafe()
+      - [pid=9211][err] #8 0x5a3052743473 base::RepeatingCallback<>::Run()
+      - [pid=9211][err] #9 0x5a3052743335 logging::LogMessage::HandleFatal()
+      - [pid=9211][err] #10 0x5a3052742f27 logging::LogMessage::Flush()
+      - [pid=9211][err] #11 0x5a30527434c9 logging::LogMessageFatal::~LogMessageFatal()
+      - [pid=9211][err] #12 0x5a304f310952 content::ZygoteHostImpl::Init()
+      - [pid=9211][err] #13 0x5a305270ea99 content::ContentMainRunnerImpl::Initialize()
+      - [pid=9211][err] #14 0x5a305270c13c content::RunContentProcess()
+      - [pid=9211][err] #15 0x5a305270c587 content::ContentMain()
+      - [pid=9211][err] #16 0x5a304b41937d ChromeMain
+      - [pid=9211][err] #17 0x70b8e742a8c1 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a8c0)
+      - [pid=9211][err] #18 0x70b8e742a9d8 __libc_start_main
+      - [pid=9211][err] #19 0x5a304b41902a _start
+      - [pid=9211][err]   r8: 0000000000000016  r9: 0000000000000444 r10: 00003d080014c263 r11: 0000000000000246
+      - [pid=9211][err]  r12: 0000000000000006 r13: 00000000000006a7 r14: 00005a304b181ac1 r15: 00007ffc3d93e600
+      - [pid=9211][err]   di: 00000000000023fb  si: 00000000000023fb  bp: 00007ffc3d93e4a0  bx: 00000000000023fb
+      - [pid=9211][err]   dx: 0000000000000006  ax: 0000000000000000  cx: 000070b8e74ae0cc  sp: 00007ffc3d93e460
+      - [pid=9211][err]   ip: 000070b8e74ae0cc efl: 0000000000000246 cgf: 002b000000000033 erf: 0000000000000000
+      - [pid=9211][err]  trp: 0000000000000000 msk: 0000000000000000 cr2: 0000000000000000
+      - [pid=9211][err] [end of stack trace]
+      - [pid=9211] <gracefully close start>
+      - [pid=9211] <kill>
+      - [pid=9211] <will force kill>
+      - [pid=9211] <process did exit: exitCode=null, signal=SIGABRT>
+      - [pid=9211] starting temporary directories cleanup
+      - [pid=9211] finished temporary directories cleanup
+      - [pid=9211] <gracefully close end>
+
+
+    Error Context: test-results/platform-audit-Full-Platfo-75d27-iner-seed-reset-exclusivity-mobile-safari-retry1/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/platform-audit-Full-Platfo-75d27-iner-seed-reset-exclusivity-mobile-safari-retry1/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/platform-audit-Full-Platfo-75d27-iner-seed-reset-exclusivity-mobile-safari-retry1/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #2 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: browserType.launch: Target page, context or browser has been closed
+    Browser logs:
+
+    <launching> /usr/bin/chromium --inspector-pipe --headless --no-startup-window
+    <launched> pid=9243
+    [pid=9243][err] [9243:9243:1125/174559.117305:FATAL:content/browser/zygote_host/zygote_host_impl_linux.cc:144] No usable sandbox! If you are running on Ubuntu 23.10+ or another Linux distro that has disabled unprivileged user namespaces with AppArmor, see https://chromium.googlesource.com/chromium/src/+/main/docs/security/apparmor-userns-restrictions.md. Otherwise see https://chromium.googlesource.com/chromium/src/+/main/docs/linux/suid_sandbox_development.md for more information on developing with the (older) SUID sandbox. If you want to live dangerously and need an immediate workaround, you can try using --no-sandbox.
+    [pid=9243][err] #0 0x5a94ebbccf72 base::debug::CollectStackTrace()
+    [pid=9243][err] #1 0x5a94ebbb735e base::debug::StackTrace::StackTrace()
+    [pid=9243][err] #2 0x5a94ebae992c logging::LogMessage::Flush()
+    [pid=9243][err] #3 0x5a94ebaea4c9 logging::LogMessageFatal::~LogMessageFatal()
+    [pid=9243][err] #4 0x5a94e86b7952 content::ZygoteHostImpl::Init()
+    [pid=9243][err] #5 0x5a94ebab5a99 content::ContentMainRunnerImpl::Initialize()
+    [pid=9243][err] #6 0x5a94ebab313c content::RunContentProcess()
+    [pid=9243][err] #7 0x5a94ebab3587 content::ContentMain()
+    [pid=9243][err] #8 0x5a94e47c037d ChromeMain
+    [pid=9243][err] #9 0x788b09a2a8c1 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a8c0)
+    [pid=9243][err] #10 0x788b09a2a9d8 __libc_start_main
+    [pid=9243][err] #11 0x5a94e47c002a _start
+    [pid=9243][err] Crash keys:
+    [pid=9243][err]   "switch-10" = "--use-angle=swiftshader-webgl"
+    [pid=9243][err]   "switch-9" = "--ozone-override-screen-size=800,600"
+    [pid=9243][err]   "switch-8" = "--ozone-platform=headless"
+    [pid=9243][err]   "switch-7" = "--user-data-dir=/home/runner/.config/chromium-headless/scoped_di"
+    [pid=9243][err]   "switch-6" = "--no-first-run"
+    [pid=9243][err]   "switch-5" = "--noerrdialogs"
+    [pid=9243][err]   "switch-4" = "--incognito"
+    [pid=9243][err]   "switch-3" = "--no-startup-window"
+    [pid=9243][err]   "switch-2" = "--headless"
+    [pid=9243][err]   "switch-1" = "--inspector-pipe"
+    [pid=9243][err]   "num-switches" = "10"
+    [pid=9243][err]   "osarch" = "x86_64"
+    [pid=9243][err]   "pid" = "9243"
+    [pid=9243][err]   "ptype" = "browser"
+    [pid=9243][err] 
+    [pid=9243][err] Received signal 6
+    [pid=9243][err] #0 0x5a94ebbccf72 base::debug::CollectStackTrace()
+    [pid=9243][err] #1 0x5a94ebbb735e base::debug::StackTrace::StackTrace()
+    [pid=9243][err] #2 0x5a94ebbcc9d8 base::debug::(anonymous namespace)::StackDumpSignalHandler()
+    [pid=9243][err] #3 0x788b09a47dd0 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x47dcf)
+    [pid=9243][err] #4 0x788b09aae0cc pthread_kill
+    [pid=9243][err] #5 0x788b09a47c9e gsignal
+    [pid=9243][err] #6 0x788b09a288ec abort
+    [pid=9243][err] #7 0x5a94ebba6165 base::debug::BreakDebuggerAsyncSafe()
+    [pid=9243][err] #8 0x5a94ebaea473 base::RepeatingCallback<>::Run()
+    [pid=9243][err] #9 0x5a94ebaea335 logging::LogMessage::HandleFatal()
+    [pid=9243][err] #10 0x5a94ebae9f27 logging::LogMessage::Flush()
+    [pid=9243][err] #11 0x5a94ebaea4c9 logging::LogMessageFatal::~LogMessageFatal()
+    [pid=9243][err] #12 0x5a94e86b7952 content::ZygoteHostImpl::Init()
+    [pid=9243][err] #13 0x5a94ebab5a99 content::ContentMainRunnerImpl::Initialize()
+    [pid=9243][err] #14 0x5a94ebab313c content::RunContentProcess()
+    [pid=9243][err] #15 0x5a94ebab3587 content::ContentMain()
+    [pid=9243][err] #16 0x5a94e47c037d ChromeMain
+    [pid=9243][err] #17 0x788b09a2a8c1 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a8c0)
+    [pid=9243][err] #18 0x788b09a2a9d8 __libc_start_main
+    [pid=9243][err] #19 0x5a94e47c002a _start
+    [pid=9243][err]   r8: 0000000000000016  r9: 0000000000000444 r10: 000027c80014c263 r11: 0000000000000246
+    [pid=9243][err]  r12: 0000000000000006 r13: 00000000000006a7 r14: 00005a94e4528ac1 r15: 00007ffe570c5f50
+    [pid=9243][err]   di: 000000000000241b  si: 000000000000241b  bp: 00007ffe570c5df0  bx: 000000000000241b
+    [pid=9243][err]   dx: 0000000000000006  ax: 0000000000000000  cx: 0000788b09aae0cc  sp: 00007ffe570c5db0
+    [pid=9243][err]   ip: 0000788b09aae0cc efl: 0000000000000246 cgf: 002b000000000033 erf: 0000000000000000
+    [pid=9243][err]  trp: 0000000000000000 msk: 0000000000000000 cr2: 0000000000000000
+    [pid=9243][err] [end of stack trace]
+    Call log:
+      - <launching> /usr/bin/chromium --inspector-pipe --headless --no-startup-window
+      - <launched> pid=9243
+      - [pid=9243][err] [9243:9243:1125/174559.117305:FATAL:content/browser/zygote_host/zygote_host_impl_linux.cc:144] No usable sandbox! If you are running on Ubuntu 23.10+ or another Linux distro that has disabled unprivileged user namespaces with AppArmor, see https://chromium.googlesource.com/chromium/src/+/main/docs/security/apparmor-userns-restrictions.md. Otherwise see https://chromium.googlesource.com/chromium/src/+/main/docs/linux/suid_sandbox_development.md for more information on developing with the (older) SUID sandbox. If you want to live dangerously and need an immediate workaround, you can try using --no-sandbox.
+      - [pid=9243][err] #0 0x5a94ebbccf72 base::debug::CollectStackTrace()
+      - [pid=9243][err] #1 0x5a94ebbb735e base::debug::StackTrace::StackTrace()
+      - [pid=9243][err] #2 0x5a94ebae992c logging::LogMessage::Flush()
+      - [pid=9243][err] #3 0x5a94ebaea4c9 logging::LogMessageFatal::~LogMessageFatal()
+      - [pid=9243][err] #4 0x5a94e86b7952 content::ZygoteHostImpl::Init()
+      - [pid=9243][err] #5 0x5a94ebab5a99 content::ContentMainRunnerImpl::Initialize()
+      - [pid=9243][err] #6 0x5a94ebab313c content::RunContentProcess()
+      - [pid=9243][err] #7 0x5a94ebab3587 content::ContentMain()
+      - [pid=9243][err] #8 0x5a94e47c037d ChromeMain
+      - [pid=9243][err] #9 0x788b09a2a8c1 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a8c0)
+      - [pid=9243][err] #10 0x788b09a2a9d8 __libc_start_main
+      - [pid=9243][err] #11 0x5a94e47c002a _start
+      - [pid=9243][err] Crash keys:
+      - [pid=9243][err]   "switch-10" = "--use-angle=swiftshader-webgl"
+      - [pid=9243][err]   "switch-9" = "--ozone-override-screen-size=800,600"
+      - [pid=9243][err]   "switch-8" = "--ozone-platform=headless"
+      - [pid=9243][err]   "switch-7" = "--user-data-dir=/home/runner/.config/chromium-headless/scoped_di"
+      - [pid=9243][err]   "switch-6" = "--no-first-run"
+      - [pid=9243][err]   "switch-5" = "--noerrdialogs"
+      - [pid=9243][err]   "switch-4" = "--incognito"
+      - [pid=9243][err]   "switch-3" = "--no-startup-window"
+      - [pid=9243][err]   "switch-2" = "--headless"
+      - [pid=9243][err]   "switch-1" = "--inspector-pipe"
+      - [pid=9243][err]   "num-switches" = "10"
+      - [pid=9243][err]   "osarch" = "x86_64"
+      - [pid=9243][err]   "pid" = "9243"
+      - [pid=9243][err]   "ptype" = "browser"
+      - [pid=9243][err]
+      - [pid=9243][err] Received signal 6
+      - [pid=9243][err] #0 0x5a94ebbccf72 base::debug::CollectStackTrace()
+      - [pid=9243][err] #1 0x5a94ebbb735e base::debug::StackTrace::StackTrace()
+      - [pid=9243][err] #2 0x5a94ebbcc9d8 base::debug::(anonymous namespace)::StackDumpSignalHandler()
+      - [pid=9243][err] #3 0x788b09a47dd0 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x47dcf)
+      - [pid=9243][err] #4 0x788b09aae0cc pthread_kill
+      - [pid=9243][err] #5 0x788b09a47c9e gsignal
+      - [pid=9243][err] #6 0x788b09a288ec abort
+      - [pid=9243][err] #7 0x5a94ebba6165 base::debug::BreakDebuggerAsyncSafe()
+      - [pid=9243][err] #8 0x5a94ebaea473 base::RepeatingCallback<>::Run()
+      - [pid=9243][err] #9 0x5a94ebaea335 logging::LogMessage::HandleFatal()
+      - [pid=9243][err] #10 0x5a94ebae9f27 logging::LogMessage::Flush()
+      - [pid=9243][err] #11 0x5a94ebaea4c9 logging::LogMessageFatal::~LogMessageFatal()
+      - [pid=9243][err] #12 0x5a94e86b7952 content::ZygoteHostImpl::Init()
+      - [pid=9243][err] #13 0x5a94ebab5a99 content::ContentMainRunnerImpl::Initialize()
+      - [pid=9243][err] #14 0x5a94ebab313c content::RunContentProcess()
+      - [pid=9243][err] #15 0x5a94ebab3587 content::ContentMain()
+      - [pid=9243][err] #16 0x5a94e47c037d ChromeMain
+      - [pid=9243][err] #17 0x788b09a2a8c1 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a8c0)
+      - [pid=9243][err] #18 0x788b09a2a9d8 __libc_start_main
+      - [pid=9243][err] #19 0x5a94e47c002a _start
+      - [pid=9243][err]   r8: 0000000000000016  r9: 0000000000000444 r10: 000027c80014c263 r11: 0000000000000246
+      - [pid=9243][err]  r12: 0000000000000006 r13: 00000000000006a7 r14: 00005a94e4528ac1 r15: 00007ffe570c5f50
+      - [pid=9243][err]   di: 000000000000241b  si: 000000000000241b  bp: 00007ffe570c5df0  bx: 000000000000241b
+      - [pid=9243][err]   dx: 0000000000000006  ax: 0000000000000000  cx: 0000788b09aae0cc  sp: 00007ffe570c5db0
+      - [pid=9243][err]   ip: 0000788b09aae0cc efl: 0000000000000246 cgf: 002b000000000033 erf: 0000000000000000
+      - [pid=9243][err]  trp: 0000000000000000 msk: 0000000000000000 cr2: 0000000000000000
+      - [pid=9243][err] [end of stack trace]
+      - [pid=9243] <gracefully close start>
+      - [pid=9243] <kill>
+      - [pid=9243] <will force kill>
+      - [pid=9243] <process did exit: exitCode=null, signal=SIGABRT>
+      - [pid=9243] starting temporary directories cleanup
+      - [pid=9243] finished temporary directories cleanup
+      - [pid=9243] <gracefully close end>
+
+
+    Error Context: test-results/platform-audit-Full-Platfo-75d27-iner-seed-reset-exclusivity-mobile-safari-retry2/error-context.md
+
+  23) [mobile-safari] › tests/e2e/platform-audit.spec.ts:184:3 › Full Platform Runtime & Governance Audit (All 22 Modules & Roles) › Mobile 390x844 viewport renders Login and Authenticated Workspace with zero horizontal overflow 
+
+    Error: browserType.launch: Target page, context or browser has been closed
+    Browser logs:
+
+    <launching> /usr/bin/chromium --inspector-pipe --headless --no-startup-window
+    <launched> pid=9275
+    [pid=9275][err] [9275:9275:1125/174600.541288:FATAL:content/browser/zygote_host/zygote_host_impl_linux.cc:144] No usable sandbox! If you are running on Ubuntu 23.10+ or another Linux distro that has disabled unprivileged user namespaces with AppArmor, see https://chromium.googlesource.com/chromium/src/+/main/docs/security/apparmor-userns-restrictions.md. Otherwise see https://chromium.googlesource.com/chromium/src/+/main/docs/linux/suid_sandbox_development.md for more information on developing with the (older) SUID sandbox. If you want to live dangerously and need an immediate workaround, you can try using --no-sandbox.
+    [pid=9275][err] #0 0x5f6acff9ff72 base::debug::CollectStackTrace()
+    [pid=9275][err] #1 0x5f6acff8a35e base::debug::StackTrace::StackTrace()
+    [pid=9275][err] #2 0x5f6acfebc92c logging::LogMessage::Flush()
+    [pid=9275][err] #3 0x5f6acfebd4c9 logging::LogMessageFatal::~LogMessageFatal()
+    [pid=9275][err] #4 0x5f6acca8a952 content::ZygoteHostImpl::Init()
+    [pid=9275][err] #5 0x5f6acfe88a99 content::ContentMainRunnerImpl::Initialize()
+    [pid=9275][err] #6 0x5f6acfe8613c content::RunContentProcess()
+    [pid=9275][err] #7 0x5f6acfe86587 content::ContentMain()
+    [pid=9275][err] #8 0x5f6ac8b9337d ChromeMain
+    [pid=9275][err] #9 0x74577422a8c1 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a8c0)
+    [pid=9275][err] #10 0x74577422a9d8 __libc_start_main
+    [pid=9275][err] #11 0x5f6ac8b9302a _start
+    [pid=9275][err] Crash keys:
+    [pid=9275][err]   "switch-10" = "--use-angle=swiftshader-webgl"
+    [pid=9275][err]   "switch-9" = "--ozone-override-screen-size=800,600"
+    [pid=9275][err]   "switch-8" = "--ozone-platform=headless"
+    [pid=9275][err]   "switch-7" = "--user-data-dir=/home/runner/.config/chromium-headless/scoped_di"
+    [pid=9275][err]   "switch-6" = "--no-first-run"
+    [pid=9275][err]   "switch-5" = "--noerrdialogs"
+    [pid=9275][err]   "switch-4" = "--incognito"
+    [pid=9275][err]   "switch-3" = "--no-startup-window"
+    [pid=9275][err]   "switch-2" = "--headless"
+    [pid=9275][err]   "switch-1" = "--inspector-pipe"
+    [pid=9275][err]   "num-switches" = "10"
+    [pid=9275][err]   "osarch" = "x86_64"
+    [pid=9275][err]   "pid" = "9275"
+    [pid=9275][err]   "ptype" = "browser"
+    [pid=9275][err] 
+    [pid=9275][err] Received signal 6
+    [pid=9275][err] #0 0x5f6acff9ff72 base::debug::CollectStackTrace()
+    [pid=9275][err] #1 0x5f6acff8a35e base::debug::StackTrace::StackTrace()
+    [pid=9275][err] #2 0x5f6acff9f9d8 base::debug::(anonymous namespace)::StackDumpSignalHandler()
+    [pid=9275][err] #3 0x745774247dd0 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x47dcf)
+    [pid=9275][err] #4 0x7457742ae0cc pthread_kill
+    [pid=9275][err] #5 0x745774247c9e gsignal
+    [pid=9275][err] #6 0x7457742288ec abort
+    [pid=9275][err] #7 0x5f6acff79165 base::debug::BreakDebuggerAsyncSafe()
+    [pid=9275][err] #8 0x5f6acfebd473 base::RepeatingCallback<>::Run()
+    [pid=9275][err] #9 0x5f6acfebd335 logging::LogMessage::HandleFatal()
+    [pid=9275][err] #10 0x5f6acfebcf27 logging::LogMessage::Flush()
+    [pid=9275][err] #11 0x5f6acfebd4c9 logging::LogMessageFatal::~LogMessageFatal()
+    [pid=9275][err] #12 0x5f6acca8a952 content::ZygoteHostImpl::Init()
+    [pid=9275][err] #13 0x5f6acfe88a99 content::ContentMainRunnerImpl::Initialize()
+    [pid=9275][err] #14 0x5f6acfe8613c content::RunContentProcess()
+    [pid=9275][err] #15 0x5f6acfe86587 content::ContentMain()
+    [pid=9275][err] #16 0x5f6ac8b9337d ChromeMain
+    [pid=9275][err] #17 0x74577422a8c1 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a8c0)
+    [pid=9275][err] #18 0x74577422a9d8 __libc_start_main
+    [pid=9275][err] #19 0x5f6ac8b9302a _start
+    [pid=9275][err]   r8: 0000000000000016  r9: 0000000000000444 r10: 00001a400014c263 r11: 0000000000000246
+    [pid=9275][err]  r12: 0000000000000006 r13: 00000000000006a7 r14: 00005f6ac88fbac1 r15: 00007ffd12c1c840
+    [pid=9275][err]   di: 000000000000243b  si: 000000000000243b  bp: 00007ffd12c1c6e0  bx: 000000000000243b
+    [pid=9275][err]   dx: 0000000000000006  ax: 0000000000000000  cx: 00007457742ae0cc  sp: 00007ffd12c1c6a0
+    [pid=9275][err]   ip: 00007457742ae0cc efl: 0000000000000246 cgf: 002b000000000033 erf: 0000000000000000
+    [pid=9275][err]  trp: 0000000000000000 msk: 0000000000000000 cr2: 0000000000000000
+    [pid=9275][err] [end of stack trace]
+    Call log:
+      - <launching> /usr/bin/chromium --inspector-pipe --headless --no-startup-window
+      - <launched> pid=9275
+      - [pid=9275][err] [9275:9275:1125/174600.541288:FATAL:content/browser/zygote_host/zygote_host_impl_linux.cc:144] No usable sandbox! If you are running on Ubuntu 23.10+ or another Linux distro that has disabled unprivileged user namespaces with AppArmor, see https://chromium.googlesource.com/chromium/src/+/main/docs/security/apparmor-userns-restrictions.md. Otherwise see https://chromium.googlesource.com/chromium/src/+/main/docs/linux/suid_sandbox_development.md for more information on developing with the (older) SUID sandbox. If you want to live dangerously and need an immediate workaround, you can try using --no-sandbox.
+      - [pid=9275][err] #0 0x5f6acff9ff72 base::debug::CollectStackTrace()
+      - [pid=9275][err] #1 0x5f6acff8a35e base::debug::StackTrace::StackTrace()
+      - [pid=9275][err] #2 0x5f6acfebc92c logging::LogMessage::Flush()
+      - [pid=9275][err] #3 0x5f6acfebd4c9 logging::LogMessageFatal::~LogMessageFatal()
+      - [pid=9275][err] #4 0x5f6acca8a952 content::ZygoteHostImpl::Init()
+      - [pid=9275][err] #5 0x5f6acfe88a99 content::ContentMainRunnerImpl::Initialize()
+      - [pid=9275][err] #6 0x5f6acfe8613c content::RunContentProcess()
+      - [pid=9275][err] #7 0x5f6acfe86587 content::ContentMain()
+      - [pid=9275][err] #8 0x5f6ac8b9337d ChromeMain
+      - [pid=9275][err] #9 0x74577422a8c1 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a8c0)
+      - [pid=9275][err] #10 0x74577422a9d8 __libc_start_main
+      - [pid=9275][err] #11 0x5f6ac8b9302a _start
+      - [pid=9275][err] Crash keys:
+      - [pid=9275][err]   "switch-10" = "--use-angle=swiftshader-webgl"
+      - [pid=9275][err]   "switch-9" = "--ozone-override-screen-size=800,600"
+      - [pid=9275][err]   "switch-8" = "--ozone-platform=headless"
+      - [pid=9275][err]   "switch-7" = "--user-data-dir=/home/runner/.config/chromium-headless/scoped_di"
+      - [pid=9275][err]   "switch-6" = "--no-first-run"
+      - [pid=9275][err]   "switch-5" = "--noerrdialogs"
+      - [pid=9275][err]   "switch-4" = "--incognito"
+      - [pid=9275][err]   "switch-3" = "--no-startup-window"
+      - [pid=9275][err]   "switch-2" = "--headless"
+      - [pid=9275][err]   "switch-1" = "--inspector-pipe"
+      - [pid=9275][err]   "num-switches" = "10"
+      - [pid=9275][err]   "osarch" = "x86_64"
+      - [pid=9275][err]   "pid" = "9275"
+      - [pid=9275][err]   "ptype" = "browser"
+      - [pid=9275][err]
+      - [pid=9275][err] Received signal 6
+      - [pid=9275][err] #0 0x5f6acff9ff72 base::debug::CollectStackTrace()
+      - [pid=9275][err] #1 0x5f6acff8a35e base::debug::StackTrace::StackTrace()
+      - [pid=9275][err] #2 0x5f6acff9f9d8 base::debug::(anonymous namespace)::StackDumpSignalHandler()
+      - [pid=9275][err] #3 0x745774247dd0 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x47dcf)
+      - [pid=9275][err] #4 0x7457742ae0cc pthread_kill
+      - [pid=9275][err] #5 0x745774247c9e gsignal
+      - [pid=9275][err] #6 0x7457742288ec abort
+      - [pid=9275][err] #7 0x5f6acff79165 base::debug::BreakDebuggerAsyncSafe()
+      - [pid=9275][err] #8 0x5f6acfebd473 base::RepeatingCallback<>::Run()
+      - [pid=9275][err] #9 0x5f6acfebd335 logging::LogMessage::HandleFatal()
+      - [pid=9275][err] #10 0x5f6acfebcf27 logging::LogMessage::Flush()
+      - [pid=9275][err] #11 0x5f6acfebd4c9 logging::LogMessageFatal::~LogMessageFatal()
+      - [pid=9275][err] #12 0x5f6acca8a952 content::ZygoteHostImpl::Init()
+      - [pid=9275][err] #13 0x5f6acfe88a99 content::ContentMainRunnerImpl::Initialize()
+      - [pid=9275][err] #14 0x5f6acfe8613c content::RunContentProcess()
+      - [pid=9275][err] #15 0x5f6acfe86587 content::ContentMain()
+      - [pid=9275][err] #16 0x5f6ac8b9337d ChromeMain
+      - [pid=9275][err] #17 0x74577422a8c1 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a8c0)
+      - [pid=9275][err] #18 0x74577422a9d8 __libc_start_main
+      - [pid=9275][err] #19 0x5f6ac8b9302a _start
+      - [pid=9275][err]   r8: 0000000000000016  r9: 0000000000000444 r10: 00001a400014c263 r11: 0000000000000246
+      - [pid=9275][err]  r12: 0000000000000006 r13: 00000000000006a7 r14: 00005f6ac88fbac1 r15: 00007ffd12c1c840
+      - [pid=9275][err]   di: 000000000000243b  si: 000000000000243b  bp: 00007ffd12c1c6e0  bx: 000000000000243b
+      - [pid=9275][err]   dx: 0000000000000006  ax: 0000000000000000  cx: 00007457742ae0cc  sp: 00007ffd12c1c6a0
+      - [pid=9275][err]   ip: 00007457742ae0cc efl: 0000000000000246 cgf: 002b000000000033 erf: 0000000000000000
+      - [pid=9275][err]  trp: 0000000000000000 msk: 0000000000000000 cr2: 0000000000000000
+      - [pid=9275][err] [end of stack trace]
+      - [pid=9275] <gracefully close start>
+      - [pid=9275] <kill>
+      - [pid=9275] <will force kill>
+      - [pid=9275] <process did exit: exitCode=null, signal=SIGABRT>
+      - [pid=9275] starting temporary directories cleanup
+      - [pid=9275] finished temporary directories cleanup
+      - [pid=9275] <gracefully close end>
+
+
+    Error Context: test-results/platform-audit-Full-Platfo-ea50d-th-zero-horizontal-overflow-mobile-safari/error-context.md
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: browserType.launch: Target page, context or browser has been closed
+    Browser logs:
+
+    <launching> /usr/bin/chromium --inspector-pipe --headless --no-startup-window
+    <launched> pid=9307
+    [pid=9307][err] [9307:9307:1125/174601.973974:FATAL:content/browser/zygote_host/zygote_host_impl_linux.cc:144] No usable sandbox! If you are running on Ubuntu 23.10+ or another Linux distro that has disabled unprivileged user namespaces with AppArmor, see https://chromium.googlesource.com/chromium/src/+/main/docs/security/apparmor-userns-restrictions.md. Otherwise see https://chromium.googlesource.com/chromium/src/+/main/docs/linux/suid_sandbox_development.md for more information on developing with the (older) SUID sandbox. If you want to live dangerously and need an immediate workaround, you can try using --no-sandbox.
+    [pid=9307][err] #0 0x595572e8af72 base::debug::CollectStackTrace()
+    [pid=9307][err] #1 0x595572e7535e base::debug::StackTrace::StackTrace()
+    [pid=9307][err] #2 0x595572da792c logging::LogMessage::Flush()
+    [pid=9307][err] #3 0x595572da84c9 logging::LogMessageFatal::~LogMessageFatal()
+    [pid=9307][err] #4 0x59556f975952 content::ZygoteHostImpl::Init()
+    [pid=9307][err] #5 0x595572d73a99 content::ContentMainRunnerImpl::Initialize()
+    [pid=9307][err] #6 0x595572d7113c content::RunContentProcess()
+    [pid=9307][err] #7 0x595572d71587 content::ContentMain()
+    [pid=9307][err] #8 0x59556ba7e37d ChromeMain
+    [pid=9307][err] #9 0x75633142a8c1 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a8c0)
+    [pid=9307][err] #10 0x75633142a9d8 __libc_start_main
+    [pid=9307][err] #11 0x59556ba7e02a _start
+    [pid=9307][err] Crash keys:
+    [pid=9307][err]   "switch-10" = "--use-angle=swiftshader-webgl"
+    [pid=9307][err]   "switch-9" = "--ozone-override-screen-size=800,600"
+    [pid=9307][err]   "switch-8" = "--ozone-platform=headless"
+    [pid=9307][err]   "switch-7" = "--user-data-dir=/home/runner/.config/chromium-headless/scoped_di"
+    [pid=9307][err]   "switch-6" = "--no-first-run"
+    [pid=9307][err]   "switch-5" = "--noerrdialogs"
+    [pid=9307][err]   "switch-4" = "--incognito"
+    [pid=9307][err]   "switch-3" = "--no-startup-window"
+    [pid=9307][err]   "switch-2" = "--headless"
+    [pid=9307][err]   "switch-1" = "--inspector-pipe"
+    [pid=9307][err]   "num-switches" = "10"
+    [pid=9307][err]   "osarch" = "x86_64"
+    [pid=9307][err]   "pid" = "9307"
+    [pid=9307][err]   "ptype" = "browser"
+    [pid=9307][err] 
+    [pid=9307][err] Received signal 6
+    [pid=9307][err] #0 0x595572e8af72 base::debug::CollectStackTrace()
+    [pid=9307][err] #1 0x595572e7535e base::debug::StackTrace::StackTrace()
+    [pid=9307][err] #2 0x595572e8a9d8 base::debug::(anonymous namespace)::StackDumpSignalHandler()
+    [pid=9307][err] #3 0x756331447dd0 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x47dcf)
+    [pid=9307][err] #4 0x7563314ae0cc pthread_kill
+    [pid=9307][err] #5 0x756331447c9e gsignal
+    [pid=9307][err] #6 0x7563314288ec abort
+    [pid=9307][err] #7 0x595572e64165 base::debug::BreakDebuggerAsyncSafe()
+    [pid=9307][err] #8 0x595572da8473 base::RepeatingCallback<>::Run()
+    [pid=9307][err] #9 0x595572da8335 logging::LogMessage::HandleFatal()
+    [pid=9307][err] #10 0x595572da7f27 logging::LogMessage::Flush()
+    [pid=9307][err] #11 0x595572da84c9 logging::LogMessageFatal::~LogMessageFatal()
+    [pid=9307][err] #12 0x59556f975952 content::ZygoteHostImpl::Init()
+    [pid=9307][err] #13 0x595572d73a99 content::ContentMainRunnerImpl::Initialize()
+    [pid=9307][err] #14 0x595572d7113c content::RunContentProcess()
+    [pid=9307][err] #15 0x595572d71587 content::ContentMain()
+    [pid=9307][err] #16 0x59556ba7e37d ChromeMain
+    [pid=9307][err] #17 0x75633142a8c1 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a8c0)
+    [pid=9307][err] #18 0x75633142a9d8 __libc_start_main
+    [pid=9307][err] #19 0x59556ba7e02a _start
+    [pid=9307][err]   r8: 0000000000000016  r9: 0000000000000444 r10: 00002cd80014c263 r11: 0000000000000246
+    [pid=9307][err]  r12: 0000000000000006 r13: 00000000000006a7 r14: 000059556b7e6ac1 r15: 00007ffc19b1a800
+    [pid=9307][err]   di: 000000000000245b  si: 000000000000245b  bp: 00007ffc19b1a6a0  bx: 000000000000245b
+    [pid=9307][err]   dx: 0000000000000006  ax: 0000000000000000  cx: 00007563314ae0cc  sp: 00007ffc19b1a660
+    [pid=9307][err]   ip: 00007563314ae0cc efl: 0000000000000246 cgf: 002b000000000033 erf: 0000000000000000
+    [pid=9307][err]  trp: 0000000000000000 msk: 0000000000000000 cr2: 0000000000000000
+    [pid=9307][err] [end of stack trace]
+    Call log:
+      - <launching> /usr/bin/chromium --inspector-pipe --headless --no-startup-window
+      - <launched> pid=9307
+      - [pid=9307][err] [9307:9307:1125/174601.973974:FATAL:content/browser/zygote_host/zygote_host_impl_linux.cc:144] No usable sandbox! If you are running on Ubuntu 23.10+ or another Linux distro that has disabled unprivileged user namespaces with AppArmor, see https://chromium.googlesource.com/chromium/src/+/main/docs/security/apparmor-userns-restrictions.md. Otherwise see https://chromium.googlesource.com/chromium/src/+/main/docs/linux/suid_sandbox_development.md for more information on developing with the (older) SUID sandbox. If you want to live dangerously and need an immediate workaround, you can try using --no-sandbox.
+      - [pid=9307][err] #0 0x595572e8af72 base::debug::CollectStackTrace()
+      - [pid=9307][err] #1 0x595572e7535e base::debug::StackTrace::StackTrace()
+      - [pid=9307][err] #2 0x595572da792c logging::LogMessage::Flush()
+      - [pid=9307][err] #3 0x595572da84c9 logging::LogMessageFatal::~LogMessageFatal()
+      - [pid=9307][err] #4 0x59556f975952 content::ZygoteHostImpl::Init()
+      - [pid=9307][err] #5 0x595572d73a99 content::ContentMainRunnerImpl::Initialize()
+      - [pid=9307][err] #6 0x595572d7113c content::RunContentProcess()
+      - [pid=9307][err] #7 0x595572d71587 content::ContentMain()
+      - [pid=9307][err] #8 0x59556ba7e37d ChromeMain
+      - [pid=9307][err] #9 0x75633142a8c1 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a8c0)
+      - [pid=9307][err] #10 0x75633142a9d8 __libc_start_main
+      - [pid=9307][err] #11 0x59556ba7e02a _start
+      - [pid=9307][err] Crash keys:
+      - [pid=9307][err]   "switch-10" = "--use-angle=swiftshader-webgl"
+      - [pid=9307][err]   "switch-9" = "--ozone-override-screen-size=800,600"
+      - [pid=9307][err]   "switch-8" = "--ozone-platform=headless"
+      - [pid=9307][err]   "switch-7" = "--user-data-dir=/home/runner/.config/chromium-headless/scoped_di"
+      - [pid=9307][err]   "switch-6" = "--no-first-run"
+      - [pid=9307][err]   "switch-5" = "--noerrdialogs"
+      - [pid=9307][err]   "switch-4" = "--incognito"
+      - [pid=9307][err]   "switch-3" = "--no-startup-window"
+      - [pid=9307][err]   "switch-2" = "--headless"
+      - [pid=9307][err]   "switch-1" = "--inspector-pipe"
+      - [pid=9307][err]   "num-switches" = "10"
+      - [pid=9307][err]   "osarch" = "x86_64"
+      - [pid=9307][err]   "pid" = "9307"
+      - [pid=9307][err]   "ptype" = "browser"
+      - [pid=9307][err]
+      - [pid=9307][err] Received signal 6
+      - [pid=9307][err] #0 0x595572e8af72 base::debug::CollectStackTrace()
+      - [pid=9307][err] #1 0x595572e7535e base::debug::StackTrace::StackTrace()
+      - [pid=9307][err] #2 0x595572e8a9d8 base::debug::(anonymous namespace)::StackDumpSignalHandler()
+      - [pid=9307][err] #3 0x756331447dd0 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x47dcf)
+      - [pid=9307][err] #4 0x7563314ae0cc pthread_kill
+      - [pid=9307][err] #5 0x756331447c9e gsignal
+      - [pid=9307][err] #6 0x7563314288ec abort
+      - [pid=9307][err] #7 0x595572e64165 base::debug::BreakDebuggerAsyncSafe()
+      - [pid=9307][err] #8 0x595572da8473 base::RepeatingCallback<>::Run()
+      - [pid=9307][err] #9 0x595572da8335 logging::LogMessage::HandleFatal()
+      - [pid=9307][err] #10 0x595572da7f27 logging::LogMessage::Flush()
+      - [pid=9307][err] #11 0x595572da84c9 logging::LogMessageFatal::~LogMessageFatal()
+      - [pid=9307][err] #12 0x59556f975952 content::ZygoteHostImpl::Init()
+      - [pid=9307][err] #13 0x595572d73a99 content::ContentMainRunnerImpl::Initialize()
+      - [pid=9307][err] #14 0x595572d7113c content::RunContentProcess()
+      - [pid=9307][err] #15 0x595572d71587 content::ContentMain()
+      - [pid=9307][err] #16 0x59556ba7e37d ChromeMain
+      - [pid=9307][err] #17 0x75633142a8c1 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a8c0)
+      - [pid=9307][err] #18 0x75633142a9d8 __libc_start_main
+      - [pid=9307][err] #19 0x59556ba7e02a _start
+      - [pid=9307][err]   r8: 0000000000000016  r9: 0000000000000444 r10: 00002cd80014c263 r11: 0000000000000246
+      - [pid=9307][err]  r12: 0000000000000006 r13: 00000000000006a7 r14: 000059556b7e6ac1 r15: 00007ffc19b1a800
+      - [pid=9307][err]   di: 000000000000245b  si: 000000000000245b  bp: 00007ffc19b1a6a0  bx: 000000000000245b
+      - [pid=9307][err]   dx: 0000000000000006  ax: 0000000000000000  cx: 00007563314ae0cc  sp: 00007ffc19b1a660
+      - [pid=9307][err]   ip: 00007563314ae0cc efl: 0000000000000246 cgf: 002b000000000033 erf: 0000000000000000
+      - [pid=9307][err]  trp: 0000000000000000 msk: 0000000000000000 cr2: 0000000000000000
+      - [pid=9307][err] [end of stack trace]
+      - [pid=9307] <gracefully close start>
+      - [pid=9307] <kill>
+      - [pid=9307] <will force kill>
+      - [pid=9307] <process did exit: exitCode=null, signal=SIGABRT>
+      - [pid=9307] starting temporary directories cleanup
+      - [pid=9307] finished temporary directories cleanup
+      - [pid=9307] <gracefully close end>
+
+
+    Error Context: test-results/platform-audit-Full-Platfo-ea50d-th-zero-horizontal-overflow-mobile-safari-retry1/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/platform-audit-Full-Platfo-ea50d-th-zero-horizontal-overflow-mobile-safari-retry1/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/platform-audit-Full-Platfo-ea50d-th-zero-horizontal-overflow-mobile-safari-retry1/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #2 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: browserType.launch: Target page, context or browser has been closed
+    Browser logs:
+
+    <launching> /usr/bin/chromium --inspector-pipe --headless --no-startup-window
+    <launched> pid=9339
+    [pid=9339][err] [9339:9339:1125/174603.419818:FATAL:content/browser/zygote_host/zygote_host_impl_linux.cc:144] No usable sandbox! If you are running on Ubuntu 23.10+ or another Linux distro that has disabled unprivileged user namespaces with AppArmor, see https://chromium.googlesource.com/chromium/src/+/main/docs/security/apparmor-userns-restrictions.md. Otherwise see https://chromium.googlesource.com/chromium/src/+/main/docs/linux/suid_sandbox_development.md for more information on developing with the (older) SUID sandbox. If you want to live dangerously and need an immediate workaround, you can try using --no-sandbox.
+    [pid=9339][err] #0 0x63d0c2f89f72 base::debug::CollectStackTrace()
+    [pid=9339][err] #1 0x63d0c2f7435e base::debug::StackTrace::StackTrace()
+    [pid=9339][err] #2 0x63d0c2ea692c logging::LogMessage::Flush()
+    [pid=9339][err] #3 0x63d0c2ea74c9 logging::LogMessageFatal::~LogMessageFatal()
+    [pid=9339][err] #4 0x63d0bfa74952 content::ZygoteHostImpl::Init()
+    [pid=9339][err] #5 0x63d0c2e72a99 content::ContentMainRunnerImpl::Initialize()
+    [pid=9339][err] #6 0x63d0c2e7013c content::RunContentProcess()
+    [pid=9339][err] #7 0x63d0c2e70587 content::ContentMain()
+    [pid=9339][err] #8 0x63d0bbb7d37d ChromeMain
+    [pid=9339][err] #9 0x76522b62a8c1 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a8c0)
+    [pid=9339][err] #10 0x76522b62a9d8 __libc_start_main
+    [pid=9339][err] #11 0x63d0bbb7d02a _start
+    [pid=9339][err] Crash keys:
+    [pid=9339][err]   "switch-10" = "--use-angle=swiftshader-webgl"
+    [pid=9339][err]   "switch-9" = "--ozone-override-screen-size=800,600"
+    [pid=9339][err]   "switch-8" = "--ozone-platform=headless"
+    [pid=9339][err]   "switch-7" = "--user-data-dir=/home/runner/.config/chromium-headless/scoped_di"
+    [pid=9339][err]   "switch-6" = "--no-first-run"
+    [pid=9339][err]   "switch-5" = "--noerrdialogs"
+    [pid=9339][err]   "switch-4" = "--incognito"
+    [pid=9339][err]   "switch-3" = "--no-startup-window"
+    [pid=9339][err]   "switch-2" = "--headless"
+    [pid=9339][err]   "switch-1" = "--inspector-pipe"
+    [pid=9339][err]   "num-switches" = "10"
+    [pid=9339][err]   "osarch" = "x86_64"
+    [pid=9339][err]   "pid" = "9339"
+    [pid=9339][err]   "ptype" = "browser"
+    [pid=9339][err] 
+    [pid=9339][err] Received signal 6
+    [pid=9339][err] #0 0x63d0c2f89f72 base::debug::CollectStackTrace()
+    [pid=9339][err] #1 0x63d0c2f7435e base::debug::StackTrace::StackTrace()
+    [pid=9339][err] #2 0x63d0c2f899d8 base::debug::(anonymous namespace)::StackDumpSignalHandler()
+    [pid=9339][err] #3 0x76522b647dd0 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x47dcf)
+    [pid=9339][err] #4 0x76522b6ae0cc pthread_kill
+    [pid=9339][err] #5 0x76522b647c9e gsignal
+    [pid=9339][err] #6 0x76522b6288ec abort
+    [pid=9339][err] #7 0x63d0c2f63165 base::debug::BreakDebuggerAsyncSafe()
+    [pid=9339][err] #8 0x63d0c2ea7473 base::RepeatingCallback<>::Run()
+    [pid=9339][err] #9 0x63d0c2ea7335 logging::LogMessage::HandleFatal()
+    [pid=9339][err] #10 0x63d0c2ea6f27 logging::LogMessage::Flush()
+    [pid=9339][err] #11 0x63d0c2ea74c9 logging::LogMessageFatal::~LogMessageFatal()
+    [pid=9339][err] #12 0x63d0bfa74952 content::ZygoteHostImpl::Init()
+    [pid=9339][err] #13 0x63d0c2e72a99 content::ContentMainRunnerImpl::Initialize()
+    [pid=9339][err] #14 0x63d0c2e7013c content::RunContentProcess()
+    [pid=9339][err] #15 0x63d0c2e70587 content::ContentMain()
+    [pid=9339][err] #16 0x63d0bbb7d37d ChromeMain
+    [pid=9339][err] #17 0x76522b62a8c1 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a8c0)
+    [pid=9339][err] #18 0x76522b62a9d8 __libc_start_main
+    [pid=9339][err] #19 0x63d0bbb7d02a _start
+    [pid=9339][err]   r8: 0000000000000016  r9: 0000000000000444 r10: 000038b00014c263 r11: 0000000000000246
+    [pid=9339][err]  r12: 0000000000000006 r13: 00000000000006a7 r14: 000063d0bb8e5ac1 r15: 00007fff601d6060
+    [pid=9339][err]   di: 000000000000247b  si: 000000000000247b  bp: 00007fff601d5f00  bx: 000000000000247b
+    [pid=9339][err]   dx: 0000000000000006  ax: 0000000000000000  cx: 000076522b6ae0cc  sp: 00007fff601d5ec0
+    [pid=9339][err]   ip: 000076522b6ae0cc efl: 0000000000000246 cgf: 002b000000000033 erf: 0000000000000000
+    [pid=9339][err]  trp: 0000000000000000 msk: 0000000000000000 cr2: 0000000000000000
+    [pid=9339][err] [end of stack trace]
+    Call log:
+      - <launching> /usr/bin/chromium --inspector-pipe --headless --no-startup-window
+      - <launched> pid=9339
+      - [pid=9339][err] [9339:9339:1125/174603.419818:FATAL:content/browser/zygote_host/zygote_host_impl_linux.cc:144] No usable sandbox! If you are running on Ubuntu 23.10+ or another Linux distro that has disabled unprivileged user namespaces with AppArmor, see https://chromium.googlesource.com/chromium/src/+/main/docs/security/apparmor-userns-restrictions.md. Otherwise see https://chromium.googlesource.com/chromium/src/+/main/docs/linux/suid_sandbox_development.md for more information on developing with the (older) SUID sandbox. If you want to live dangerously and need an immediate workaround, you can try using --no-sandbox.
+      - [pid=9339][err] #0 0x63d0c2f89f72 base::debug::CollectStackTrace()
+      - [pid=9339][err] #1 0x63d0c2f7435e base::debug::StackTrace::StackTrace()
+      - [pid=9339][err] #2 0x63d0c2ea692c logging::LogMessage::Flush()
+      - [pid=9339][err] #3 0x63d0c2ea74c9 logging::LogMessageFatal::~LogMessageFatal()
+      - [pid=9339][err] #4 0x63d0bfa74952 content::ZygoteHostImpl::Init()
+      - [pid=9339][err] #5 0x63d0c2e72a99 content::ContentMainRunnerImpl::Initialize()
+      - [pid=9339][err] #6 0x63d0c2e7013c content::RunContentProcess()
+      - [pid=9339][err] #7 0x63d0c2e70587 content::ContentMain()
+      - [pid=9339][err] #8 0x63d0bbb7d37d ChromeMain
+      - [pid=9339][err] #9 0x76522b62a8c1 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a8c0)
+      - [pid=9339][err] #10 0x76522b62a9d8 __libc_start_main
+      - [pid=9339][err] #11 0x63d0bbb7d02a _start
+      - [pid=9339][err] Crash keys:
+      - [pid=9339][err]   "switch-10" = "--use-angle=swiftshader-webgl"
+      - [pid=9339][err]   "switch-9" = "--ozone-override-screen-size=800,600"
+      - [pid=9339][err]   "switch-8" = "--ozone-platform=headless"
+      - [pid=9339][err]   "switch-7" = "--user-data-dir=/home/runner/.config/chromium-headless/scoped_di"
+      - [pid=9339][err]   "switch-6" = "--no-first-run"
+      - [pid=9339][err]   "switch-5" = "--noerrdialogs"
+      - [pid=9339][err]   "switch-4" = "--incognito"
+      - [pid=9339][err]   "switch-3" = "--no-startup-window"
+      - [pid=9339][err]   "switch-2" = "--headless"
+      - [pid=9339][err]   "switch-1" = "--inspector-pipe"
+      - [pid=9339][err]   "num-switches" = "10"
+      - [pid=9339][err]   "osarch" = "x86_64"
+      - [pid=9339][err]   "pid" = "9339"
+      - [pid=9339][err]   "ptype" = "browser"
+      - [pid=9339][err]
+      - [pid=9339][err] Received signal 6
+      - [pid=9339][err] #0 0x63d0c2f89f72 base::debug::CollectStackTrace()
+      - [pid=9339][err] #1 0x63d0c2f7435e base::debug::StackTrace::StackTrace()
+      - [pid=9339][err] #2 0x63d0c2f899d8 base::debug::(anonymous namespace)::StackDumpSignalHandler()
+      - [pid=9339][err] #3 0x76522b647dd0 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x47dcf)
+      - [pid=9339][err] #4 0x76522b6ae0cc pthread_kill
+      - [pid=9339][err] #5 0x76522b647c9e gsignal
+      - [pid=9339][err] #6 0x76522b6288ec abort
+      - [pid=9339][err] #7 0x63d0c2f63165 base::debug::BreakDebuggerAsyncSafe()
+      - [pid=9339][err] #8 0x63d0c2ea7473 base::RepeatingCallback<>::Run()
+      - [pid=9339][err] #9 0x63d0c2ea7335 logging::LogMessage::HandleFatal()
+      - [pid=9339][err] #10 0x63d0c2ea6f27 logging::LogMessage::Flush()
+      - [pid=9339][err] #11 0x63d0c2ea74c9 logging::LogMessageFatal::~LogMessageFatal()
+      - [pid=9339][err] #12 0x63d0bfa74952 content::ZygoteHostImpl::Init()
+      - [pid=9339][err] #13 0x63d0c2e72a99 content::ContentMainRunnerImpl::Initialize()
+      - [pid=9339][err] #14 0x63d0c2e7013c content::RunContentProcess()
+      - [pid=9339][err] #15 0x63d0c2e70587 content::ContentMain()
+      - [pid=9339][err] #16 0x63d0bbb7d37d ChromeMain
+      - [pid=9339][err] #17 0x76522b62a8c1 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a8c0)
+      - [pid=9339][err] #18 0x76522b62a9d8 __libc_start_main
+      - [pid=9339][err] #19 0x63d0bbb7d02a _start
+      - [pid=9339][err]   r8: 0000000000000016  r9: 0000000000000444 r10: 000038b00014c263 r11: 0000000000000246
+      - [pid=9339][err]  r12: 0000000000000006 r13: 00000000000006a7 r14: 000063d0bb8e5ac1 r15: 00007fff601d6060
+      - [pid=9339][err]   di: 000000000000247b  si: 000000000000247b  bp: 00007fff601d5f00  bx: 000000000000247b
+      - [pid=9339][err]   dx: 0000000000000006  ax: 0000000000000000  cx: 000076522b6ae0cc  sp: 00007fff601d5ec0
+      - [pid=9339][err]   ip: 000076522b6ae0cc efl: 0000000000000246 cgf: 002b000000000033 erf: 0000000000000000
+      - [pid=9339][err]  trp: 0000000000000000 msk: 0000000000000000 cr2: 0000000000000000
+      - [pid=9339][err] [end of stack trace]
+      - [pid=9339] <gracefully close start>
+      - [pid=9339] <kill>
+      - [pid=9339] <will force kill>
+      - [pid=9339] <process did exit: exitCode=null, signal=SIGABRT>
+      - [pid=9339] starting temporary directories cleanup
+      - [pid=9339] finished temporary directories cleanup
+      - [pid=9339] <gracefully close end>
+
+
+    Error Context: test-results/platform-audit-Full-Platfo-ea50d-th-zero-horizontal-overflow-mobile-safari-retry2/error-context.md
+
+  23 failed
+    [chromium] › tests/e2e/platform-audit.spec.ts:117:3 › Full Platform Runtime & Governance Audit (All 22 Modules & Roles) › Bilingual Amharic + Ethiopic (ዓ.ም) mode renders cleanly across operational & governance screens without overflow 
+    [chromium] › tests/e2e/platform-audit.spec.ts:156:3 › Full Platform Runtime & Governance Audit (All 22 Modules & Roles) › Enforces read-only Auditor controls, Owner / Director single-owner lock, and Trainer seed reset exclusivity 
+    [chromium] › tests/e2e/platform-audit.spec.ts:184:3 › Full Platform Runtime & Governance Audit (All 22 Modules & Roles) › Mobile 390x844 viewport renders Login and Authenticated Workspace with zero horizontal overflow 
+    [mobile-chrome] › tests/e2e/ad-prms.spec.ts:90:3 › AD-PRMS End-to-End Governance, Isolation & UI Flows › Owner isolation across Compliance Source & Evidence Review (Alpha vs Beta) 
+    [mobile-chrome] › tests/e2e/ad-prms.spec.ts:115:3 › AD-PRMS End-to-End Governance, Isolation & UI Flows › Maker-Checker self-approval block for Finance Officer & System Admin SoD guard 
+    [mobile-chrome] › tests/e2e/ad-prms.spec.ts:146:3 › AD-PRMS End-to-End Governance, Isolation & UI Flows › Tax Configuration permanently locks Active stage & Visual QA verifies zero DOM clipping 
+    [mobile-chrome] › tests/e2e/ad-prms.spec.ts:215:3 › AD-PRMS End-to-End Governance, Isolation & UI Flows › 5xxx Manual Journal UI workflow (5600/5800/5900) and SQLite /api/office/ledger endpoints 
+    [mobile-chrome] › tests/e2e/ad-prms.spec.ts:333:3 › AD-PRMS End-to-End Governance, Isolation & UI Flows › Unauthenticated /api/office barrier (401) and Internet-Down vs Server-Down Offline/LAN modes (#9, #14) 
+    [mobile-chrome] › tests/e2e/platform-audit.spec.ts:64:3 › Full Platform Runtime & Governance Audit (All 22 Modules & Roles) › All 22 modules render cleanly for gm.demo with zero page/console errors and zero horizontal overflow 
+    [mobile-chrome] › tests/e2e/platform-audit.spec.ts:117:3 › Full Platform Runtime & Governance Audit (All 22 Modules & Roles) › Bilingual Amharic + Ethiopic (ዓ.ም) mode renders cleanly across operational & governance screens without overflow 
+    [mobile-chrome] › tests/e2e/platform-audit.spec.ts:156:3 › Full Platform Runtime & Governance Audit (All 22 Modules & Roles) › Enforces read-only Auditor controls, Owner / Director single-owner lock, and Trainer seed reset exclusivity 
+    [mobile-chrome] › tests/e2e/platform-audit.spec.ts:184:3 › Full Platform Runtime & Governance Audit (All 22 Modules & Roles) › Mobile 390x844 viewport renders Login and Authenticated Workspace with zero horizontal overflow 
+    [mobile-safari] › tests/e2e/ad-prms.spec.ts:51:3 › AD-PRMS End-to-End Governance, Isolation & UI Flows › Login branding, Daylight/Dark theme toggle, bilingual Amharic switch, and validation 
+    [mobile-safari] › tests/e2e/ad-prms.spec.ts:90:3 › AD-PRMS End-to-End Governance, Isolation & UI Flows › Owner isolation across Compliance Source & Evidence Review (Alpha vs Beta) 
+    [mobile-safari] › tests/e2e/ad-prms.spec.ts:115:3 › AD-PRMS End-to-End Governance, Isolation & UI Flows › Maker-Checker self-approval block for Finance Officer & System Admin SoD guard 
+    [mobile-safari] › tests/e2e/ad-prms.spec.ts:146:3 › AD-PRMS End-to-End Governance, Isolation & UI Flows › Tax Configuration permanently locks Active stage & Visual QA verifies zero DOM clipping 
+    [mobile-safari] › tests/e2e/ad-prms.spec.ts:167:3 › AD-PRMS End-to-End Governance, Isolation & UI Flows › Mobile PWA viewport (390x844): manifest, zero horizontal overflow, Tenant & Owner Mobile modes 
+    [mobile-safari] › tests/e2e/ad-prms.spec.ts:215:3 › AD-PRMS End-to-End Governance, Isolation & UI Flows › 5xxx Manual Journal UI workflow (5600/5800/5900) and SQLite /api/office/ledger endpoints 
+    [mobile-safari] › tests/e2e/ad-prms.spec.ts:333:3 › AD-PRMS End-to-End Governance, Isolation & UI Flows › Unauthenticated /api/office barrier (401) and Internet-Down vs Server-Down Offline/LAN modes (#9, #14) 
+    [mobile-safari] › tests/e2e/platform-audit.spec.ts:64:3 › Full Platform Runtime & Governance Audit (All 22 Modules & Roles) › All 22 modules render cleanly for gm.demo with zero page/console errors and zero horizontal overflow 
+    [mobile-safari] › tests/e2e/platform-audit.spec.ts:117:3 › Full Platform Runtime & Governance Audit (All 22 Modules & Roles) › Bilingual Amharic + Ethiopic (ዓ.ም) mode renders cleanly across operational & governance screens without overflow 
+    [mobile-safari] › tests/e2e/platform-audit.spec.ts:156:3 › Full Platform Runtime & Governance Audit (All 22 Modules & Roles) › Enforces read-only Auditor controls, Owner / Director single-owner lock, and Trainer seed reset exclusivity 
+    [mobile-safari] › tests/e2e/platform-audit.spec.ts:184:3 › Full Platform Runtime & Governance Audit (All 22 Modules & Roles) › Mobile 390x844 viewport renders Login and Authenticated Workspace with zero horizontal overflow 
+  10 passed (3.0m)
+Error: Process completed with exit code 1.
+##[debug]Finishing: Run Playwright E2E tests against production preview
+3s
+0s
+0s
+0s

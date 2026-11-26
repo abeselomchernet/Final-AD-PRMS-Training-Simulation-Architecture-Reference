@@ -19,6 +19,7 @@ import {
   OFFICE_SESSION_COOKIE_NAME,
   type OfficeSessionClaims,
   resolveAllowedViteHosts,
+  resolveAuthRateLimitMax,
   resolveBindHost,
   resolveListenPort,
   signOfficeSessionToken,
@@ -126,9 +127,12 @@ export async function createTrainingServerApp(options?: {
   const app = express();
   app.set('trust proxy', 1);
 
+  const runtimeProduction = process.env.NODE_ENV === 'production';
+  const authRateLimitMax = resolveAuthRateLimitMax(options?.authRateLimitMax, runtimeProduction);
+
   const authRateLimiter = rateLimit({
     windowMs: 15 * 60 * 1000,
-    max: options?.authRateLimitMax ?? (isProduction ? 10 : 100),
+    max: authRateLimitMax,
     standardHeaders: true,
     legacyHeaders: false,
     message: { error: true, msg: 'Too many authentication attempts. Please retry later.' },

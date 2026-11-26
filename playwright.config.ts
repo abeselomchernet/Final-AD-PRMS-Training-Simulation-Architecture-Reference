@@ -3,15 +3,16 @@ import os from 'node:os';
 import path from 'node:path';
 import { defineConfig, devices } from '@playwright/test';
 
-const CHROMIUM_CANDIDATES = [
-  process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH,
-  '/ms-playwright/chromium_headless_shell-1247/chrome-headless-shell-linux64/chrome-headless-shell',
-  '/usr/bin/chromium',
-  '/usr/bin/chromium-browser',
-  '/usr/bin/google-chrome',
-].filter((candidate): candidate is string => Boolean(candidate));
+const explicitChromiumPath = process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH?.trim() || undefined;
+if (explicitChromiumPath && !fs.existsSync(explicitChromiumPath)) {
+  throw new Error(
+    `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH does not exist: ${explicitChromiumPath}`
+  );
+}
 
-const executablePath = CHROMIUM_CANDIDATES.find((candidate) => fs.existsSync(candidate));
+const chromiumLaunchOptions = explicitChromiumPath
+  ? { executablePath: explicitChromiumPath }
+  : undefined;
 const playwrightDbPath = path.join(os.tmpdir(), 'adprms-playwright.db');
 
 export default defineConfig({
@@ -25,24 +26,32 @@ export default defineConfig({
     baseURL: 'http://127.0.0.1:4173',
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
-    launchOptions: executablePath ? { executablePath } : undefined,
   },
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: {
+        ...devices['Desktop Chrome'],
+        ...(chromiumLaunchOptions ? { launchOptions: chromiumLaunchOptions } : {}),
+      },
     },
     {
       name: 'mobile-chrome',
-      use: { ...devices['Pixel 5'] },
+      use: {
+        ...devices['Pixel 5'],
+        ...(chromiumLaunchOptions ? { launchOptions: chromiumLaunchOptions } : {}),
+      },
     },
     {
+      // Playwright WebKit with iPhone 13 device emulation tests WebKit layout and
+      // touch semantics, not Apple's actual Safari browser on physical iOS hardware.
+      // Never apply Chromium executable paths or launchOptions to this project.
       name: 'mobile-safari',
       use: { ...devices['iPhone 13'] },
     },
   ],
   webServer: {
-    command: `NODE_ENV=production PORT=4173 OFFICE_DB_PATH=${JSON.stringify(playwrightDbPath)} npx tsx server.ts`,
+    command: `NODE_ENV=production PORT=4173 ADPRMS_E2E_HARNESS=1 ADPRMS_E2E_AUTH_RATE_LIMIT_MAX=120 OFFICE_DB_PATH=${JSON.stringify(playwrightDbPath)} npx tsx tests/e2e/playwright-webserver.ts`,
     url: 'http://127.0.0.1:4173/api/health',
     reuseExistingServer: !process.env.CI,
     timeout: 60_000,

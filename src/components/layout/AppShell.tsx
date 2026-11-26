@@ -698,6 +698,7 @@ export const AppShell: React.FC<{
       <div className="flex-1 flex min-h-0">
         {/* Desktop Collapsible Sidebar */}
         <aside
+          aria-label="Workspace Navigation"
           className={`hidden lg:block shrink-0 border-r border-[#DFE5EE] dark:border-[#233349] transition-all duration-150 ${
             sidebarCollapsed ? 'w-[68px]' : 'w-64'
           }`}
